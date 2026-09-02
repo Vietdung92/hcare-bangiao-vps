@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>HCARE Bàn Giao</title>
+<meta name="theme-color" content="#0B5CAB">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:#F4F6F9;color:#1a1a2e;min-height:100vh}
+:root{--blue:#0B5CAB;--green:#16a34a;--red:#dc2626;--orange:#ea580c;--gray:#6b7280;--light:#f8fafc}
+
+/* NAV */
+.nav{background:var(--blue);color:#fff;padding:14px 16px;display:flex;align-items:center;gap:12px;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.nav-back{background:none;border:none;color:#fff;font-size:22px;cursor:pointer;padding:0 4px}
+.nav h1{font-size:17px;font-weight:600;flex:1}
+.nav-user{font-size:13px;opacity:.8}
+
+/* CARDS */
+.page{padding:16px;max-width:600px;margin:0 auto}
+.card{background:#fff;border-radius:12px;padding:16px;margin-bottom:12px;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.card-title{font-size:13px;color:var(--gray);font-weight:500;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+
+/* BUTTONS */
+.btn{display:block;width:100%;padding:14px;border:none;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer;text-align:center;transition:.2s}
+.btn-primary{background:var(--blue);color:#fff}
+.btn-primary:active{background:#094a8a}
+.btn-green{background:var(--green);color:#fff}
+.btn-red{background:var(--red);color:#fff}
+.btn-outline{background:#fff;color:var(--blue);border:2px solid var(--blue)}
+.btn-sm{padding:8px 14px;font-size:13px;width:auto;display:inline-block;border-radius:8px}
+
+/* FORM */
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:13px;color:var(--gray);margin-bottom:6px;font-weight:500}
+.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px;border:1.5px solid #e5e7eb;border-radius:8px;font-size:15px;outline:none;background:#fff}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue)}
+.form-group textarea{min-height:80px;resize:vertical}
+
+/* LOGIN */
+#screen-login{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
+.logo{width:72px;height:72px;background:var(--blue);border-radius:18px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px}
+.pin-display{font-size:32px;letter-spacing:8px;text-align:center;margin:16px 0;height:48px}
+.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:280px;margin:0 auto}
+.pin-btn{padding:18px;border:none;border-radius:10px;font-size:20px;font-weight:600;cursor:pointer;background:#f1f5f9;color:#1a1a2e;transition:.15s}
+.pin-btn:active{background:#dbeafe;transform:scale(.96)}
+.pin-btn-del{background:#fee2e2;color:var(--red)}
+
+/* STATS */
+.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.stat-card{background:#fff;border-radius:12px;padding:14px;text-align:center;box-shadow:0 1px 4px rgba(0,0,0,.08)}
+.stat-num{font-size:28px;font-weight:700;color:var(--blue)}
+.stat-label{font-size:12px;color:var(--gray);margin-top:4px}
+
+/* LIST */
+.list-item{display:flex;align-items:center;gap:12px;padding:14px 16px;background:#fff;border-radius:10px;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,.06);cursor:pointer;transition:.15s}
+.list-item:active{background:#f0f4ff}
+.list-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.list-icon.blue{background:#dbeafe}
+.list-icon.green{background:#dcfce7}
+.list-icon.orange{background:#fed7aa}
+.list-info{flex:1;min-width:0}
+.list-title{font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.list-sub{font-size:12px;color:var(--gray);margin-top:2px}
+.list-arrow{color:#cbd5e1;font-size:18px}
+
+/* BADGE */
+.badge{display:inline-block;padding:3px 8px;border-radius:6px;font-size:11px;font-weight:600}
+.badge-green{background:#dcfce7;color:#15803d}
+.badge-orange{background:#fed7aa;color:#9a3412}
+.badge-blue{background:#dbeafe;color:#1e40af}
+.badge-gray{background:#f1f5f9;color:#475569}
+
+/* TABS */
+.tabs{display:flex;background:#fff;border-radius:10px;padding:4px;margin-bottom:14px;gap:4px}
+.tab{flex:1;padding:8px;text-align:center;border:none;background:none;border-radius:7px;font-size:13px;cursor:pointer;font-weight:500;color:var(--gray)}
+.tab.active{background:var(--blue);color:#fff}
+
+/* CHECKLIST */
+.check-section{margin-bottom:16px}
+.check-section-title{font-size:14px;font-weight:700;color:var(--blue);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.check-item{background:#fff;border-radius:8px;padding:12px;margin-bottom:6px;border:1.5px solid #e5e7eb}
+.check-item.ok{border-color:#86efac}
+.check-item.bad{border-color:#fca5a5}
+.check-item-name{font-size:14px;font-weight:500;margin-bottom:8px}
+.check-options{display:flex;gap:6px;flex-wrap:wrap}
+.check-opt{padding:6px 10px;border:1.5px solid #e5e7eb;border-radius:6px;font-size:12px;cursor:pointer;font-weight:500}
+.check-opt.selected-tot{background:#dcfce7;border-color:#86efac;color:#15803d}
+.check-opt.selected-xuoc{background:#fef9c3;border-color:#fde047;color:#854d0e}
+.check-opt.selected-hong{background:#fee2e2;border-color:#fca5a5;color:#991b1b}
+.check-opt.selected-ko{background:#f1f5f9;border-color:#cbd5e1;color:#475569}
+
+/* UTILITY */
+.hidden{display:none!important}
+.text-center{text-align:center}
+.text-gray{color:var(--gray)}
+.text-sm{font-size:13px}
+.mt-8{margin-top:8px}
+.mt-12{margin-top:12px}
+.mt-16{margin-top:16px}
+.flex{display:flex}
+.flex-between{display:flex;justify-content:space-between;align-items:center}
+.gap-8{gap:8px}
+.spinner{text-align:center;padding:40px;color:var(--gray);font-size:14px}
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);background:#1a1a2e;color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;z-index:999;opacity:0;transition:.3s;pointer-events:none;white-space:nowrap}
+.toast.show{opacity:1}
+.divider{height:1px;background:#f1f5f9;margin:12px 0}
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div id="toast" class="toast"></div>
+
+<!-- SCREEN: LOGIN -->
+<div id="screen-login">
+  <div style="width:100%;max-width:320px">
+    <div class="logo">🏢</div>
+    <h2 style="text-align:center;font-size:22px;font-weight:700;margin-bottom:4px">HCARE Bàn Giao</h2>
+    <p style="text-align:center;color:var(--gray);font-size:14px;margin-bottom:24px">Nhập mã PIN để đăng nhập</p>
+    <div class="form-group">
+      <input id="login-manv" placeholder="Mã nhân viên (VD: QL01)" style="text-align:center;font-size:16px;letter-spacing:2px">
+    </div>
+    <div class="pin-display" id="pin-display">••••</div>
+    <div class="pin-pad" id="pin-pad">
+      <button class="pin-btn" onclick="pinPress('1')">1</button>
+      <button class="pin-btn" onclick="pinPress('2')">2</button>
+      <button class="pin-btn" onclick="pinPress('3')">3</button>
+      <button class="pin-btn" onclick="pinPress('4')">4</button>
+      <button class="pin-btn" onclick="pinPress('5')">5</button>
+      <button class="pin-btn" onclick="pinPress('6')">6</button>
+      <button class="pin-btn" onclick="pinPress('7')">7</button>
+      <button class="pin-btn" onclick="pinPress('8')">8</button>
+      <button class="pin-btn" onclick="pinPress('9')">9</button>
+      <button class="pin-btn pin-btn-del" onclick="pinDel()">⌫</button>
+      <button class="pin-btn" onclick="pinPress('0')">0</button>
+      <button class="pin-btn btn-primary" onclick="doLogin()" style="color:#fff">✓</button>
+    </div>
+    <p id="login-error" class="hidden" style="text-align:center;color:var(--red);margin-top:12px;font-size:14px"></p>
+  </div>
+</div>
+
+<!-- SCREEN: HOME -->
+<div id="screen-home" class="hidden">
+  <div class="nav">
+    <div style="font-size:24px">🏢</div>
+    <h1>HCARE Bàn Giao</h1>
+    <div class="nav-user" id="nav-user"></div>
+    <button onclick="doLogout()" style="background:none;border:none;color:#fff;font-size:20px;cursor:pointer">⏻</button>
+  </div>
+  <div class="page">
+    <!-- Stats -->
+    <div id="stats-container">
+      <div class="spinner">Đang tải...</div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="card">
+      <div class="card-title">Thao tác nhanh</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <button class="btn btn-green" onclick="goCreateBB('CHECKIN')">✅ Check-in</button>
+        <button class="btn btn-red" onclick="goCreateBB('CHECKOUT')">🔑 Check-out</button>
+      </div>
+    </div>
+
+    <!-- Menu -->
+    <div class="list-item" onclick="goScreen('screen-bienban')">
+      <div class="list-icon blue">📋</div>
+      <div class="list-info">
+        <div class="list-title">Danh sách biên bản</div>
+        <div class="list-sub">Xem tất cả check-in / check-out</div>
+      </div>
+      <div class="list-arrow">›</div>
+    </div>
+    <div class="list-item" onclick="goScreen('screen-canho')">
+      <div class="list-icon orange">🏠</div>
+      <div class="list-info">
+        <div class="list-title">Căn hộ</div>
+        <div class="list-sub">Danh sách căn đang quản lý</div>
+      </div>
+      <div class="list-arrow">›</div>
+    </div>
+  </div>
+</div>
+
+<!-- SCREEN: BIÊN BẢN LIST -->
+<div id="screen-bienban" class="hidden">
+  <div class="nav">
+    <button class="nav-back" onclick="goScreen('screen-home')">‹</button>
+    <h1>Danh sách biên bản</h1>
+    <button onclick="goCreateBB('CHECKIN')" style="background:none;border:none;color:#fff;font-size:22px;cursor:pointer">＋</button>
+  </div>
+  <div class="page">
+    <div class="tabs">
+      <button class="tab active" onclick="filterBB('TatCa',this)">Tất cả</button>
+      <button class="tab" onclick="filterBB('CHECKIN',this)">Check-in</button>
+      <button class="tab" onclick="filterBB('CHECKOUT',this)">Check-out</button>
+    </div>
+    <div id="bb-list"><div class="spinner">Đang tải...</div></div>
+  </div>
+</div>
+
+<!-- SCREEN: CĂN HỘ -->
+<div id="screen-canho" class="hidden">
+  <div class="nav">
+    <button class="nav-back" onclick="goScreen('screen-home')">‹</button>
+    <h1>Căn hộ</h1>
+  </div>
+  <div class="page">
+    <div class="form-group">
+      <input id="canho-search" placeholder="🔍 Tìm căn hộ..." oninput="filterCanHo()" style="background:#fff">
+    </div>
+    <div id="canho-list"><div class="spinner">Đang tải...</div></div>
+  </div>
+</div>
+
+<!-- SCREEN: TẠO BIÊN BẢN -->
+<div id="screen-create-bb" class="hidden">
+  <div class="nav">
+    <button class="nav-back" onclick="goScreen('screen-home')">‹</button>
+    <h1 id="create-bb-title">Tạo biên bản</h1>
+  </div>
+  <div class="page">
+    <!-- Thông tin chung -->
+    <div class="card">
+      <div class="card-title">Thông tin chung</div>
+      <div class="form-group">
+        <label>Căn hộ *</label>
+        <select id="bb-ma-can">
+          <option value="">-- Chọn căn hộ --</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Số hợp đồng *</label>
+        <input id="bb-so-hd" placeholder="VD: HD2026001">
+      </div>
+      <div class="form-group">
+        <label>Tên khách thuê *</label>
+        <input id="bb-ten-khach" placeholder="Họ tên đầy đủ">
+      </div>
+      <div class="form-group">
+        <label>CCCD / Passport</label>
+        <input id="bb-cccd" placeholder="Số CCCD hoặc Passport">
+      </div>
+      <div class="form-group">
+        <label>Số điện thoại</label>
+        <input id="bb-sdt" placeholder="0901..." type="tel">
+      </div>
+      <div class="form-group">
+        <label>Quốc tịch</label>
+        <input id="bb-quoc-tich" placeholder="Việt Nam" value="Việt Nam">
+      </div>
+      <div class="form-group">
+        <label>Ngày thực hiện *</label>
+        <input id="bb-ngay" type="date">
+      </div>
+    </div>
+
+    <!-- Công tơ -->
+    <div class="card">
+      <div class="card-title">⚡ Chỉ số công tơ</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="form-group">
+          <label>Điện (kWh)</label>
+          <input id="bb-dien" type="number" placeholder="0">
+        </div>
+        <div class="form-group">
+          <label>Nước (m³)</label>
+          <input id="bb-nuoc" type="number" placeholder="0">
+        </div>
+      </div>
+    </div>
+
+    <!-- Kiểm kê -->
+    <div class="card">
+      <div class="card-title">🔍 Kiểm kê tình trạng</div>
+      <div id="check-items-container"></div>
+    </div>
+
+    <!-- Vật dụng bàn giao -->
+    <div class="card">
+      <div class="card-title">🗝️ Vật dụng bàn giao</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+        <div class="form-group">
+          <label>Chìa khóa cơ</label>
+          <input id="bb-chia-khoa" type="number" placeholder="0" value="2">
+        </div>
+        <div class="form-group">
+          <label>Thẻ từ / thẻ xe</label>
+          <input id="bb-the-tu" type="number" placeholder="0" value="2">
+        </div>
+        <div class="form-group">
+          <label>Remote</label>
+          <input id="bb-remote" type="number" placeholder="0" value="1">
+        </div>
+        <div class="form-group">
+          <label>Khác</label>
+          <input id="bb-vatdung-khac" placeholder="">
+        </div>
+      </div>
+    </div>
+
+    <!-- Ghi chú -->
+    <div class="card">
+      <div class="card-title">📝 Ghi chú</div>
+      <div class="form-group">
+        <textarea id="bb-ghi-chu" placeholder="Ghi chú thêm..."></textarea>
+      </div>
+    </div>
+
+    <button class="btn btn-primary" onclick="submitBB()" style="margin-bottom:32px">💾 Lưu biên bản</button>
+  </div>
+</div>
+
+<!-- SCREEN: CHI TIẾT BIÊN BẢN -->
+<div id="screen-bb-detail" class="hidden">
+  <div class="nav">
+    <button class="nav-back" onclick="goScreen('screen-bienban')">‹</button>
+    <h1>Chi tiết biên bản</h1>
+  </div>
+  <div class="page" id="bb-detail-content">
+    <div class="spinner">Đang tải...</div>
+  </div>
+</div>
+
+<script>
+const API = 'https://hcarevietnam.vn/bangiao/api';
+let token = localStorage.getItem('hcbg_token') || '';
+let user = JSON.parse(localStorage.getItem('hcbg_user') || 'null');
+let currentBBType = 'CHECKIN';
+let allBB = [], allCanHo = [];
+
+// ===== UTILS =====
+function toast(msg, dur=2500) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), dur);
+}
+
+function goScreen(id) {
+  document.querySelectorAll('[id^="screen-"]').forEach(s => s.classList.add('hidden'));
+  document.getElementById(id).classList.remove('hidden');
+  window.scrollTo(0,0);
+  if(id === 'screen-home') loadStats();
+  if(id === 'screen-bienban') loadBienBan();
+  if(id === 'screen-canho') loadCanHo();
+}
+
+async function api(path, method='GET', body=null) {
+  const opts = {
+    method,
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token }
+  };
+  if(body) opts.body = JSON.stringify(body);
+  const res = await fetch(API + path, opts);
+  return res.json();
+}
+
+function fmtDate(d) {
+  if(!d) return '';
+  return new Date(d).toLocaleDateString('vi-VN');
+}
+
+// ===== LOGIN =====
+let pinVal = '';
+function pinPress(d) {
+  if(pinVal.length >= 6) return;
+  pinVal += d;
+  updatePinDisplay();
+}
+function pinDel() {
+  pinVal = pinVal.slice(0,-1);
+  updatePinDisplay();
+}
+function updatePinDisplay() {
+  document.getElementById('pin-display').textContent = '●'.repeat(pinVal.length) || '••••';
+}
+
+async function doLogin() {
+  const maNV = document.getElementById('login-manv').value.trim().toUpperCase();
+  if(!maNV) { showLoginError('Nhập mã nhân viên'); return; }
+  if(!pinVal) { showLoginError('Nhập PIN'); return; }
+  try {
+    const r = await fetch(API + '/auth/login', {
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({ma_nv: maNV, pin: pinVal})
+    });
+    const d = await r.json();
+    if(d.thanhCong) {
+      token = d.token;
+      user = d.user;
+      localStorage.setItem('hcbg_token', token);
+      localStorage.setItem('hcbg_user', JSON.stringify(user));
+      document.getElementById('nav-user').textContent = user.ten_nv;
+      goScreen('screen-home');
+    } else {
+      showLoginError(d.thongBao || 'Sai PIN');
+      pinVal = '';
+      updatePinDisplay();
+    }
+  } catch(e) {
+    showLoginError('Lỗi kết nối');
+  }
+}
+
+function showLoginError(msg) {
+  const el = document.getElementById('login-error');
+  el.textContent = msg;
+  el.classList.remove('hidden');
+  setTimeout(() => el.classList.add('hidden'), 3000);
+}
+
+function doLogout() {
+  if(!confirm('Đăng xuất?')) return;
+  token = ''; user = null;
+  localStorage.removeItem('hcbg_token');
+  localStorage.removeItem('hcbg_user');
+  pinVal = '';
+  updatePinDisplay();
+  goScreen('screen-login');
+}
+
+// ===== HOME STATS =====
+async function loadStats() {
+  try {
+    const r = await api('/thong-ke/tong-quan');
+    const d = r.data || {};
+    document.getElementById('stats-container').innerHTML = `
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-num">${d.tong_bien_ban||0}</div>
+          <div class="stat-label">Tổng biên bản</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">${d.tong_can_ho||0}</div>
+          <div class="stat-label">Căn hộ</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" style="color:var(--green)">${d.tong_checkin||0}</div>
+          <div class="stat-label">Check-in</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num" style="color:var(--red)">${d.tong_checkout||0}</div>
+          <div class="stat-label">Check-out</div>
+        </div>
+      </div>`;
+  } catch(e) {
+    document.getElementById('stats-container').innerHTML = '';
+  }
+}
+
+// ===== BIÊN BẢN LIST =====
+let bbFilter = 'TatCa';
+async function loadBienBan() {
+  document.getElementById('bb-list').innerHTML = '<div class="spinner">Đang tải...</div>';
+  const r = await api('/bien-ban');
+  allBB = r.data || [];
+  renderBB();
+}
+
+function filterBB(f, el) {
+  bbFilter = f;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderBB();
+}
+
+function renderBB() {
+  const list = bbFilter === 'TatCa' ? allBB : allBB.filter(b => b.loai === bbFilter);
+  if(!list.length) {
+    document.getElementById('bb-list').innerHTML = '<div class="spinner">Chưa có biên bản</div>';
+    return;
+  }
+  document.getElementById('bb-list').innerHTML = list.map(b => `
+    <div class="list-item" onclick="viewBB(${b.id})">
+      <div class="list-icon ${b.loai==='CHECKIN'?'green':'orange'}">${b.loai==='CHECKIN'?'✅':'🔑'}</div>
+      <div class="list-info">
+        <div class="list-title">${b.ma_can} — ${b.ten_khach}</div>
+        <div class="list-sub">${fmtDate(b.ngay_thuc_hien)} · HĐ: ${b.so_hd}</div>
+      </div>
+      <span class="badge ${b.trang_thai==='DADUYET'?'badge-green':b.trang_thai==='HOANTAT'?'badge-blue':'badge-gray'}">${b.trang_thai==='DADUYET'?'Duyệt':b.trang_thai==='HOANTAT'?'Xong':'Nháp'}</span>
+    </div>`).join('');
+}
+
+// ===== VIEW BIÊN BẢN =====
+async function viewBB(id) {
+  goScreen('screen-bb-detail');
+  const r = await api('/bien-ban/' + id);
+  const b = r.data;
+  if(!b) { document.getElementById('bb-detail-content').innerHTML = '<div class="spinner">Không tìm thấy</div>'; return; }
+  let du = {};
+  try { du = typeof b.du_lieu_json === 'string' ? JSON.parse(b.du_lieu_json) : (b.du_lieu_json || {}); } catch(e){}
+
+  document.getElementById('bb-detail-content').innerHTML = `
+    <div class="card">
+      <div class="flex-between" style="margin-bottom:8px">
+        <span class="badge ${b.loai==='CHECKIN'?'badge-green':'badge-orange'}">${b.loai}</span>
+        <span class="badge ${b.trang_thai==='DADUYET'?'badge-green':b.trang_thai==='HOANTAT'?'badge-blue':'badge-gray'}">${b.trang_thai}</span>
+      </div>
+      <div class="card-title">Thông tin chung</div>
+      <p><b>Căn hộ:</b> ${b.ma_can}</p>
+      <p><b>Số HĐ:</b> ${b.so_hd}</p>
+      <p><b>Khách thuê:</b> ${b.ten_khach}</p>
+      <p><b>CCCD:</b> ${b.cccd||'—'}</p>
+      <p><b>SĐT:</b> ${b.sdt||'—'}</p>
+      <p><b>Quốc tịch:</b> ${b.quoc_tich||'—'}</p>
+      <p><b>Ngày:</b> ${fmtDate(b.ngay_thuc_hien)}</p>
+      <p><b>NV thực hiện:</b> ${b.nhan_vien}</p>
+    </div>
+    ${du.congTo ? `<div class="card">
+      <div class="card-title">⚡ Công tơ</div>
+      <p><b>Điện:</b> ${du.congTo.dien||0} kWh</p>
+      <p><b>Nước:</b> ${du.congTo.nuoc||0} m³</p>
+    </div>` : ''}
+    ${du.vatDung ? `<div class="card">
+      <div class="card-title">🗝️ Vật dụng</div>
+      <p><b>Chìa khóa:</b> ${du.vatDung.chiaKhoa||0}</p>
+      <p><b>Thẻ từ:</b> ${du.vatDung.theTu||0}</p>
+      <p><b>Remote:</b> ${du.vatDung.remote||0}</p>
+      ${du.vatDung.khac ? `<p><b>Khác:</b> ${du.vatDung.khac}</p>` : ''}
+    </div>` : ''}
+    ${du.ghiChu ? `<div class="card"><div class="card-title">📝 Ghi chú</div><p>${du.ghiChu}</p></div>` : ''}
+    ${b.trang_thai === 'NHAP' ? `<button class="btn btn-primary" onclick="hoanTatBB(${b.id})">✅ Hoàn tất biên bản</button>` : ''}
+    ${b.trang_thai === 'HOANTAT' && user && user.vai_tro === 'QuanLy' ? `<button class="btn btn-green mt-12" onclick="duyetBB(${b.id})">👍 Duyệt biên bản</button>` : ''}
+  `;
+}
+
+async function hoanTatBB(id) {
+  if(!confirm('Hoàn tất biên bản này?')) return;
+  const r = await api('/bien-ban/'+id+'/hoan-tat','POST');
+  toast(r.thanhCong ? '✅ Đã hoàn tất' : r.thongBao);
+  if(r.thanhCong) viewBB(id);
+}
+
+async function duyetBB(id) {
+  if(!confirm('Duyệt biên bản này?')) return;
+  const r = await api('/bien-ban/'+id+'/duyet','POST');
+  toast(r.thanhCong ? '✅ Đã duyệt' : r.thongBao);
+  if(r.thanhCong) viewBB(id);
+}
+
+// ===== CĂN HỘ =====
+async function loadCanHo() {
+  document.getElementById('canho-list').innerHTML = '<div class="spinner">Đang tải...</div>';
+  const r = await api('/can-ho');
+  allCanHo = r.data || [];
+  renderCanHo(allCanHo);
+}
+
+function filterCanHo() {
+  const q = document.getElementById('canho-search').value.toLowerCase();
+  renderCanHo(allCanHo.filter(c => c.ma_can.toLowerCase().includes(q) || c.ten_toa_nha.toLowerCase().includes(q)));
+}
+
+function renderCanHo(list) {
+  if(!list.length) { document.getElementById('canho-list').innerHTML = '<div class="spinner">Không tìm thấy</div>'; return; }
+  document.getElementById('canho-list').innerHTML = list.map(c => `
+    <div class="list-item">
+      <div class="list-icon orange">🏠</div>
+      <div class="list-info">
+        <div class="list-title">${c.ma_can}</div>
+        <div class="list-sub">${c.ten_toa_nha} · ${c.so_pn||2}PN/${c.so_wc||2}WC</div>
+      </div>
+    </div>`).join('');
+}
+
+// ===== TẠO BIÊN BẢN =====
+const CHECK_ITEMS = [
+  {kv:'Phòng khách', items:['Sofa','Bàn trà','TV + remote','Máy lạnh + remote','Rèm','Đèn','Tường/Trần','Sàn','Cửa sổ/Kính']},
+  {kv:'Bếp', items:['Bếp từ/gas','Hút mùi','Tủ lạnh','Lò vi sóng','Chậu rửa + vòi','Tủ bếp','Mặt đá']},
+  {kv:'Phòng ngủ', items:['Giường + nệm','Tủ quần áo','Máy lạnh + remote','Rèm','Tường','Sàn']},
+  {kv:'WC', items:['Bồn cầu','Lavabo + vòi','Vòi sen/Máy nước nóng','Gương','Quạt hút','Ron/Silicon']},
+  {kv:'Ban công', items:['Máy giặt','Sàn ban công','Thoát nước']},
+];
+
+let checkData = {};
+
+function goCreateBB(loai) {
+  currentBBType = loai;
+  document.getElementById('create-bb-title').textContent = loai === 'CHECKIN' ? '✅ Tạo biên bản Check-in' : '🔑 Tạo biên bản Check-out';
+  document.getElementById('bb-ngay').value = new Date().toISOString().slice(0,10);
+
+  // Load căn hộ vào select
+  const sel = document.getElementById('bb-ma-can');
+  sel.innerHTML = '<option value="">-- Chọn căn hộ --</option>';
+  allCanHo.forEach(c => {
+    sel.innerHTML += `<option value="${c.ma_can}">${c.ma_can} — ${c.ten_toa_nha}</option>`;
+  });
+
+  // Build check items
+  checkData = {};
+  const container = document.getElementById('check-items-container');
+  container.innerHTML = CHECK_ITEMS.map(sec => `
+    <div class="check-section">
+      <div class="check-section-title">🏷️ ${sec.kv}</div>
+      ${sec.items.map(item => {
+        const key = sec.kv + '_' + item;
+        checkData[key] = 'TOT';
+        return `<div class="check-item ok" id="ci-${btoa(key).replace(/=/g,'')}">
+          <div class="check-item-name">${item}</div>
+          <div class="check-options">
+            <span class="check-opt selected-tot" onclick="setCheck('${key}','TOT',this)">✓ Tốt</span>
+            <span class="check-opt" onclick="setCheck('${key}','XUOC',this)">⚠ Trầy xước</span>
+            <span class="check-opt" onclick="setCheck('${key}','HONG',this)">✗ Hư hỏng</span>
+            <span class="check-opt" onclick="setCheck('${key}','KO',this)">— Không có</span>
+          </div>
+        </div>`;
+      }).join('')}
+    </div>`).join('');
+
+  goScreen('screen-create-bb');
+}
+
+function setCheck(key, val, el) {
+  checkData[key] = val;
+  const cls = {TOT:'selected-tot',XUOC:'selected-xuoc',HONG:'selected-hong',KO:'selected-ko'};
+  el.parentElement.querySelectorAll('.check-opt').forEach(o => {
+    o.className = 'check-opt';
+  });
+  el.classList.add(cls[val]);
+  const card = el.closest('.check-item');
+  card.className = 'check-item ' + (val==='TOT'?'ok':val==='HONG'||val==='KO'?'bad':'');
+}
+
+async function submitBB() {
+  const maCan = document.getElementById('bb-ma-can').value;
+  const soHD = document.getElementById('bb-so-hd').value.trim();
+  const tenKhach = document.getElementById('bb-ten-khach').value.trim();
+  const ngay = document.getElementById('bb-ngay').value;
+
+  if(!maCan||!soHD||!tenKhach||!ngay) { toast('⚠️ Điền đủ thông tin bắt buộc'); return; }
+
+  const duLieu = {
+    congTo: {
+      dien: parseFloat(document.getElementById('bb-dien').value)||0,
+      nuoc: parseFloat(document.getElementById('bb-nuoc').value)||0,
+    },
+    khuVuc: checkData,
+    vatDung: {
+      chiaKhoa: parseInt(document.getElementById('bb-chia-khoa').value)||0,
+      theTu: parseInt(document.getElementById('bb-the-tu').value)||0,
+      remote: parseInt(document.getElementById('bb-remote').value)||0,
+      khac: document.getElementById('bb-vatdung-khac').value,
+    },
+    ghiChu: document.getElementById('bb-ghi-chu').value,
+  };
+
+  const body = {
+    loai: currentBBType,
+    ma_can: maCan,
+    so_hd: soHD,
+    ten_khach: tenKhach,
+    cccd: document.getElementById('bb-cccd').value,
+    sdt: document.getElementById('bb-sdt').value,
+    quoc_tich: document.getElementById('bb-quoc-tich').value,
+    ngay_thuc_hien: ngay,
+    du_lieu_json: duLieu,
+  };
+
+  try {
+    const r = await api('/bien-ban','POST',body);
+    if(r.thanhCong) {
+      toast('✅ Tạo biên bản thành công!');
+      setTimeout(() => goScreen('screen-bienban'), 1000);
+    } else {
+      toast('❌ ' + r.thongBao);
+    }
+  } catch(e) {
+    toast('❌ Lỗi kết nối');
+  }
+}
+
+// ===== INIT =====
+window.onload = function() {
+  if(token && user) {
+    document.getElementById('nav-user').textContent = user.ten_nv;
+    goScreen('screen-home');
+    loadCanHo();
+  } else {
+    goScreen('screen-login');
+  }
+};
+</script>
+</body>
+</html>
