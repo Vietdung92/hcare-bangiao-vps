@@ -1,5 +1,3 @@
-const express = require('express');
-const { getDB } = require('../config/database');
 const { verifyToken, requireQuanLy } = require('../middleware/auth');
 
 const router = express.Router();
