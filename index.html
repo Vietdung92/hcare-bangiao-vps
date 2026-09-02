@@ -10,963 +10,825 @@
 *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
 body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:#F0F4F8;color:#1a2332;min-height:100vh;overflow-x:hidden}
 :root{
-  --blue:#1B4F8A;--blue-light:#2E6DB4;--blue-pale:#EBF2FA;
-  --green:#1A7A4A;--green-light:#22A65E;--green-pale:#E6F5ED;
-  --red:#C0392B;--red-light:#E74C3C;--red-pale:#FDECEA;
-  --orange:#C0590A;--orange-light:#E67E22;--orange-pale:#FEF0E7;
-  --gray:#64748B;--gray-light:#94A3B8;--gray-pale:#F1F5F9;
+  --blue:#1B4F8A;--blue2:#2E6DB4;--blue-pale:#EBF2FA;
+  --green:#1A7A4A;--green2:#22A65E;--green-pale:#E6F5ED;
+  --red:#C0392B;--red2:#E74C3C;--red-pale:#FDECEA;
+  --orange:#C0590A;--orange2:#E67E22;--orange-pale:#FEF0E7;
+  --gray:#64748B;--gray2:#94A3B8;--gray-pale:#F1F5F9;
   --border:#CBD5E1;--white:#FFFFFF;
-  --shadow:0 1px 3px rgba(0,0,0,.08),0 1px 2px rgba(0,0,0,.05);
+  --shadow:0 1px 3px rgba(0,0,0,.08);
   --shadow-md:0 4px 12px rgba(0,0,0,.1);
-  --radius:12px;--radius-sm:8px;
+  --r:12px;--r2:8px;
 }
-
-/* ===== NAV ===== */
 .nav{background:var(--blue);color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(27,79,138,.3)}
 .nav-back{background:rgba(255,255,255,.15);border:none;color:#fff;width:36px;height:36px;border-radius:50%;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.nav h1{font-size:16px;font-weight:600;flex:1;letter-spacing:-.2px}
-.nav-action{background:rgba(255,255,255,.15);border:none;color:#fff;padding:6px 12px;border-radius:20px;font-size:13px;cursor:pointer;font-weight:500}
-
-/* ===== PAGES ===== */
-.page{padding:16px;max-width:640px;margin:0 auto;padding-bottom:40px}
+.nav h1{font-size:16px;font-weight:600;flex:1}
+.nav-action{background:rgba(255,255,255,.2);border:none;color:#fff;padding:7px 14px;border-radius:20px;font-size:13px;cursor:pointer;font-weight:600}
+.page{padding:16px;max-width:640px;margin:0 auto;padding-bottom:48px}
 .hidden{display:none!important}
-
-/* ===== CARDS ===== */
-.card{background:var(--white);border-radius:var(--radius);padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
+.card{background:var(--white);border-radius:var(--r);padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
 .card-title{font-size:11px;font-weight:700;color:var(--gray);letter-spacing:.8px;text-transform:uppercase;margin-bottom:12px}
-
-/* ===== BUTTONS ===== */
-.btn{display:block;width:100%;padding:15px;border:none;border-radius:var(--radius-sm);font-size:15px;font-weight:600;cursor:pointer;text-align:center;transition:all .15s;letter-spacing:-.2px}
+.btn{display:block;width:100%;padding:15px;border:none;border-radius:var(--r2);font-size:15px;font-weight:600;cursor:pointer;text-align:center;transition:all .15s}
 .btn:active{transform:scale(.98)}
 .btn-primary{background:var(--blue);color:#fff}
-.btn-primary:active{background:var(--blue-light)}
 .btn-green{background:var(--green);color:#fff}
-.btn-green:active{background:var(--green-light)}
 .btn-red{background:var(--red);color:#fff}
-.btn-red:active{background:var(--red-light)}
-.btn-outline{background:var(--white);color:var(--blue);border:2px solid var(--blue)}
 .btn-gray{background:var(--gray-pale);color:var(--gray);border:1px solid var(--border)}
-.btn-sm{padding:8px 16px;font-size:13px;width:auto;display:inline-flex;align-items:center;gap:5px;border-radius:20px}
-.btn-danger-sm{background:var(--red-pale);color:var(--red);border:none;padding:6px 12px;border-radius:16px;font-size:12px;cursor:pointer;font-weight:500}
-
-/* ===== FORMS ===== */
-.form-group{margin-bottom:14px}
-.form-group label{display:block;font-size:13px;color:var(--gray);margin-bottom:6px;font-weight:500}
-.form-group label span.req{color:var(--red-light)}
-.form-group input,.form-group select,.form-group textarea{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--radius-sm);font-size:15px;outline:none;background:var(--white);color:var(--blue);transition:border .15s;-webkit-appearance:none}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,79,138,.1)}
-.form-group textarea{min-height:70px;resize:vertical}
+.btn-outline{background:#fff;color:var(--blue);border:2px solid var(--blue)}
+.btn-sm{padding:7px 13px;font-size:12px;width:auto;display:inline-flex;align-items:center;gap:4px;border-radius:16px;border:none;cursor:pointer;font-weight:600}
+.btn-sm-blue{background:var(--blue-pale);color:var(--blue)}
+.btn-sm-green{background:var(--green-pale);color:var(--green)}
+.btn-sm-red{background:var(--red-pale);color:var(--red)}
+.btn-sm-gray{background:var(--gray-pale);color:var(--gray)}
+.form-group{margin-bottom:13px}
+.form-group label{display:block;font-size:13px;color:var(--gray);margin-bottom:5px;font-weight:500}
+.form-group label .req{color:var(--red2)}
+.inp{width:100%;padding:12px 14px;border:1.5px solid var(--border);border-radius:var(--r2);font-size:15px;outline:none;background:#fff;transition:border .15s;-webkit-appearance:none;color:#1a2332}
+.inp:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(27,79,138,.08)}
+textarea.inp{min-height:70px;resize:vertical}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-
-/* ===== LOGIN ===== */
-#screen-login{min-height:100vh;background:linear-gradient(160deg,#1B4F8A 0%,#0D2E54 100%);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px}
+/* LOGIN */
+#screen-login{min-height:100vh;background:linear-gradient(160deg,#1B4F8A,#0D2E54);display:flex;align-items:center;justify-content:center;padding:24px}
 .login-box{background:#fff;border-radius:20px;padding:28px 24px;width:100%;max-width:340px;box-shadow:var(--shadow-md)}
-.login-logo{width:64px;height:64px;background:linear-gradient(135deg,var(--blue),var(--blue-light));border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:28px}
-.login-title{font-size:20px;font-weight:700;text-align:center;color:var(--blue);margin-bottom:4px}
-.login-sub{font-size:13px;color:var(--gray);text-align:center;margin-bottom:20px}
+.login-logo{width:64px;height:64px;background:linear-gradient(135deg,var(--blue),var(--blue2));border-radius:16px;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:28px}
 .pin-dots{display:flex;justify-content:center;gap:10px;margin:14px 0}
 .pin-dot{width:14px;height:14px;border-radius:50%;background:var(--border);transition:.2s}
-.pin-dot.filled{background:var(--blue)}
-.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:4px}
-.pin-btn{padding:16px;border:none;border-radius:10px;font-size:22px;font-weight:600;cursor:pointer;background:var(--gray-pale);color:var(--blue);transition:.15s;font-family:inherit}
-.pin-btn:active{background:var(--blue-pale);transform:scale(.94)}
-.pin-btn-del{background:var(--red-pale);color:var(--red)}
-.pin-btn-ok{background:var(--blue);color:#fff}
-.login-error{text-align:center;color:var(--red);font-size:13px;margin-top:10px;min-height:20px}
-
-/* ===== HOME ===== */
-.home-header{background:linear-gradient(135deg,var(--blue),var(--blue-light));color:#fff;padding:20px 16px 28px;margin:-16px -16px 0}
-.home-user{font-size:13px;opacity:.8;margin-bottom:4px}
-.home-greeting{font-size:22px;font-weight:700;margin-bottom:16px}
-.stats-row{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.stat-box{background:rgba(255,255,255,.15);border-radius:10px;padding:12px;text-align:center;backdrop-filter:blur(4px)}
+.pin-dot.on{background:var(--blue)}
+.pin-pad{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.pin-btn{padding:16px;border:none;border-radius:10px;font-size:22px;font-weight:600;cursor:pointer;background:var(--gray-pale);color:var(--blue);transition:.15s}
+.pin-btn:active{background:var(--blue-pale);transform:scale(.93)}
+.pin-del{background:var(--red-pale);color:var(--red)}
+.pin-ok{background:var(--blue);color:#fff}
+/* HOME */
+.home-hdr{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;padding:20px 16px 28px;margin:-16px -16px 0}
+.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat-box{background:rgba(255,255,255,.15);border-radius:10px;padding:12px;text-align:center}
 .stat-num{font-size:26px;font-weight:700}
 .stat-lbl{font-size:11px;opacity:.85;margin-top:2px}
-.quick-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 12px}
-.quick-btn{padding:16px;border:none;border-radius:var(--radius);font-size:15px;font-weight:700;cursor:pointer;text-align:center;transition:.15s;color:#fff}
+.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 12px}
+.quick-btn{padding:16px;border:none;border-radius:var(--r);font-size:15px;font-weight:700;cursor:pointer;color:#fff;transition:.15s}
 .quick-btn:active{transform:scale(.97)}
-.quick-btn-ci{background:linear-gradient(135deg,var(--green),var(--green-light))}
-.quick-btn-co{background:linear-gradient(135deg,#C0392B,#E74C3C)}
-.quick-btn-icon{font-size:24px;display:block;margin-bottom:4px}
-
-/* ===== LIST ITEMS ===== */
-.list-item{display:flex;align-items:center;gap:12px;padding:14px;background:var(--white);border-radius:var(--radius-sm);margin-bottom:8px;box-shadow:var(--shadow);cursor:pointer;transition:.15s}
+.qbci{background:linear-gradient(135deg,#1A7A4A,#22A65E)}
+.qbco{background:linear-gradient(135deg,#C0392B,#E74C3C)}
+.qbi{font-size:24px;display:block;margin-bottom:4px}
+/* LIST */
+.list-item{display:flex;align-items:center;gap:12px;padding:14px;background:#fff;border-radius:var(--r2);margin-bottom:8px;box-shadow:var(--shadow);cursor:pointer;transition:.15s}
 .list-item:active{background:var(--blue-pale)}
-.list-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.list-icon-blue{background:var(--blue-pale)}
-.list-icon-green{background:var(--green-pale)}
-.list-icon-orange{background:var(--orange-pale)}
+.lico{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+.lico-b{background:var(--blue-pale)}
+.lico-g{background:var(--green-pale)}
+.lico-o{background:var(--orange-pale)}
 .list-info{flex:1;min-width:0}
-.list-title{font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:#1a2332}
+.list-title{font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .list-sub{font-size:12px;color:var(--gray);margin-top:2px}
-.list-arrow{color:var(--border);font-size:20px}
-
-/* ===== BADGES ===== */
+/* BADGE */
 .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
-.badge-green{background:var(--green-pale);color:var(--green)}
-.badge-red{background:var(--red-pale);color:var(--red)}
-.badge-blue{background:var(--blue-pale);color:var(--blue)}
-.badge-orange{background:var(--orange-pale);color:var(--orange)}
-.badge-gray{background:var(--gray-pale);color:var(--gray)}
-
-/* ===== TABS ===== */
-.tabs{display:flex;background:var(--white);border-radius:var(--radius-sm);padding:4px;gap:4px;margin-bottom:14px;box-shadow:var(--shadow)}
-.tab{flex:1;padding:9px;text-align:center;border:none;background:none;border-radius:6px;font-size:13px;cursor:pointer;font-weight:500;color:var(--gray);transition:.15s}
+.bg{background:var(--green-pale);color:var(--green)}
+.br{background:var(--red-pale);color:var(--red)}
+.bb{background:var(--blue-pale);color:var(--blue)}
+.bo{background:var(--orange-pale);color:var(--orange)}
+.bx{background:var(--gray-pale);color:var(--gray)}
+/* TABS */
+.tabs{display:flex;background:#fff;border-radius:var(--r2);padding:4px;gap:4px;margin-bottom:14px;box-shadow:var(--shadow)}
+.tab{flex:1;padding:9px;text-align:center;border:none;background:none;border-radius:6px;font-size:13px;cursor:pointer;font-weight:500;color:var(--gray)}
 .tab.active{background:var(--blue);color:#fff;font-weight:600}
-
-/* ===== SEARCH ===== */
-.search-box{position:relative;margin-bottom:12px}
-.search-box input{padding-left:36px;background:var(--white)}
-.search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--gray-light);font-size:16px}
-
-/* ===== SECTION HEADER ===== */
-.section-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
-.section-title{font-size:13px;font-weight:700;color:var(--blue);display:flex;align-items:center;gap:6px}
-.divider{height:1px;background:var(--gray-pale);margin:12px 0}
-
-/* ===== HANG MỤC (Check items) ===== */
-.hang-muc-card{background:var(--white);border-radius:var(--radius-sm);border:1.5px solid var(--border);margin-bottom:10px;overflow:hidden;transition:.2s}
-.hang-muc-card.trang-thai-tot{border-color:#86efac}
-.hang-muc-card.trang-thai-xuoc{border-color:#fde047}
-.hang-muc-card.trang-thai-hong{border-color:#fca5a5}
-.hang-muc-header{padding:12px 14px;display:flex;align-items:center;gap:10px;cursor:pointer}
-.hang-muc-name{font-size:14px;font-weight:600;flex:1}
-.hang-muc-status{font-size:11px;font-weight:600;padding:3px 8px;border-radius:10px}
-.hang-muc-body{padding:0 14px 14px;border-top:1px solid var(--gray-pale)}
-.tt-options{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
-.tt-opt{padding:7px 12px;border:1.5px solid var(--border);border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;transition:.15s;background:var(--white)}
-.tt-opt.active-tot{background:var(--green-pale);border-color:#86efac;color:var(--green)}
-.tt-opt.active-xuoc{background:#fefce8;border-color:#fde047;color:#854d0e}
-.tt-opt.active-hong{background:var(--red-pale);border-color:#fca5a5;color:var(--red)}
-.tt-opt.active-ko{background:var(--gray-pale);border-color:var(--border);color:var(--gray)}
-
-/* ===== PHOTO GRID ===== */
-.photo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:8px 0}
-.photo-thumb{aspect-ratio:1;border-radius:6px;overflow:hidden;position:relative;background:var(--gray-pale);border:1.5px solid var(--border)}
+/* SEARCH */
+.search-wrap{position:relative;margin-bottom:12px}
+.search-wrap .inp{padding-left:36px}
+.search-ico{position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--gray2)}
+/* KHU VUC */
+.kv-group{margin-bottom:14px}
+.kv-hdr{background:var(--blue-pale);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.kv-name{font-size:13px;font-weight:700;color:var(--blue);flex:1;cursor:pointer;outline:none;border:none;background:transparent;font-family:inherit}
+.kv-name-edit{font-size:13px;font-weight:700;color:var(--blue);flex:1;border:1.5px solid var(--blue);border-radius:6px;padding:4px 8px;outline:none;background:#fff;font-family:inherit}
+.kv-actions{display:flex;gap:6px;flex-shrink:0}
+/* HANG MUC */
+.hm-card{background:#fff;border-radius:var(--r2);border:1.5px solid var(--border);margin-bottom:8px;overflow:hidden;transition:border-color .2s}
+.hm-card.s-tot{border-color:#86efac}
+.hm-card.s-xuoc{border-color:#fde047}
+.hm-card.s-hong{border-color:#fca5a5}
+.hm-hdr{padding:11px 14px;display:flex;align-items:center;gap:8px;cursor:pointer}
+.hm-name{font-size:14px;font-weight:600;flex:1}
+.hm-badge{font-size:11px;font-weight:600;padding:3px 8px;border-radius:10px;flex-shrink:0}
+.hm-body{padding:0 14px 14px;border-top:1px solid var(--gray-pale)}
+.tt-opts{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 8px}
+.tt-opt{padding:7px 12px;border:1.5px solid var(--border);border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;background:#fff;transition:.15s}
+.tt-tot{background:var(--green-pale);border-color:#86efac;color:var(--green)}
+.tt-xuoc{background:#fefce8;border-color:#fde047;color:#854d0e}
+.tt-hong{background:var(--red-pale);border-color:#fca5a5;color:var(--red)}
+.tt-ko{background:var(--gray-pale);border-color:var(--border);color:var(--gray)}
+/* PHOTO */
+.photo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin:6px 0}
+.photo-thumb{aspect-ratio:1;border-radius:6px;overflow:hidden;position:relative;background:var(--gray-pale)}
 .photo-thumb img{width:100%;height:100%;object-fit:cover}
-.photo-del{position:absolute;top:2px;right:2px;background:rgba(0,0,0,.6);color:#fff;border:none;border-radius:50%;width:20px;height:20px;font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center}
-.photo-add{aspect-ratio:1;border-radius:6px;border:2px dashed var(--blue);background:var(--blue-pale);display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;font-size:22px;color:var(--blue)}
-.photo-add span{font-size:10px;color:var(--blue);margin-top:2px;font-weight:500}
-.photo-timestamp{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.55);color:#fff;font-size:9px;padding:2px 4px;text-align:center}
-
-/* ===== KHU VUC GROUP ===== */
-.khu-vuc-group{margin-bottom:16px}
-.khu-vuc-title{font-size:13px;font-weight:700;color:var(--blue);padding:8px 12px;background:var(--blue-pale);border-radius:8px;margin-bottom:8px;display:flex;align-items:center;justify-content:space-between}
-.add-hang-muc-btn{background:var(--green-pale);color:var(--green);border:none;padding:5px 10px;border-radius:12px;font-size:11px;cursor:pointer;font-weight:600}
-.add-khu-vuc-btn{background:var(--blue);color:#fff;border:none;padding:10px 16px;border-radius:8px;font-size:13px;cursor:pointer;font-weight:600;width:100%;margin-top:4px}
-
-/* ===== BÀN GIAO items ===== */
-.ban-giao-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.ban-giao-row label{font-size:13px;color:var(--gray);font-weight:500;width:130px;flex-shrink:0}
-.ban-giao-row input{flex:1;padding:10px 12px;border:1.5px solid var(--border);border-radius:8px;font-size:14px;outline:none}
-.ban-giao-row input:focus{border-color:var(--blue)}
-
-/* ===== PREVIEW ===== */
-.preview-section{margin-bottom:16px}
-.preview-section h3{font-size:13px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px;padding-bottom:6px;border-bottom:2px solid var(--blue-pale)}
-.preview-row{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid var(--gray-pale);font-size:13px}
-.preview-row .lbl{color:var(--gray);width:130px;flex-shrink:0}
-.preview-row .val{color:#1a2332;font-weight:500;flex:1}
-.preview-hm{margin-bottom:10px;padding:10px;background:var(--gray-pale);border-radius:8px}
-.preview-hm-name{font-size:13px;font-weight:600;margin-bottom:4px}
-.preview-hm-status{font-size:12px;margin-bottom:6px}
-.preview-photos{display:flex;gap:5px;flex-wrap:wrap}
-.preview-photos img{width:60px;height:60px;border-radius:5px;object-fit:cover}
-
-/* ===== SPINNER / TOAST ===== */
-.spinner{text-align:center;padding:40px;color:var(--gray);font-size:14px}
-.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:#1a2332;color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;z-index:999;opacity:0;transition:all .3s;pointer-events:none;white-space:nowrap;max-width:90vw}
-.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.toast.toast-ok{background:var(--green)}
-.toast.toast-err{background:var(--red)}
-
-/* ===== MODAL ===== */
+.photo-del{position:absolute;top:2px;right:2px;background:rgba(0,0,0,.65);color:#fff;border:none;border-radius:50%;width:20px;height:20px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+.photo-ts{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.6);color:#fff;font-size:9px;padding:2px 3px;text-align:center}
+.photo-btns{display:flex;gap:6px;margin:6px 0}
+/* PREVIEW */
+.prev-row{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid var(--gray-pale);font-size:13px}
+.prev-lbl{color:var(--gray);width:130px;flex-shrink:0}
+.prev-val{color:#1a2332;font-weight:500;flex:1}
+.prev-hm{margin-bottom:10px;padding:10px;background:var(--gray-pale);border-radius:8px}
+.prev-photos{display:flex;gap:5px;flex-wrap:wrap;margin-top:6px}
+.prev-photos img{width:70px;height:70px;border-radius:5px;object-fit:cover}
+/* MONEY */
+.money-wrap{position:relative}
+.money-wrap .inp{padding-right:50px}
+.money-unit{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--gray2);font-weight:500}
+.money-display{font-size:12px;color:var(--blue);margin-top:3px;font-weight:600}
+/* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:.25s}
 .modal-overlay.open{opacity:1;pointer-events:all}
 .modal-box{background:#fff;border-radius:20px 20px 0 0;padding:20px;width:100%;max-width:500px;transform:translateY(100%);transition:.3s}
 .modal-overlay.open .modal-box{transform:translateY(0)}
 .modal-title{font-size:16px;font-weight:700;margin-bottom:14px;color:var(--blue)}
-.modal-input{width:100%;padding:12px;border:1.5px solid var(--border);border-radius:8px;font-size:15px;outline:none;margin-bottom:10px}
-.modal-input:focus{border-color:var(--blue)}
-
+/* TOAST */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:#1a2332;color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;z-index:999;opacity:0;transition:all .3s;pointer-events:none;max-width:90vw;text-align:center}
+.toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+.toast.tok{background:var(--green)}
+.toast.terr{background:var(--red)}
+.spinner{text-align:center;padding:40px;color:var(--gray);font-size:14px}
 input[type=file]{display:none}
+.divider{height:1px;background:var(--gray-pale);margin:12px 0}
+.add-kv-btn{background:var(--blue);color:#fff;border:none;padding:11px;border-radius:var(--r2);font-size:13px;font-weight:600;cursor:pointer;width:100%;margin-top:4px}
+.ban-giao-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.ban-giao-row label{font-size:13px;color:var(--gray);font-weight:500;width:130px;flex-shrink:0}
+.ban-giao-row .inp{flex:1;padding:10px 12px}
 </style>
 </head>
 <body>
-
 <div id="toast" class="toast"></div>
 
-<!-- MODAL: Thêm khu vực -->
-<div id="modal-khuVuc" class="modal-overlay">
+<!-- MODALS -->
+<div id="modal-kv" class="modal-overlay">
   <div class="modal-box">
-    <div class="modal-title">➕ Thêm khu vực</div>
-    <input id="modal-kv-input" class="modal-input" placeholder="VD: Phòng làm việc, Kho...">
-    <button class="btn btn-primary" onclick="confirmAddKhuVuc()">Thêm</button>
-    <button class="btn btn-gray" style="margin-top:8px" onclick="closeModal('modal-khuVuc')">Huỷ</button>
+    <div class="modal-title" id="modal-kv-title">➕ Thêm khu vực</div>
+    <input id="modal-kv-inp" class="inp" placeholder="VD: Phòng làm việc, Kho..." style="margin-bottom:10px">
+    <button class="btn btn-primary" onclick="confirmKV()">Lưu</button>
+    <button class="btn btn-gray" style="margin-top:8px" onclick="closeModal('modal-kv')">Huỷ</button>
+  </div>
+</div>
+<div id="modal-hm" class="modal-overlay">
+  <div class="modal-box">
+    <div class="modal-title" id="modal-hm-title">➕ Thêm hạng mục</div>
+    <input id="modal-hm-inp" class="inp" placeholder="VD: Đèn âm trần, Kệ TV..." style="margin-bottom:10px">
+    <button class="btn btn-primary" onclick="confirmHM()">Lưu</button>
+    <button class="btn btn-gray" style="margin-top:8px" onclick="closeModal('modal-hm')">Huỷ</button>
   </div>
 </div>
 
-<!-- MODAL: Thêm hạng mục -->
-<div id="modal-hangMuc" class="modal-overlay">
-  <div class="modal-box">
-    <div class="modal-title">➕ Thêm hạng mục</div>
-    <input id="modal-hm-input" class="modal-input" placeholder="VD: Đèn âm trần, Kệ TV...">
-    <input id="modal-hm-kv" type="hidden">
-    <button class="btn btn-primary" onclick="confirmAddHangMuc()">Thêm</button>
-    <button class="btn btn-gray" style="margin-top:8px" onclick="closeModal('modal-hangMuc')">Huỷ</button>
-  </div>
-</div>
-
-<!-- ===== SCREEN: LOGIN ===== -->
+<!-- LOGIN -->
 <div id="screen-login">
   <div class="login-box">
     <div class="login-logo">🏢</div>
-    <div class="login-title">HCARE Bàn Giao</div>
-    <div class="login-sub">Nhập mã nhân viên & PIN</div>
+    <div style="font-size:20px;font-weight:700;text-align:center;color:var(--blue);margin-bottom:4px">HCARE Bàn Giao</div>
+    <div style="font-size:13px;color:var(--gray);text-align:center;margin-bottom:20px">Nhập mã nhân viên & PIN</div>
     <div class="form-group">
-      <input id="login-manv" placeholder="Mã nhân viên (VD: QL01)" style="text-align:center;font-size:16px;letter-spacing:2px;text-transform:uppercase">
+      <input id="login-manv" class="inp" placeholder="Mã nhân viên (VD: QL01)" style="text-align:center;font-size:16px;letter-spacing:2px;text-transform:uppercase">
     </div>
     <div class="pin-dots" id="pin-dots">
-      <div class="pin-dot" id="d0"></div>
-      <div class="pin-dot" id="d1"></div>
-      <div class="pin-dot" id="d2"></div>
-      <div class="pin-dot" id="d3"></div>
-      <div class="pin-dot" id="d4"></div>
-      <div class="pin-dot" id="d5"></div>
+      <div class="pin-dot" id="d0"></div><div class="pin-dot" id="d1"></div>
+      <div class="pin-dot" id="d2"></div><div class="pin-dot" id="d3"></div>
+      <div class="pin-dot" id="d4"></div><div class="pin-dot" id="d5"></div>
     </div>
     <div class="pin-pad">
-      <button class="pin-btn" onclick="pinPress('1')">1</button>
-      <button class="pin-btn" onclick="pinPress('2')">2</button>
-      <button class="pin-btn" onclick="pinPress('3')">3</button>
-      <button class="pin-btn" onclick="pinPress('4')">4</button>
-      <button class="pin-btn" onclick="pinPress('5')">5</button>
-      <button class="pin-btn" onclick="pinPress('6')">6</button>
-      <button class="pin-btn" onclick="pinPress('7')">7</button>
-      <button class="pin-btn" onclick="pinPress('8')">8</button>
-      <button class="pin-btn" onclick="pinPress('9')">9</button>
-      <button class="pin-btn pin-btn-del" onclick="pinDel()">⌫</button>
-      <button class="pin-btn" onclick="pinPress('0')">0</button>
-      <button class="pin-btn pin-btn-ok" onclick="doLogin()">✓</button>
+      <button class="pin-btn" onclick="pp('1')">1</button><button class="pin-btn" onclick="pp('2')">2</button><button class="pin-btn" onclick="pp('3')">3</button>
+      <button class="pin-btn" onclick="pp('4')">4</button><button class="pin-btn" onclick="pp('5')">5</button><button class="pin-btn" onclick="pp('6')">6</button>
+      <button class="pin-btn" onclick="pp('7')">7</button><button class="pin-btn" onclick="pp('8')">8</button><button class="pin-btn" onclick="pp('9')">9</button>
+      <button class="pin-btn pin-del" onclick="pd()">⌫</button><button class="pin-btn" onclick="pp('0')">0</button><button class="pin-btn pin-ok" onclick="doLogin()">✓</button>
     </div>
-    <div class="login-error" id="login-error"></div>
+    <div id="login-err" style="text-align:center;color:var(--red);font-size:13px;margin-top:10px;min-height:18px"></div>
   </div>
 </div>
 
-<!-- ===== SCREEN: HOME ===== -->
+<!-- HOME -->
 <div id="screen-home" class="hidden">
   <div class="nav">
     <div style="font-size:22px">🏢</div>
     <h1>HCARE Bàn Giao</h1>
-    <span id="nav-role-badge" class="badge badge-blue" style="font-size:11px"></span>
+    <span id="role-badge" class="badge bb" style="font-size:11px"></span>
     <button onclick="doLogout()" style="background:none;border:none;color:#fff;font-size:22px;cursor:pointer;margin-left:4px">⏻</button>
   </div>
   <div class="page">
-    <div class="home-header">
-      <div class="home-user" id="home-user"></div>
-      <div class="home-greeting">Xin chào! 👋</div>
-      <div class="stats-row" id="stats-container">
+    <div class="home-hdr">
+      <div style="font-size:13px;opacity:.8;margin-bottom:4px" id="home-user"></div>
+      <div style="font-size:22px;font-weight:700;margin-bottom:16px">Xin chào! 👋</div>
+      <div class="stats-row" id="stats-box">
         <div class="stat-box"><div class="stat-num">—</div><div class="stat-lbl">Biên bản</div></div>
         <div class="stat-box"><div class="stat-num">—</div><div class="stat-lbl">Căn hộ</div></div>
       </div>
     </div>
     <div style="height:16px"></div>
-    <div class="quick-actions">
-      <button class="quick-btn quick-btn-ci" onclick="goCreateBB('CHECKIN')">
-        <span class="quick-btn-icon">✅</span>Check-in
-      </button>
-      <button class="quick-btn quick-btn-co" onclick="goCreateBB('CHECKOUT')">
-        <span class="quick-btn-icon">🔑</span>Check-out
-      </button>
+    <div class="quick-grid">
+      <button class="quick-btn qbci" onclick="goCreateBB('CHECKIN')"><span class="qbi">✅</span>Check-in</button>
+      <button class="quick-btn qbco" onclick="goCreateBB('CHECKOUT')"><span class="qbi">🔑</span>Check-out</button>
     </div>
     <div class="list-item" onclick="goScreen('screen-bienban')">
-      <div class="list-icon list-icon-blue">📋</div>
-      <div class="list-info">
-        <div class="list-title">Danh sách biên bản</div>
-        <div class="list-sub">Xem tất cả check-in / check-out</div>
-      </div>
-      <div class="list-arrow">›</div>
+      <div class="lico lico-b">📋</div>
+      <div class="list-info"><div class="list-title">Danh sách biên bản</div><div class="list-sub">Xem tất cả check-in / check-out</div></div>
+      <span style="color:var(--border);font-size:20px">›</span>
     </div>
     <div class="list-item" onclick="goScreen('screen-canho')">
-      <div class="list-icon list-icon-orange">🏠</div>
-      <div class="list-info">
-        <div class="list-title">Căn hộ</div>
-        <div class="list-sub">Danh sách 34 căn đang quản lý</div>
-      </div>
-      <div class="list-arrow">›</div>
+      <div class="lico lico-o">🏠</div>
+      <div class="list-info"><div class="list-title">Căn hộ</div><div class="list-sub">34 căn đang quản lý</div></div>
+      <span style="color:var(--border);font-size:20px">›</span>
     </div>
   </div>
 </div>
 
-<!-- ===== SCREEN: BIÊN BẢN LIST ===== -->
+<!-- BIÊN BẢN LIST -->
 <div id="screen-bienban" class="hidden">
   <div class="nav">
     <button class="nav-back" onclick="goScreen('screen-home')">‹</button>
     <h1>Danh sách biên bản</h1>
-    <button class="nav-action" onclick="goCreateBB('CHECKIN')">＋ Mới</button>
+    <button class="nav-action" onclick="goCreateBB('CHECKIN')">＋</button>
   </div>
   <div class="page">
     <div class="tabs">
-      <button class="tab active" onclick="filterBB('TatCa',this)">Tất cả</button>
-      <button class="tab" onclick="filterBB('CHECKIN',this)">Check-in</button>
-      <button class="tab" onclick="filterBB('CHECKOUT',this)">Check-out</button>
+      <button class="tab active" onclick="fBB('TatCa',this)">Tất cả</button>
+      <button class="tab" onclick="fBB('CHECKIN',this)">Check-in</button>
+      <button class="tab" onclick="fBB('CHECKOUT',this)">Check-out</button>
     </div>
     <div id="bb-list"><div class="spinner">Đang tải...</div></div>
   </div>
 </div>
 
-<!-- ===== SCREEN: CĂN HỘ ===== -->
+<!-- CĂN HỘ -->
 <div id="screen-canho" class="hidden">
   <div class="nav">
     <button class="nav-back" onclick="goScreen('screen-home')">‹</button>
     <h1>Căn hộ</h1>
   </div>
   <div class="page">
-    <div class="search-box">
-      <span class="search-icon">🔍</span>
-      <div class="form-group" style="margin:0">
-        <input id="canho-search" placeholder="Tìm căn hộ..." oninput="filterCanHo()" style="padding-left:36px">
-      </div>
+    <div class="search-wrap">
+      <span class="search-ico">🔍</span>
+      <input id="canho-search" class="inp" placeholder="Tìm căn hộ..." oninput="fCanHo()">
     </div>
     <div id="canho-list"><div class="spinner">Đang tải...</div></div>
   </div>
 </div>
 
-<!-- ===== SCREEN: TẠO BIÊN BẢN ===== -->
+<!-- TẠO BIÊN BẢN -->
 <div id="screen-create-bb" class="hidden">
   <div class="nav">
-    <button class="nav-back" id="create-bb-back">‹</button>
-    <h1 id="create-bb-title">Tạo biên bản</h1>
+    <button class="nav-back" onclick="goScreen('screen-home')">‹</button>
+    <h1 id="create-title">Tạo biên bản</h1>
   </div>
   <div class="page">
-
-    <!-- 1. Thông tin chung -->
     <div class="card">
       <div class="card-title">1 · Thông tin căn hộ & khách thuê</div>
       <div class="form-group">
         <label>Căn hộ <span class="req">*</span></label>
-        <select id="bb-ma-can" onchange="onCanHoChange()">
-          <option value="">— Chọn căn hộ —</option>
-        </select>
+        <select id="bb-can" class="inp" onchange="onCanChange()"><option value="">— Chọn căn hộ —</option></select>
       </div>
       <div class="form-group">
         <label>Số hợp đồng <span class="req">*</span></label>
-        <input id="bb-so-hd" placeholder="VD: HD2026001">
+        <input id="bb-hd" class="inp" placeholder="VD: HD2026001">
       </div>
       <div class="form-group">
         <label>Họ tên khách thuê <span class="req">*</span></label>
-        <input id="bb-ten-khach" placeholder="Họ tên đầy đủ">
+        <input id="bb-ten" class="inp" placeholder="Họ tên đầy đủ">
       </div>
       <div class="form-row">
         <div class="form-group">
           <label>CCCD / Passport <span class="req">*</span></label>
-          <input id="bb-cccd" placeholder="Số CCCD/PP">
+          <input id="bb-cccd" class="inp" placeholder="Số CCCD/PP">
         </div>
         <div class="form-group">
           <label>Quốc tịch</label>
-          <input id="bb-quoc-tich" value="Việt Nam">
+          <input id="bb-qt" class="inp" value="Việt Nam">
         </div>
       </div>
-      <div class="form-group">
-        <label>Số điện thoại</label>
-        <input id="bb-sdt" placeholder="0901..." type="tel">
+      <div class="form-row">
+        <div class="form-group">
+          <label>Số điện thoại</label>
+          <input id="bb-sdt" class="inp" placeholder="0901..." type="tel">
+        </div>
+        <div class="form-group">
+          <label>Email khách <span class="req">*</span></label>
+          <input id="bb-email" class="inp" placeholder="email@gmail.com" type="email">
+        </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label>Ngày dọn vào <span class="req">*</span></label>
-          <input id="bb-ngay-vao" type="date">
+          <input id="bb-ngay-vao" class="inp" type="date">
         </div>
         <div class="form-group">
           <label>Ngày hết HĐ <span class="req">*</span></label>
-          <input id="bb-ngay-het-hd" type="date">
+          <input id="bb-ngay-het" class="inp" type="date">
         </div>
       </div>
       <div class="form-group">
         <label>Tiền đặt cọc (VND)</label>
-        <input id="bb-tien-coc" type="number" placeholder="0">
+        <div class="money-wrap">
+          <input id="bb-coc" class="inp" type="number" placeholder="0" oninput="fmtMoney('bb-coc','bb-coc-disp')">
+          <span class="money-unit">VND</span>
+        </div>
+        <div id="bb-coc-disp" class="money-display"></div>
       </div>
     </div>
 
-    <!-- 2. Kiểm kê hạng mục -->
     <div class="card">
       <div class="card-title">2 · Kiểm kê tình trạng</div>
-      <div id="khu-vuc-container">
-        <div class="spinner" style="padding:20px">Chọn căn hộ để tải hạng mục...</div>
-      </div>
-      <button class="add-khu-vuc-btn" onclick="openModal('modal-khuVuc')">＋ Thêm khu vực</button>
+      <div id="kv-container"><div class="spinner" style="padding:20px">Chọn căn hộ để tải hạng mục...</div></div>
+      <button class="add-kv-btn" onclick="openAddKV()">➕ Thêm khu vực</button>
     </div>
 
-    <!-- 3. Chỉ số điện nước -->
     <div class="card">
       <div class="card-title">3 · Chỉ số công tơ</div>
       <div class="form-row">
         <div class="form-group">
           <label>⚡ Điện (kWh)</label>
-          <input id="bb-dien" type="number" placeholder="0">
+          <input id="bb-dien" class="inp" type="number" placeholder="0">
         </div>
         <div class="form-group">
           <label>💧 Nước (m³)</label>
-          <input id="bb-nuoc" type="number" placeholder="0">
+          <input id="bb-nuoc" class="inp" type="number" placeholder="0">
         </div>
       </div>
     </div>
 
-    <!-- 4. Vật dụng bàn giao -->
     <div class="card">
       <div class="card-title">4 · Vật dụng bàn giao</div>
-      <div class="ban-giao-row">
-        <label>🗝 Chìa khóa cơ</label>
-        <input id="bg-chia-khoa" type="number" value="2" min="0">
-      </div>
-      <div class="ban-giao-row">
-        <label>💳 Thẻ từ / thẻ xe</label>
-        <input id="bg-the-tu" type="number" value="2" min="0">
-      </div>
-      <div class="ban-giao-row">
-        <label>📡 Remote</label>
-        <input id="bg-remote" type="number" value="1" min="0">
-      </div>
-      <div class="ban-giao-row">
-        <label>📝 Khác</label>
-        <input id="bg-khac" placeholder="Mô tả...">
-      </div>
+      <div class="ban-giao-row"><label>🗝 Chìa khóa cơ</label><input id="bg-ck" class="inp" type="number" value="2" min="0"></div>
+      <div class="ban-giao-row"><label>💳 Thẻ từ / thẻ xe</label><input id="bg-tt" class="inp" type="number" value="2" min="0"></div>
+      <div class="ban-giao-row"><label>📡 Remote</label><input id="bg-rm" class="inp" type="number" value="1" min="0"></div>
+      <div class="ban-giao-row"><label>📝 Khác</label><input id="bg-kh" class="inp" placeholder="Mô tả..."></div>
     </div>
 
-    <!-- 5. Ghi chú -->
     <div class="card">
       <div class="card-title">5 · Ghi chú</div>
-      <div class="form-group">
-        <textarea id="bb-ghi-chu" placeholder="Ghi chú thêm về tình trạng căn hộ..."></textarea>
-      </div>
+      <textarea id="bb-gc" class="inp" placeholder="Ghi chú thêm..."></textarea>
     </div>
 
-    <button class="btn btn-primary" onclick="goPreview()" style="margin-bottom:16px">👁 Xem biên bản nháp</button>
+    <button class="btn btn-primary" onclick="goPreview()">👁 Xem biên bản nháp</button>
     <div style="height:20px"></div>
   </div>
 </div>
 
-<!-- ===== SCREEN: PREVIEW ===== -->
+<!-- PREVIEW -->
 <div id="screen-preview" class="hidden">
   <div class="nav">
     <button class="nav-back" onclick="goScreen('screen-create-bb')">‹</button>
     <h1>Xem biên bản</h1>
     <button class="nav-action" onclick="submitBB()">✅ Hoàn tất</button>
   </div>
-  <div class="page" id="preview-content">
-    <div class="spinner">Đang tạo biên bản...</div>
-  </div>
+  <div class="page" id="preview-content"><div class="spinner">Đang tạo...</div></div>
 </div>
 
-<!-- ===== SCREEN: CHI TIẾT BB ===== -->
+<!-- CHI TIẾT BB -->
 <div id="screen-bb-detail" class="hidden">
   <div class="nav">
     <button class="nav-back" onclick="goScreen('screen-bienban')">‹</button>
     <h1>Chi tiết biên bản</h1>
   </div>
-  <div class="page" id="bb-detail-content">
-    <div class="spinner">Đang tải...</div>
+  <div class="page" id="bb-detail-content"><div class="spinner">Đang tải...</div></div>
+</div>
+
+<!-- KẾT QUẢ GỬI EMAIL -->
+<div id="screen-email-done" class="hidden">
+  <div class="nav">
+    <button class="nav-back" onclick="goScreen('screen-home')">‹</button>
+    <h1>Hoàn tất</h1>
+  </div>
+  <div class="page">
+    <div class="card" style="text-align:center;padding:32px">
+      <div style="font-size:60px;margin-bottom:16px">✅</div>
+      <div style="font-size:20px;font-weight:700;color:var(--green);margin-bottom:8px">Biên bản đã lưu!</div>
+      <div id="email-done-msg" style="font-size:14px;color:var(--gray);margin-bottom:24px"></div>
+      <button class="btn btn-primary" onclick="goScreen('screen-home')">Về trang chủ</button>
+    </div>
   </div>
 </div>
 
 <script>
-const API = 'https://hcarevietnam.vn/bangiao/api';
-let token = localStorage.getItem('hcbg_token')||'';
-let user = JSON.parse(localStorage.getItem('hcbg_user')||'null');
-let currentBBType = 'CHECKIN';
-let allBB = [], allCanHo = [];
-let khuVucData = {}; // {kvName: [{name, status, photos:[{file,url,ts}], ghi_chu}]}
-let currentCanHo = null;
-const fileInputs = {};
+const API='https://hcarevietnam.vn/bangiao/api';
+let token=localStorage.getItem('hcbg_token')||'';
+let user=JSON.parse(localStorage.getItem('hcbg_user')||'null');
+let bbType='CHECKIN', allBB=[], allCan=[], kvData={}, _editKV='', _editHMidx=-1;
+const fileInps={};
 
-// ===== UTILS =====
-function toast(msg, type='', dur=2500){
+// UTILS
+function toast(msg,type='',dur=3000){
   const t=document.getElementById('toast');
-  t.textContent=msg; t.className='toast show'+(type?' toast-'+type:'');
+  t.textContent=msg; t.className='toast show'+(type?' t'+type:'');
   clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),dur);
 }
 function goScreen(id){
   document.querySelectorAll('[id^="screen-"]').forEach(s=>s.classList.add('hidden'));
-  document.getElementById(id).classList.remove('hidden');
-  window.scrollTo(0,0);
+  document.getElementById(id).classList.remove('hidden'); window.scrollTo(0,0);
   if(id==='screen-home') loadStats();
-  if(id==='screen-bienban') loadBienBan();
-  if(id==='screen-canho') loadCanHo();
+  if(id==='screen-bienban') loadBB();
+  if(id==='screen-canho') loadCan();
 }
 async function api(path,method='GET',body=null){
   const opts={method,headers:{'Content-Type':'application/json','Authorization':'Bearer '+token}};
   if(body) opts.body=JSON.stringify(body);
-  const r=await fetch(API+path,opts);
-  return r.json();
+  const r=await fetch(API+path,opts); return r.json();
+}
+function fmtMoney(inputId,dispId){
+  const v=document.getElementById(inputId).value;
+  const n=parseInt(v)||0;
+  document.getElementById(dispId).textContent=n>0?n.toLocaleString('vi-VN')+' đồng':'';
 }
 function fmt(d){if(!d)return'—';return new Date(d).toLocaleDateString('vi-VN');}
-function fmtMoney(n){if(!n||n===0)return'—';return Number(n).toLocaleString('vi-VN')+'đ';}
-
-// ===== MODAL =====
+function moneyStr(n){if(!n)return'—';return Number(n).toLocaleString('vi-VN')+' đ';}
 function openModal(id){document.getElementById(id).classList.add('open');}
 function closeModal(id){document.getElementById(id).classList.remove('open');}
-document.addEventListener('click',e=>{
-  if(e.target.classList.contains('modal-overlay')) e.target.classList.remove('open');
-});
+document.addEventListener('click',e=>{if(e.target.classList.contains('modal-overlay'))e.target.classList.remove('open');});
 
-// ===== LOGIN =====
-let pinVal='';
-function pinPress(d){if(pinVal.length>=6)return;pinVal+=d;updatePin();}
-function pinDel(){pinVal=pinVal.slice(0,-1);updatePin();}
-function updatePin(){
-  for(let i=0;i<6;i++) document.getElementById('d'+i).classList.toggle('filled',i<pinVal.length);
-}
+// LOGIN
+let pin='';
+function pp(d){if(pin.length>=6)return;pin+=d;upPin();}
+function pd(){pin=pin.slice(0,-1);upPin();}
+function upPin(){for(let i=0;i<6;i++)document.getElementById('d'+i).classList.toggle('on',i<pin.length);}
 async function doLogin(){
-  const maNV=document.getElementById('login-manv').value.trim().toUpperCase();
-  const errEl=document.getElementById('login-error');
-  if(!maNV){errEl.textContent='Nhập mã nhân viên';return;}
-  if(pinVal.length<4){errEl.textContent='Nhập ít nhất 4 số PIN';return;}
-  errEl.textContent='Đang đăng nhập...';
+  const ma=document.getElementById('login-manv').value.trim().toUpperCase();
+  const e=document.getElementById('login-err');
+  if(!ma){e.textContent='Nhập mã nhân viên';return;}
+  if(pin.length<4){e.textContent='Nhập ít nhất 4 số PIN';return;}
+  e.textContent='Đang đăng nhập...';
   try{
-    const r=await fetch(API+'/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ma_nv:maNV,pin:pinVal})});
+    const r=await fetch(API+'/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ma_nv:ma,pin})});
     const d=await r.json();
     if(d.thanhCong){
       token=d.token; user=d.user;
-      localStorage.setItem('hcbg_token',token);
-      localStorage.setItem('hcbg_user',JSON.stringify(user));
+      localStorage.setItem('hcbg_token',token); localStorage.setItem('hcbg_user',JSON.stringify(user));
       document.getElementById('home-user').textContent=user.ten_nv;
-      document.getElementById('nav-role-badge').textContent=user.vai_tro==='QuanLy'?'Quản lý':'Nhân viên';
-      await loadAllCanHo();
-      goScreen('screen-home');
-      errEl.textContent='';
-    }else{
-      errEl.textContent=d.thongBao||'Sai mã NV hoặc PIN';
-      pinVal=''; updatePin();
-    }
-  }catch(e){errEl.textContent='Lỗi kết nối server';}
+      document.getElementById('role-badge').textContent=user.vai_tro==='QuanLy'?'Quản lý':'Nhân viên';
+      await loadAllCan(); goScreen('screen-home'); e.textContent='';
+    }else{e.textContent=d.thongBao||'Sai mã NV hoặc PIN';pin='';upPin();}
+  }catch(err){e.textContent='Lỗi kết nối';}
 }
 function doLogout(){
   if(!confirm('Đăng xuất?'))return;
-  token='';user=null;pinVal='';updatePin();
-  localStorage.removeItem('hcbg_token'); localStorage.removeItem('hcbg_user');
-  goScreen('screen-login');
+  token='';user=null;pin='';upPin();
+  localStorage.removeItem('hcbg_token');localStorage.removeItem('hcbg_user');goScreen('screen-login');
 }
 
-// ===== STATS =====
+// STATS
 async function loadStats(){
   try{
-    const r=await api('/thong-ke/tong-quan');
-    const d=r.data||{};
-    document.getElementById('stats-container').innerHTML=`
+    const r=await api('/thong-ke/tong-quan'); const d=r.data||{};
+    document.getElementById('stats-box').innerHTML=`
       <div class="stat-box"><div class="stat-num">${d.tong_bien_ban||0}</div><div class="stat-lbl">Biên bản</div></div>
       <div class="stat-box"><div class="stat-num">${d.tong_can_ho||0}</div><div class="stat-lbl">Căn hộ</div></div>`;
   }catch(e){}
 }
 
-// ===== CĂN HỘ =====
-async function loadAllCanHo(){
-  try{const r=await api('/can-ho');allCanHo=r.data||[];}catch(e){}
-}
-async function loadCanHo(){
+// CĂN HỘ
+async function loadAllCan(){try{const r=await api('/can-ho');allCan=r.data||[];}catch(e){}}
+async function loadCan(){
   document.getElementById('canho-list').innerHTML='<div class="spinner">Đang tải...</div>';
-  if(!allCanHo.length) await loadAllCanHo();
-  renderCanHo(allCanHo);
+  if(!allCan.length)await loadAllCan(); renderCan(allCan);
 }
-function filterCanHo(){
-  const q=document.getElementById('canho-search').value.toLowerCase();
-  renderCanHo(allCanHo.filter(c=>c.ma_can.toLowerCase().includes(q)||c.ten_toa_nha.toLowerCase().includes(q)));
-}
-function renderCanHo(list){
+function fCanHo(){const q=document.getElementById('canho-search').value.toLowerCase();renderCan(allCan.filter(c=>c.ma_can.toLowerCase().includes(q)||c.ten_toa_nha.toLowerCase().includes(q)));}
+function renderCan(list){
   if(!list.length){document.getElementById('canho-list').innerHTML='<div class="spinner">Không tìm thấy</div>';return;}
   document.getElementById('canho-list').innerHTML=list.map(c=>`
-    <div class="list-item">
-      <div class="list-icon list-icon-orange">🏠</div>
-      <div class="list-info">
-        <div class="list-title">${c.ma_can}</div>
-        <div class="list-sub">${c.ten_toa_nha} · ${c.so_pn}PN · ${c.ghi_chu||''}</div>
-      </div>
-    </div>`).join('');
+    <div class="list-item"><div class="lico lico-o">🏠</div>
+    <div class="list-info"><div class="list-title">${c.ma_can}</div><div class="list-sub">${c.ten_toa_nha} · ${c.so_pn}PN · ${c.ghi_chu||''}</div></div></div>`).join('');
 }
 
-// ===== BIÊN BẢN LIST =====
-let bbFilter='TatCa';
-async function loadBienBan(){
+// BIÊN BẢN LIST
+let bbFil='TatCa';
+async function loadBB(){
   document.getElementById('bb-list').innerHTML='<div class="spinner">Đang tải...</div>';
-  try{const r=await api('/bien-ban');allBB=r.data||[];renderBB();}
-  catch(e){document.getElementById('bb-list').innerHTML='<div class="spinner">Lỗi tải dữ liệu</div>';}
+  try{const r=await api('/bien-ban');allBB=r.data||[];renderBB();}catch(e){}
 }
-function filterBB(f,el){
-  bbFilter=f;
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  el.classList.add('active'); renderBB();
-}
+function fBB(f,el){bbFil=f;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');renderBB();}
 function renderBB(){
-  const list=bbFilter==='TatCa'?allBB:allBB.filter(b=>b.loai===bbFilter);
+  const list=bbFil==='TatCa'?allBB:allBB.filter(b=>b.loai===bbFil);
   if(!list.length){document.getElementById('bb-list').innerHTML='<div class="spinner">Chưa có biên bản</div>';return;}
   document.getElementById('bb-list').innerHTML=list.map(b=>`
     <div class="list-item" onclick="viewBB(${b.id})">
-      <div class="list-icon ${b.loai==='CHECKIN'?'list-icon-green':'list-icon-orange'}">${b.loai==='CHECKIN'?'✅':'🔑'}</div>
-      <div class="list-info">
-        <div class="list-title">${b.ma_can} — ${b.ten_khach}</div>
-        <div class="list-sub">${fmt(b.ngay_thuc_hien)} · HĐ: ${b.so_hd||'—'}</div>
-      </div>
-      <span class="badge ${b.trang_thai==='HOANTAT'?'badge-green':b.trang_thai==='CHO_DUYET'?'badge-orange':'badge-gray'}">${b.trang_thai==='HOANTAT'?'Xong':b.trang_thai==='CHO_DUYET'?'Chờ duyệt':'Nháp'}</span>
+      <div class="lico ${b.loai==='CHECKIN'?'lico-g':'lico-o'}">${b.loai==='CHECKIN'?'✅':'🔑'}</div>
+      <div class="list-info"><div class="list-title">${b.ma_can} — ${b.ten_khach}</div><div class="list-sub">${fmt(b.ngay_thuc_hien)} · HĐ: ${b.so_hd||'—'}</div></div>
+      <span class="badge ${b.trang_thai==='HOANTAT'?'bg':'bx'}">${b.trang_thai==='HOANTAT'?'Xong':'Nháp'}</span>
     </div>`).join('');
 }
 
-// ===== HẠNG MỤC DEFAULT =====
-function getDefaultKhuVuc(soPn){
-  const result={};
-  const hmPK=['Sàn','Tường & Trần','Cửa ra vào','Cửa sổ & Kính','Đèn','Máy lạnh + remote','Rèm','Sofa','Bàn trà','TV + remote'];
-  const hmBep=['Bếp từ / Bếp gas','Hút mùi','Tủ lạnh','Lò vi sóng','Chậu rửa + vòi','Tủ bếp trên & dưới','Mặt đá bếp'];
-  const hmPN=['Giường + nệm','Tủ quần áo','Máy lạnh + remote','Rèm','Bàn & Ghế','Đèn','Tường & Sàn'];
-  const hmWC=['Bồn cầu','Lavabo + vòi','Gương','Vòi sen / Máy nước nóng','Quạt hút','Sàn & Tường WC','Ron silicon'];
-  const hmLogia=['Máy giặt','Sàn logia','Thoát nước','Lan can'];
-  const hmBC=['Sàn ban công','Lan can','Cửa kính ban công'];
-
-  result['Phòng khách']=hmPK.map(n=>({name:n,status:'TOT',photos:[],ghi_chu:''}));
-  result['Bếp']=hmBep.map(n=>({name:n,status:'TOT',photos:[],ghi_chu:''}));
-  for(let i=1;i<=soPn;i++){
-    result[`Phòng ngủ ${soPn>1?i:''}`]=hmPN.map(n=>({name:n,status:'TOT',photos:[],ghi_chu:''}));
-  }
-  const soWC=soPn<=1?1:soPn<=2?2:2;
-  for(let i=1;i<=soWC;i++){
-    result[`WC ${soWC>1?i:''}`]=hmWC.map(n=>({name:n,status:'TOT',photos:[],ghi_chu:''}));
-  }
-  result['Logia']=hmLogia.map(n=>({name:n,status:'TOT',photos:[],ghi_chu:''}));
-  if(soPn>=2) result['Ban công']=hmBC.map(n=>({name:n,status:'TOT',photos:[],ghi_chu:''}));
-  return result;
+// HẠNG MỤC DEFAULT
+function getDefault(soPn){
+  const r={};
+  const mk=(items)=>items.map(n=>({name:n,status:'TOT',photos:[],gc:''}));
+  r['Phòng khách']=mk(['Sàn','Tường & Trần','Cửa ra vào','Cửa sổ & Kính','Đèn','Máy lạnh + remote','Rèm','Sofa','Bàn trà','TV + remote']);
+  r['Bếp']=mk(['Bếp từ / Bếp gas','Hút mùi','Tủ lạnh','Lò vi sóng','Chậu rửa + vòi','Tủ bếp','Mặt đá bếp']);
+  for(let i=1;i<=soPn;i++) r[`Phòng ngủ${soPn>1?' '+i:''}`]=mk(['Giường + nệm','Tủ quần áo','Máy lạnh + remote','Rèm','Bàn & Ghế','Đèn','Tường & Sàn']);
+  const wc=soPn<=1?1:2;
+  for(let i=1;i<=wc;i++) r[`WC${wc>1?' '+i:''}`]=mk(['Bồn cầu','Lavabo + vòi','Gương','Vòi sen / Máy nước nóng','Quạt hút','Sàn & Tường WC','Ron silicon']);
+  r['Logia']=mk(['Máy giặt','Sàn logia','Thoát nước','Lan can']);
+  if(soPn>=2) r['Ban công']=mk(['Sàn ban công','Lan can','Cửa kính ban công']);
+  return r;
 }
 
-// ===== TẠO BIÊN BẢN =====
+// TẠO BB
 function goCreateBB(loai){
-  currentBBType=loai;
-  document.getElementById('create-bb-title').textContent=loai==='CHECKIN'?'✅ Check-in':'🔑 Check-out';
-  document.getElementById('create-bb-back').onclick=()=>goScreen('screen-home');
+  bbType=loai;
+  document.getElementById('create-title').textContent=loai==='CHECKIN'?'✅ Check-in':'🔑 Check-out';
   document.getElementById('bb-ngay-vao').value=new Date().toISOString().slice(0,10);
-  khuVucData={};
-
-  const sel=document.getElementById('bb-ma-can');
+  kvData={};
+  const sel=document.getElementById('bb-can');
   sel.innerHTML='<option value="">— Chọn căn hộ —</option>';
-  allCanHo.forEach(c=>{sel.innerHTML+=`<option value="${c.ma_can}" data-pn="${c.so_pn}">${c.ma_can} — ${c.ten_toa_nha}</option>`;});
-  document.getElementById('khu-vuc-container').innerHTML='<div class="spinner" style="padding:20px">Chọn căn hộ để tải hạng mục...</div>';
+  allCan.forEach(c=>{sel.innerHTML+=`<option value="${c.ma_can}" data-pn="${c.so_pn}">${c.ma_can} — ${c.ten_toa_nha}</option>`;});
+  document.getElementById('kv-container').innerHTML='<div class="spinner" style="padding:20px">Chọn căn hộ để tải hạng mục...</div>';
+  document.getElementById('bb-coc-disp').textContent='';
   goScreen('screen-create-bb');
 }
-
-function onCanHoChange(){
-  const sel=document.getElementById('bb-ma-can');
+function onCanChange(){
+  const sel=document.getElementById('bb-can');
   const opt=sel.options[sel.selectedIndex];
-  if(!opt||!opt.value){document.getElementById('khu-vuc-container').innerHTML='<div class="spinner" style="padding:20px">Chọn căn hộ để tải hạng mục...</div>';return;}
-  const soPn=parseInt(opt.dataset.pn)||2;
-  currentCanHo=allCanHo.find(c=>c.ma_can===opt.value);
-  khuVucData=getDefaultKhuVuc(soPn);
-  renderKhuVuc();
+  if(!opt?.value)return;
+  kvData=getDefault(parseInt(opt.dataset.pn)||2);
+  renderKV();
 }
 
-function renderKhuVuc(){
-  const container=document.getElementById('khu-vuc-container');
-  container.innerHTML=Object.entries(khuVucData).map(([kvName,items])=>`
-    <div class="khu-vuc-group" id="kv-${encodeKV(kvName)}">
-      <div class="khu-vuc-title">
-        🏷️ ${kvName}
-        <div style="display:flex;gap:6px">
-          <button class="add-hang-muc-btn" onclick="openAddHangMuc('${kvName.replace(/'/g,"\\'")}')">+ Mục</button>
-          <button class="btn-danger-sm" onclick="removeKhuVuc('${kvName.replace(/'/g,"\\'")}')">✕</button>
-        </div>
+// RENDER KHU VỰC
+function encK(s){return btoa(unescape(encodeURIComponent(s))).replace(/[^a-zA-Z0-9]/g,'').slice(0,20);}
+function renderKV(){
+  document.getElementById('kv-container').innerHTML=Object.entries(kvData).map(([kv,items])=>renderKVGroup(kv,items)).join('');
+}
+function renderKVGroup(kv,items){
+  return `<div class="kv-group" id="kvg-${encK(kv)}">
+    <div class="kv-hdr">
+      <span style="font-size:16px">🏷️</span>
+      <span class="kv-name" onclick="editKVName('${esc(kv)}')">${kv}</span>
+      <div class="kv-actions">
+        <button class="btn-sm btn-sm-green" onclick="openAddHM('${esc(kv)}')">➕ Mục</button>
+        <button class="btn-sm btn-sm-red" onclick="delKV('${esc(kv)}')">✕</button>
       </div>
-      ${items.map((item,idx)=>renderHangMuc(kvName,item,idx)).join('')}
-    </div>`).join('');
-}
-
-function encodeKV(s){return btoa(unescape(encodeURIComponent(s))).replace(/[^a-zA-Z0-9]/g,'');}
-
-function renderHangMuc(kvName,item,idx){
-  const key=`${kvName}__${idx}`;
-  const statusColor=item.status==='TOT'?'tot':item.status==='XUOC'?'xuoc':item.status==='HONG'?'hong':'';
-  const statusLabel=item.status==='TOT'?'✓ Tốt':item.status==='XUOC'?'⚠ Trầy xước':item.status==='HONG'?'✗ Hư hỏng':'— Không có';
-  const statusBg=item.status==='TOT'?'background:var(--green-pale);color:var(--green)':item.status==='XUOC'?'background:#fefce8;color:#854d0e':item.status==='HONG'?'background:var(--red-pale);color:var(--red)':'background:var(--gray-pale);color:var(--gray)';
-  const photoSlots=[];
-  for(let i=0;i<item.photos.length;i++){
-    photoSlots.push(`<div class="photo-thumb">
-      <img src="${item.photos[i].url}" onerror="this.src=''">
-      <div class="photo-timestamp">${item.photos[i].ts||''}</div>
-      <button class="photo-del" onclick="removePhoto('${kvName}',${idx},${i})">✕</button>
-    </div>`);
-  }
-  if(item.photos.length<5){
-    photoSlots.push(`<label class="photo-add" onclick="triggerPhoto('${kvName}',${idx})">
-      <span>📷</span><span>Chụp</span>
-    </label>`);
-  }
-  return `<div class="hang-muc-card trang-thai-${statusColor}" id="hm-${encodeKV(kvName+idx)}">
-    <div class="hang-muc-header" onclick="toggleHM('${encodeKV(kvName+idx)}')">
-      <span class="hang-muc-name">${item.name}</span>
-      <span class="hang-muc-status" style="${statusBg}">${statusLabel}</span>
-      <span style="color:var(--gray-light);margin-left:4px">›</span>
     </div>
-    <div class="hang-muc-body hidden" id="hmb-${encodeKV(kvName+idx)}">
-      <div class="tt-options">
-        <span class="tt-opt ${item.status==='TOT'?'active-tot':''}" onclick="setStatus('${kvName}',${idx},'TOT')">✓ Tốt</span>
-        <span class="tt-opt ${item.status==='XUOC'?'active-xuoc':''}" onclick="setStatus('${kvName}',${idx},'XUOC')">⚠ Trầy xước</span>
-        <span class="tt-opt ${item.status==='HONG'?'active-hong':''}" onclick="setStatus('${kvName}',${idx},'HONG')">✗ Hư hỏng</span>
-        <span class="tt-opt ${item.status==='KO'?'active-ko':''}" onclick="setStatus('${kvName}',${idx},'KO')">— Không có</span>
+    ${items.map((item,idx)=>renderHM(kv,item,idx)).join('')}
+  </div>`;
+}
+function renderHM(kv,item,idx){
+  const sc=item.status==='TOT'?'s-tot':item.status==='XUOC'?'s-xuoc':item.status==='HONG'?'s-hong':'';
+  const sl=item.status==='TOT'?'✓ Tốt':item.status==='XUOC'?'⚠ Trầy xước':item.status==='HONG'?'✗ Hư hỏng':'— Không có';
+  const sbc=item.status==='TOT'?'bg':item.status==='XUOC'?'bo':item.status==='HONG'?'br':'bx';
+  const photoSlots=item.photos.map((p,pi)=>`
+    <div class="photo-thumb">
+      <img src="${p.url}" onerror="this.src=''">
+      <div class="photo-ts">${p.ts||''}</div>
+      <button class="photo-del" onclick="delPhoto('${esc(kv)}',${idx},${pi})">✕</button>
+    </div>`).join('');
+  const addBtn=item.photos.length<5?`<div style="display:flex;gap:6px;margin:6px 0">
+    <button class="btn-sm btn-sm-blue" onclick="trigPhoto('${esc(kv)}',${idx},'camera')">📷 Chụp hình</button>
+    <button class="btn-sm btn-sm-gray" onclick="trigPhoto('${esc(kv)}',${idx},'gallery')">🖼 Tải hình</button>
+  </div>`:'<div style="font-size:12px;color:var(--gray);margin:6px 0">Đã đủ 5 ảnh</div>';
+  return `<div class="hm-card ${sc}" id="hmc-${encK(kv+idx)}">
+    <div class="hm-hdr" onclick="togHM('${encK(kv+idx)}')">
+      <span class="hm-name" onclick="editHMName(event,'${esc(kv)}',${idx})">${item.name}</span>
+      <span class="badge ${sbc} hm-badge">${sl}</span>
+      <span style="color:var(--border);margin-left:4px">›</span>
+    </div>
+    <div class="hm-body hidden" id="hmb-${encK(kv+idx)}">
+      <div class="tt-opts">
+        <span class="tt-opt ${item.status==='TOT'?'tt-tot':''}" onclick="setSt('${esc(kv)}',${idx},'TOT')">✓ Tốt</span>
+        <span class="tt-opt ${item.status==='XUOC'?'tt-xuoc':''}" onclick="setSt('${esc(kv)}',${idx},'XUOC')">⚠ Trầy xước</span>
+        <span class="tt-opt ${item.status==='HONG'?'tt-hong':''}" onclick="setSt('${esc(kv)}',${idx},'HONG')">✗ Hư hỏng</span>
+        <span class="tt-opt ${item.status==='KO'?'tt-ko':''}" onclick="setSt('${esc(kv)}',${idx},'KO')">— Không có</span>
       </div>
-      <div class="photo-grid">${photoSlots.join('')}</div>
-      <div style="margin-top:6px">
-        <input placeholder="Ghi chú hạng mục..." style="width:100%;padding:8px 10px;border:1.5px solid var(--border);border-radius:7px;font-size:13px;outline:none" 
-          value="${item.ghi_chu||''}" oninput="setGhiChu('${kvName}',${idx},this.value)">
+      <div class="photo-grid">${photoSlots}</div>
+      ${addBtn}
+      <input class="inp" style="font-size:13px;padding:8px 10px;margin-top:4px" placeholder="Ghi chú hạng mục..."
+        value="${item.gc||''}" oninput="kvData['${esc(kv)}'][${idx}].gc=this.value">
+      <div style="display:flex;gap:6px;margin-top:8px">
+        <button class="btn-sm btn-sm-blue" onclick="editHMNameModal('${esc(kv)}',${idx})">✏️ Đổi tên</button>
+        <button class="btn-sm btn-sm-red" onclick="delHM('${esc(kv)}',${idx})">✕ Xóa</button>
       </div>
-      <button class="btn-danger-sm" style="margin-top:8px" onclick="removeHangMuc('${kvName}',${idx})">✕ Xóa hạng mục này</button>
     </div>
   </div>`;
 }
-
-function toggleHM(key){
-  const body=document.getElementById('hmb-'+key);
-  if(body) body.classList.toggle('hidden');
-}
-
-function setStatus(kvName,idx,status){
-  khuVucData[kvName][idx].status=status;
-  refreshHangMuc(kvName,idx);
-}
-function setGhiChu(kvName,idx,val){
-  khuVucData[kvName][idx].ghi_chu=val;
-}
-function refreshHangMuc(kvName,idx){
-  const el=document.getElementById('hm-'+encodeKV(kvName+idx));
-  const bodyOpen=!document.getElementById('hmb-'+encodeKV(kvName+idx))?.classList.contains('hidden');
+function esc(s){return s.replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
+function togHM(key){const b=document.getElementById('hmb-'+key);if(b)b.classList.toggle('hidden');}
+function setSt(kv,idx,st){kvData[kv][idx].status=st;refreshHM(kv,idx);}
+function refreshHM(kv,idx){
+  const el=document.getElementById('hmc-'+encK(kv+idx));
+  const open=!document.getElementById('hmb-'+encK(kv+idx))?.classList.contains('hidden');
   if(el){
-    el.outerHTML=renderHangMuc(kvName,khuVucData[kvName][idx],idx);
-    if(bodyOpen){
-      const newBody=document.getElementById('hmb-'+encodeKV(kvName+idx));
-      if(newBody) newBody.classList.remove('hidden');
+    const tmp=document.createElement('div');tmp.innerHTML=renderHM(kv,kvData[kv][idx],idx);
+    el.replaceWith(tmp.firstChild);
+    if(open){const nb=document.getElementById('hmb-'+encK(kv+idx));if(nb)nb.classList.remove('hidden');}
+  }
+}
+
+// KV/HM EDIT
+let _kvModal='',_hmModalKV='',_hmModalIdx=-1;
+function openAddKV(){_kvModal='new';document.getElementById('modal-kv-title').textContent='➕ Thêm khu vực';document.getElementById('modal-kv-inp').value='';openModal('modal-kv');}
+function editKVName(kv){_kvModal=kv;document.getElementById('modal-kv-title').textContent='✏️ Đổi tên khu vực';document.getElementById('modal-kv-inp').value=kv;openModal('modal-kv');}
+function confirmKV(){
+  const v=document.getElementById('modal-kv-inp').value.trim();
+  if(!v){toast('Nhập tên khu vực','err');return;}
+  if(_kvModal==='new'){if(kvData[v]){toast('Khu vực đã tồn tại','err');return;}kvData[v]=[];}
+  else{
+    if(_kvModal!==v){
+      const entries=Object.entries(kvData);
+      const newKvData={};
+      entries.forEach(([k,items])=>newKvData[k===_kvModal?v:k]=items);
+      kvData=newKvData;
     }
   }
+  closeModal('modal-kv');renderKV();
 }
+function delKV(kv){if(!confirm(`Xóa khu vực "${kv}"?`))return;delete kvData[kv];renderKV();}
+function openAddHM(kv){_hmModalKV=kv;_hmModalIdx=-1;document.getElementById('modal-hm-title').textContent='➕ Thêm hạng mục';document.getElementById('modal-hm-inp').value='';openModal('modal-hm');}
+function editHMNameModal(kv,idx){_hmModalKV=kv;_hmModalIdx=idx;document.getElementById('modal-hm-title').textContent='✏️ Đổi tên hạng mục';document.getElementById('modal-hm-inp').value=kvData[kv][idx].name;openModal('modal-hm');}
+function editHMName(e,kv,idx){e.stopPropagation();}
+function confirmHM(){
+  const v=document.getElementById('modal-hm-inp').value.trim();
+  if(!v){toast('Nhập tên hạng mục','err');return;}
+  if(_hmModalIdx===-1)kvData[_hmModalKV].push({name:v,status:'TOT',photos:[],gc:''});
+  else kvData[_hmModalKV][_hmModalIdx].name=v;
+  closeModal('modal-hm');renderKV();
+}
+function delHM(kv,idx){kvData[kv].splice(idx,1);renderKV();}
 
-// Photos
-function triggerPhoto(kvName,idx){
-  const key=`${kvName}__${idx}`;
-  if(!fileInputs[key]){
+// PHOTOS
+function trigPhoto(kv,idx,mode){
+  const key=`${kv}__${idx}__${mode}`;
+  if(!fileInps[key]){
     const inp=document.createElement('input');
-    inp.type='file'; inp.accept='image/*'; inp.capture='environment';
-    inp.onchange=e=>handlePhoto(e,kvName,idx);
-    fileInputs[key]=inp;
+    inp.type='file';inp.accept='image/*';
+    if(mode==='camera')inp.capture='environment';
+    inp.onchange=e=>handlePhoto(e,kv,idx);
+    fileInps[key]=inp;
   }
-  fileInputs[key].click();
+  fileInps[key].click();
 }
-async function handlePhoto(e,kvName,idx){
-  const file=e.target.files[0]; if(!file)return;
+async function handlePhoto(e,kv,idx){
+  const file=e.target.files[0];if(!file)return;
   toast('⏳ Đang upload ảnh...');
   try{
     const now=new Date();
     const ts=`${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()} ${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`;
-    const fd=new FormData(); fd.append('file',file);
+    const fd=new FormData();fd.append('file',file);
     const r=await fetch(API+'/upload/anh',{method:'POST',headers:{'Authorization':'Bearer '+token},body:fd});
     const d=await r.json();
     if(d.thanhCong){
-      khuVucData[kvName][idx].photos.push({url:'https://hcarevietnam.vn/bangiao'+d.url,ts,filename:d.filename});
-      refreshHangMuc(kvName,idx);
-      toast('Đã thêm ảnh','ok');
+      kvData[kv][idx].photos.push({url:'https://hcarevietnam.vn/bangiao'+d.url,ts,filename:d.filename});
+      refreshHM(kv,idx);toast('Đã thêm ảnh','tok');
     }else toast('Upload thất bại','err');
   }catch(err){toast('Lỗi upload','err');}
   e.target.value='';
 }
-function removePhoto(kvName,idx,photoIdx){
-  khuVucData[kvName][idx].photos.splice(photoIdx,1);
-  refreshHangMuc(kvName,idx);
-}
+function delPhoto(kv,idx,pi){kvData[kv][idx].photos.splice(pi,1);refreshHM(kv,idx);}
 
-// Thêm/xóa khu vực & hạng mục
-let _pendingKV='';
-function openAddHangMuc(kvName){
-  _pendingKV=kvName;
-  document.getElementById('modal-hm-input').value='';
-  openModal('modal-hangMuc');
-}
-function confirmAddHangMuc(){
-  const name=document.getElementById('modal-hm-input').value.trim();
-  if(!name){toast('Nhập tên hạng mục','err');return;}
-  khuVucData[_pendingKV].push({name,status:'TOT',photos:[],ghi_chu:''});
-  closeModal('modal-hangMuc');
-  renderKhuVuc();
-}
-function removeHangMuc(kvName,idx){
-  khuVucData[kvName].splice(idx,1);
-  renderKhuVuc();
-}
-function removeKhuVuc(kvName){
-  if(!confirm(`Xóa khu vực "${kvName}"?`))return;
-  delete khuVucData[kvName];
-  renderKhuVuc();
-}
-function confirmAddKhuVuc(){
-  const name=document.getElementById('modal-kv-input').value.trim();
-  if(!name){toast('Nhập tên khu vực','err');return;}
-  if(khuVucData[name]){toast('Khu vực đã tồn tại','err');return;}
-  khuVucData[name]=[];
-  closeModal('modal-khuVuc');
-  renderKhuVuc();
-}
-
-// ===== PREVIEW =====
+// PREVIEW
 function goPreview(){
-  const maCan=document.getElementById('bb-ma-can').value;
-  const soHD=document.getElementById('bb-so-hd').value.trim();
-  const tenKhach=document.getElementById('bb-ten-khach').value.trim();
+  const can=document.getElementById('bb-can').value;
+  const hd=document.getElementById('bb-hd').value.trim();
+  const ten=document.getElementById('bb-ten').value.trim();
   const cccd=document.getElementById('bb-cccd').value.trim();
+  const emailK=document.getElementById('bb-email').value.trim();
   const ngayVao=document.getElementById('bb-ngay-vao').value;
-  const ngayHetHD=document.getElementById('bb-ngay-het-hd').value;
-  if(!maCan||!soHD||!tenKhach||!cccd||!ngayVao||!ngayHetHD){
-    toast('⚠️ Điền đủ thông tin bắt buộc (*)','err'); return;
-  }
-  // Check ảnh bắt buộc
-  let missingPhoto=[];
-  Object.entries(khuVucData).forEach(([kv,items])=>{
-    items.forEach(item=>{
-      if(item.status!=='KO'&&item.photos.length===0) missingPhoto.push(`${kv} › ${item.name}`);
-    });
+  const ngayHet=document.getElementById('bb-ngay-het').value;
+  if(!can||!hd||!ten||!cccd||!ngayVao||!ngayHet){toast('⚠️ Điền đủ thông tin bắt buộc (*)','err');return;}
+  if(!emailK){toast('⚠️ Cần có email khách để gửi biên bản','err');return;}
+  let missing=[];
+  Object.entries(kvData).forEach(([kv,items])=>{
+    items.forEach(item=>{if(item.status!=='KO'&&item.photos.length===0)missing.push(`${kv} › ${item.name}`);});
   });
-  if(missingPhoto.length>0){
-    toast(`⚠️ Còn ${missingPhoto.length} hạng mục chưa có ảnh`,'err',4000);
-    return;
-  }
+  if(missing.length>0){toast(`⚠️ ${missing.length} hạng mục chưa có ảnh`,'err',4000);return;}
+  const canObj=allCan.find(c=>c.ma_can===can);
+  const qt=document.getElementById('bb-qt').value;
+  const bilingual=!['việt nam','viet nam'].includes(qt.trim().toLowerCase());
+  const coc=parseInt(document.getElementById('bb-coc').value)||0;
 
-  const canHo=allCanHo.find(c=>c.ma_can===maCan);
-  const quocTich=document.getElementById('bb-quoc-tich').value;
-  const bilingual=quocTich.trim().toLowerCase()!=='việt nam'&&quocTich.trim().toLowerCase()!=='viet nam';
+  let hmHTML=Object.entries(kvData).map(([kv,items])=>`
+    <div style="margin-bottom:14px">
+      <div style="font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;margin-bottom:6px;padding:6px 10px;background:var(--blue-pale);border-radius:6px">${kv}</div>
+      ${items.map(item=>`<div class="prev-hm">
+        <div style="font-weight:600;font-size:14px;margin-bottom:4px">${item.name}</div>
+        <span class="badge ${item.status==='TOT'?'bg':item.status==='HONG'?'br':item.status==='XUOC'?'bo':'bx'}">
+          ${item.status==='TOT'?'Tốt':item.status==='XUOC'?'Trầy xước':item.status==='HONG'?'Hư hỏng':'Không có'}
+        </span>
+        ${item.gc?`<span style="font-size:12px;color:var(--gray);margin-left:6px">${item.gc}</span>`:''}
+        ${item.photos.length?`<div class="prev-photos">${item.photos.map(p=>`<div style="text-align:center"><img src="${p.url}"><div style="font-size:10px;color:var(--gray2)">${p.ts||''}</div></div>`).join('')}</div>`:''}
+      </div>`).join('')}
+    </div>`).join('');
 
-  let html=`
+  document.getElementById('preview-content').innerHTML=`
     <div class="card" style="border-left:4px solid var(--blue)">
-      <div class="preview-section">
-        <h3>${currentBBType==='CHECKIN'?'BIÊN BẢN BÀN GIAO NHẬN CĂN HỘ':'BIÊN BẢN TRẢ CĂN HỘ'}
-          ${bilingual?'<br><span style="font-size:11px;font-weight:400">APARTMENT HANDOVER RECORD</span>':''}</h3>
-        <div class="preview-row"><span class="lbl">Căn hộ</span><span class="val">${maCan} — ${canHo?.ten_toa_nha||''}</span></div>
-        <div class="preview-row"><span class="lbl">Số HĐ</span><span class="val">${soHD}</span></div>
-        <div class="preview-row"><span class="lbl">Khách thuê</span><span class="val">${tenKhach}</span></div>
-        <div class="preview-row"><span class="lbl">CCCD/Passport</span><span class="val">${cccd}</span></div>
-        <div class="preview-row"><span class="lbl">Quốc tịch</span><span class="val">${quocTich}</span></div>
-        <div class="preview-row"><span class="lbl">SĐT</span><span class="val">${document.getElementById('bb-sdt').value||'—'}</span></div>
-        <div class="preview-row"><span class="lbl">Ngày dọn vào</span><span class="val">${fmt(ngayVao)}</span></div>
-        <div class="preview-row"><span class="lbl">Ngày hết HĐ</span><span class="val">${fmt(ngayHetHD)}</span></div>
-        <div class="preview-row"><span class="lbl">Tiền cọc</span><span class="val">${fmtMoney(document.getElementById('bb-tien-coc').value)}</span></div>
+      <div style="font-size:14px;font-weight:700;color:var(--blue);margin-bottom:12px;text-transform:uppercase">
+        ${bbType==='CHECKIN'?'Biên bản nhận bàn giao căn hộ':'Biên bản trả căn hộ'}
+        ${bilingual?'<div style="font-size:11px;font-weight:400;margin-top:2px">Apartment Handover Record</div>':''}
       </div>
+      <div class="prev-row"><span class="prev-lbl">Căn hộ</span><span class="prev-val">${can} — ${canObj?.ten_toa_nha||''}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Số HĐ</span><span class="prev-val">${hd}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Khách thuê</span><span class="prev-val">${ten}</span></div>
+      <div class="prev-row"><span class="prev-lbl">CCCD/Passport</span><span class="prev-val">${cccd}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Quốc tịch</span><span class="prev-val">${qt}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Email khách</span><span class="prev-val">${emailK}</span></div>
+      <div class="prev-row"><span class="prev-lbl">SĐT</span><span class="prev-val">${document.getElementById('bb-sdt').value||'—'}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Ngày dọn vào</span><span class="prev-val">${fmt(ngayVao)}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Ngày hết HĐ</span><span class="prev-val">${fmt(ngayHet)}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Tiền đặt cọc</span><span class="prev-val" style="color:var(--blue);font-weight:700">${moneyStr(coc)}</span></div>
     </div>
     <div class="card">
-      <div class="preview-section">
-        <h3>KIỂM KÊ TÌNH TRẠNG ${bilingual?'<br><span style="font-size:11px;font-weight:400">CONDITION CHECKLIST</span>':''}</h3>
-        ${Object.entries(khuVucData).map(([kv,items])=>`
-          <div style="margin-bottom:12px">
-            <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:6px;text-transform:uppercase">${kv}</div>
-            ${items.map(item=>`
-              <div class="preview-hm">
-                <div class="preview-hm-name">${item.name}</div>
-                <div class="preview-hm-status">
-                  <span class="badge ${item.status==='TOT'?'badge-green':item.status==='HONG'?'badge-red':item.status==='XUOC'?'badge-orange':'badge-gray'}">
-                    ${item.status==='TOT'?'Tốt':item.status==='XUOC'?'Trầy xước':item.status==='HONG'?'Hư hỏng':'Không có'}
-                  </span>
-                  ${item.ghi_chu?`<span style="font-size:12px;color:var(--gray);margin-left:6px">${item.ghi_chu}</span>`:''}
-                </div>
-                ${item.photos.length?`<div class="preview-photos">${item.photos.map(p=>`<img src="${p.url}" onerror="this.style.display='none'">`).join('')}</div>`:''}
-              </div>`).join('')}
-          </div>`).join('')}
-      </div>
+      <div class="card-title">Kiểm kê tình trạng${bilingual?' · Condition Checklist':''}</div>
+      ${hmHTML}
     </div>
     <div class="card">
-      <div class="preview-section">
-        <h3>CHỈ SỐ & BÀN GIAO ${bilingual?'<br><span style="font-size:11px;font-weight:400">UTILITIES & HANDOVER</span>':''}</h3>
-        <div class="preview-row"><span class="lbl">Điện (kWh)</span><span class="val">${document.getElementById('bb-dien').value||'—'}</span></div>
-        <div class="preview-row"><span class="lbl">Nước (m³)</span><span class="val">${document.getElementById('bb-nuoc').value||'—'}</span></div>
-        <div class="preview-row"><span class="lbl">Chìa khóa</span><span class="val">${document.getElementById('bg-chia-khoa').value} chiếc</span></div>
-        <div class="preview-row"><span class="lbl">Thẻ từ/xe</span><span class="val">${document.getElementById('bg-the-tu').value} thẻ</span></div>
-        <div class="preview-row"><span class="lbl">Remote</span><span class="val">${document.getElementById('bg-remote').value} cái</span></div>
-        ${document.getElementById('bg-khac').value?`<div class="preview-row"><span class="lbl">Khác</span><span class="val">${document.getElementById('bg-khac').value}</span></div>`:''}
-      </div>
+      <div class="card-title">Chỉ số & Bàn giao</div>
+      <div class="prev-row"><span class="prev-lbl">Điện (kWh)</span><span class="prev-val">${document.getElementById('bb-dien').value||'—'}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Nước (m³)</span><span class="prev-val">${document.getElementById('bb-nuoc').value||'—'}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Chìa khóa</span><span class="prev-val">${document.getElementById('bg-ck').value} chiếc</span></div>
+      <div class="prev-row"><span class="prev-lbl">Thẻ từ/xe</span><span class="prev-val">${document.getElementById('bg-tt').value} thẻ</span></div>
+      <div class="prev-row"><span class="prev-lbl">Remote</span><span class="prev-val">${document.getElementById('bg-rm').value} cái</span></div>
+      ${document.getElementById('bg-kh').value?`<div class="prev-row"><span class="prev-lbl">Khác</span><span class="prev-val">${document.getElementById('bg-kh').value}</span></div>`:''}
     </div>
-    ${document.getElementById('bb-ghi-chu').value?`<div class="card"><div class="card-title">Ghi chú</div><p style="font-size:14px">${document.getElementById('bb-ghi-chu').value}</p></div>`:''}
-    <div style="background:var(--blue-pale);border-radius:var(--radius);padding:14px;margin-bottom:12px;font-size:13px;color:var(--blue)">
-      ✅ Biên bản sẽ được lưu khi bấm <strong>Hoàn tất</strong>
-    </div>
-  `;
-
-  document.getElementById('preview-content').innerHTML=html;
+    ${document.getElementById('bb-gc').value?`<div class="card"><div class="card-title">Ghi chú</div><p style="font-size:14px">${document.getElementById('bb-gc').value}</p></div>`:''}
+    <div style="background:var(--blue-pale);border-radius:var(--r);padding:14px;margin-bottom:12px;font-size:13px;color:var(--blue)">
+      📧 Sau khi hoàn tất, hệ thống sẽ tự động gửi email kèm ảnh đến <strong>${emailK}</strong>
+    </div>`;
   goScreen('screen-preview');
 }
 
-// ===== SUBMIT =====
+// SUBMIT
 async function submitBB(){
-  const loai=currentBBType;
-  const maCan=document.getElementById('bb-ma-can').value;
-  const soHD=document.getElementById('bb-so-hd').value.trim();
-  const tenKhach=document.getElementById('bb-ten-khach').value.trim();
+  const can=document.getElementById('bb-can').value;
+  const hd=document.getElementById('bb-hd').value.trim();
+  const ten=document.getElementById('bb-ten').value.trim();
+  const emailK=document.getElementById('bb-email').value.trim();
+  const ngayVao=document.getElementById('bb-ngay-vao').value;
+  const qt=document.getElementById('bb-qt').value;
   const duLieu={
-    khuVuc:Object.fromEntries(Object.entries(khuVucData).map(([kv,items])=>[kv,items.map(({name,status,photos,ghi_chu})=>({name,status,photos:photos.map(p=>({url:p.url,ts:p.ts})),ghi_chu}))])),
+    khuVuc:Object.fromEntries(Object.entries(kvData).map(([kv,items])=>[kv,items.map(({name,status,photos,gc})=>({name,status,photos:photos.map(p=>({url:p.url,ts:p.ts})),ghi_chu:gc}))])),
     congTo:{dien:document.getElementById('bb-dien').value,nuoc:document.getElementById('bb-nuoc').value},
-    vatDung:{chiaKhoa:document.getElementById('bg-chia-khoa').value,theTu:document.getElementById('bg-the-tu').value,remote:document.getElementById('bg-remote').value,khac:document.getElementById('bg-khac').value},
-    ghiChu:document.getElementById('bb-ghi-chu').value,
-    quocTich:document.getElementById('bb-quoc-tich').value,
-    tienCoc:document.getElementById('bb-tien-coc').value,
-    ngayHetHD:document.getElementById('bb-ngay-het-hd').value,
+    vatDung:{chiaKhoa:document.getElementById('bg-ck').value,theTu:document.getElementById('bg-tt').value,remote:document.getElementById('bg-rm').value,khac:document.getElementById('bg-kh').value},
+    ghiChu:document.getElementById('bb-gc').value,
+    quocTich:qt,emailKhach:emailK,
+    tienCoc:document.getElementById('bb-coc').value,
+    ngayHetHD:document.getElementById('bb-ngay-het').value,
   };
   try{
+    toast('⏳ Đang lưu biên bản...');
     const r=await api('/bien-ban','POST',{
-      loai,ma_can:maCan,so_hd:soHD,ten_khach:tenKhach,
+      loai:bbType,ma_can:can,so_hd:hd,ten_khach:ten,
       cccd:document.getElementById('bb-cccd').value,
       sdt:document.getElementById('bb-sdt').value,
-      quoc_tich:document.getElementById('bb-quoc-tich').value,
-      ngay_thuc_hien:document.getElementById('bb-ngay-vao').value,
-      du_lieu_json:duLieu
+      quoc_tich:qt,ngay_thuc_hien:ngayVao,du_lieu_json:duLieu
     });
-    if(r.thanhCong){
-      toast('✅ Biên bản đã lưu thành công!','ok');
-      setTimeout(()=>goScreen('screen-bienban'),1200);
-    }else toast('❌ '+r.thongBao,'err');
+    if(!r.thanhCong){toast('❌ '+r.thongBao,'err');return;}
+
+    // Gửi email
+    toast('📧 Đang gửi email cho khách...');
+    const emailR=await api('/email/gui-bien-ban','POST',{
+      email_khach:emailK,ten_khach:ten,ma_can:can,
+      loai:bbType,ngay:new Date(ngayVao).toLocaleDateString('vi-VN'),
+      hang_muc_list:duLieu.khuVuc
+    });
+
+    document.getElementById('email-done-msg').textContent=emailR.thanhCong
+      ?`✅ Đã gửi email thành công đến ${emailK}`
+      :`⚠️ Lưu biên bản thành công nhưng gửi email thất bại: ${emailR.thongBao}`;
+    goScreen('screen-email-done');
   }catch(e){toast('Lỗi kết nối','err');}
 }
 
-// ===== VIEW BB =====
+// VIEW BB
 async function viewBB(id){
   goScreen('screen-bb-detail');
   const r=await api('/bien-ban/'+id);
-  const b=r.data; if(!b){document.getElementById('bb-detail-content').innerHTML='<div class="spinner">Không tìm thấy</div>';return;}
-  let du={};
-  try{du=typeof b.du_lieu_json==='string'?JSON.parse(b.du_lieu_json):(b.du_lieu_json||{});}catch(e){}
+  const b=r.data;if(!b){document.getElementById('bb-detail-content').innerHTML='<div class="spinner">Không tìm thấy</div>';return;}
+  let du={};try{du=typeof b.du_lieu_json==='string'?JSON.parse(b.du_lieu_json):(b.du_lieu_json||{});}catch(e){}
   document.getElementById('bb-detail-content').innerHTML=`
     <div class="card">
       <div style="display:flex;gap:8px;margin-bottom:12px">
-        <span class="badge ${b.loai==='CHECKIN'?'badge-green':'badge-orange'}">${b.loai}</span>
-        <span class="badge badge-gray">${b.trang_thai}</span>
+        <span class="badge ${b.loai==='CHECKIN'?'bg':'bo'}">${b.loai}</span>
+        <span class="badge bx">${b.trang_thai}</span>
       </div>
-      <div class="preview-row"><span class="lbl">Căn hộ</span><span class="val">${b.ma_can}</span></div>
-      <div class="preview-row"><span class="lbl">Khách thuê</span><span class="val">${b.ten_khach}</span></div>
-      <div class="preview-row"><span class="lbl">CCCD/PP</span><span class="val">${b.cccd||'—'}</span></div>
-      <div class="preview-row"><span class="lbl">Quốc tịch</span><span class="val">${du.quocTich||b.quoc_tich||'—'}</span></div>
-      <div class="preview-row"><span class="lbl">Số HĐ</span><span class="val">${b.so_hd}</span></div>
-      <div class="preview-row"><span class="lbl">Ngày thực hiện</span><span class="val">${fmt(b.ngay_thuc_hien)}</span></div>
-      <div class="preview-row"><span class="lbl">Nhân viên</span><span class="val">${b.nhan_vien||'—'}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Căn hộ</span><span class="prev-val">${b.ma_can}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Khách thuê</span><span class="prev-val">${b.ten_khach}</span></div>
+      <div class="prev-row"><span class="prev-lbl">CCCD/PP</span><span class="prev-val">${b.cccd||'—'}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Email</span><span class="prev-val">${du.emailKhach||'—'}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Tiền cọc</span><span class="prev-val" style="color:var(--blue);font-weight:700">${moneyStr(du.tienCoc)}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Ngày thực hiện</span><span class="prev-val">${fmt(b.ngay_thuc_hien)}</span></div>
     </div>
-    ${du.khuVuc?`<div class="card">
-      <div class="card-title">Kiểm kê tình trạng</div>
+    ${du.khuVuc?`<div class="card"><div class="card-title">Kiểm kê tình trạng</div>
       ${Object.entries(du.khuVuc).map(([kv,items])=>`
         <div style="margin-bottom:10px">
-          <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:5px">${kv}</div>
-          ${items.map(item=>`<div class="preview-hm">
-            <div class="preview-hm-name">${item.name}</div>
-            <div class="preview-hm-status"><span class="badge ${item.status==='TOT'?'badge-green':item.status==='HONG'?'badge-red':'badge-orange'}">${item.status==='TOT'?'Tốt':item.status==='XUOC'?'Trầy xước':item.status==='HONG'?'Hư hỏng':'Không có'}</span></div>
-            ${item.photos?.length?`<div class="preview-photos">${item.photos.map(p=>`<img src="${p.url}" onerror="this.style.display='none'">`).join('')}</div>`:''}
+          <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:5px;padding:5px 8px;background:var(--blue-pale);border-radius:6px">${kv}</div>
+          ${items.map(item=>`<div class="prev-hm">
+            <div style="font-weight:600;font-size:14px;margin-bottom:4px">${item.name}</div>
+            <span class="badge ${item.status==='TOT'?'bg':item.status==='HONG'?'br':'bo'}">${item.status==='TOT'?'Tốt':item.status==='XUOC'?'Trầy xước':item.status==='HONG'?'Hư hỏng':'Không có'}</span>
+            ${item.photos?.length?`<div class="prev-photos">${item.photos.map(p=>`<div><img src="${p.url}" onerror="this.style.display='none'"><div style="font-size:10px;color:var(--gray2);text-align:center">${p.ts||''}</div></div>`).join('')}</div>`:''}
           </div>`).join('')}
         </div>`).join('')}
     </div>`:''}
-    ${du.congTo?`<div class="card">
-      <div class="card-title">Công tơ & Bàn giao</div>
-      <div class="preview-row"><span class="lbl">Điện</span><span class="val">${du.congTo.dien||'—'} kWh</span></div>
-      <div class="preview-row"><span class="lbl">Nước</span><span class="val">${du.congTo.nuoc||'—'} m³</span></div>
-      <div class="preview-row"><span class="lbl">Tiền cọc</span><span class="val">${fmtMoney(du.tienCoc)}</span></div>
-    </div>`:''}
-  `;
+    ${du.congTo?`<div class="card"><div class="card-title">Công tơ & Bàn giao</div>
+      <div class="prev-row"><span class="prev-lbl">Điện</span><span class="prev-val">${du.congTo.dien||'—'} kWh</span></div>
+      <div class="prev-row"><span class="prev-lbl">Nước</span><span class="prev-val">${du.congTo.nuoc||'—'} m³</span></div>
+    </div>`:''}`;
 }
 
-// ===== INIT =====
+// INIT
 window.onload=async function(){
   if(token&&user){
     document.getElementById('home-user').textContent=user.ten_nv;
-    document.getElementById('nav-role-badge').textContent=user.vai_tro==='QuanLy'?'Quản lý':'Nhân viên';
-    await loadAllCanHo();
-    goScreen('screen-home');
+    document.getElementById('role-badge').textContent=user.vai_tro==='QuanLy'?'Quản lý':'Nhân viên';
+    await loadAllCan(); goScreen('screen-home');
   }else goScreen('screen-login');
 };
 </script>
