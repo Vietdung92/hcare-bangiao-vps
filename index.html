@@ -16,8 +16,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
   --orange:#C0590A;--orange2:#E67E22;--orange-pale:#FEF0E7;
   --gray:#64748B;--gray2:#94A3B8;--gray-pale:#F1F5F9;
   --border:#CBD5E1;--white:#FFFFFF;
-  --shadow:0 1px 3px rgba(0,0,0,.08);
-  --shadow-md:0 4px 12px rgba(0,0,0,.1);
+  --shadow:0 1px 3px rgba(0,0,0,.08);--shadow-md:0 4px 12px rgba(0,0,0,.1);
   --r:12px;--r2:8px;
 }
 .nav{background:var(--blue);color:#fff;padding:14px 16px;display:flex;align-items:center;gap:10px;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(27,79,138,.3)}
@@ -33,6 +32,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;b
 .btn-primary{background:var(--blue);color:#fff}
 .btn-green{background:var(--green);color:#fff}
 .btn-red{background:var(--red);color:#fff}
+.btn-orange{background:var(--orange);color:#fff}
 .btn-gray{background:var(--gray-pale);color:var(--gray);border:1px solid var(--border)}
 .btn-outline{background:#fff;color:var(--blue);border:2px solid var(--blue)}
 .btn-sm{padding:7px 13px;font-size:12px;width:auto;display:inline-flex;align-items:center;gap:4px;border-radius:16px;border:none;cursor:pointer;font-weight:600}
@@ -61,33 +61,31 @@ textarea.inp{min-height:70px;resize:vertical}
 .pin-ok{background:var(--blue);color:#fff}
 /* HOME */
 .home-hdr{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;padding:20px 16px 28px;margin:-16px -16px 0}
-.stats-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.stat-box{background:rgba(255,255,255,.15);border-radius:10px;padding:12px;text-align:center}
-.stat-num{font-size:26px;font-weight:700}
-.stat-lbl{font-size:11px;opacity:.85;margin-top:2px}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat-box{background:rgba(255,255,255,.15);border-radius:10px;padding:10px;text-align:center}
+.stat-num{font-size:22px;font-weight:700}
+.stat-lbl{font-size:10px;opacity:.85;margin-top:2px}
 .quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:16px 0 12px}
 .quick-btn{padding:16px;border:none;border-radius:var(--r);font-size:15px;font-weight:700;cursor:pointer;color:#fff;transition:.15s}
 .quick-btn:active{transform:scale(.97)}
 .qbci{background:linear-gradient(135deg,#1A7A4A,#22A65E)}
 .qbco{background:linear-gradient(135deg,#C0392B,#E74C3C)}
 .qbi{font-size:24px;display:block;margin-bottom:4px}
+/* ALERT BADGE */
+.alert-badge{background:var(--red);color:#fff;border-radius:50%;width:20px;height:20px;font-size:11px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;margin-left:6px}
 /* LIST */
 .list-item{display:flex;align-items:center;gap:12px;padding:14px;background:#fff;border-radius:var(--r2);margin-bottom:8px;box-shadow:var(--shadow);cursor:pointer;transition:.15s}
 .list-item:active{background:var(--blue-pale)}
 .lico{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
-.lico-b{background:var(--blue-pale)}
-.lico-g{background:var(--green-pale)}
-.lico-o{background:var(--orange-pale)}
+.lico-b{background:var(--blue-pale)}.lico-g{background:var(--green-pale)}.lico-o{background:var(--orange-pale)}.lico-r{background:var(--red-pale)}
 .list-info{flex:1;min-width:0}
 .list-title{font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .list-sub{font-size:12px;color:var(--gray);margin-top:2px}
 /* BADGE */
 .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600}
-.bg{background:var(--green-pale);color:var(--green)}
-.br{background:var(--red-pale);color:var(--red)}
-.bb{background:var(--blue-pale);color:var(--blue)}
-.bo{background:var(--orange-pale);color:var(--orange)}
-.bx{background:var(--gray-pale);color:var(--gray)}
+.bg{background:var(--green-pale);color:var(--green)}.br{background:var(--red-pale);color:var(--red)}
+.bb{background:var(--blue-pale);color:var(--blue)}.bo{background:var(--orange-pale);color:var(--orange)}
+.bx{background:var(--gray-pale);color:var(--gray)}.by{background:#fefce8;color:#854d0e}
 /* TABS */
 .tabs{display:flex;background:#fff;border-radius:var(--r2);padding:4px;gap:4px;margin-bottom:14px;box-shadow:var(--shadow)}
 .tab{flex:1;padding:9px;text-align:center;border:none;background:none;border-radius:6px;font-size:13px;cursor:pointer;font-weight:500;color:var(--gray)}
@@ -99,14 +97,10 @@ textarea.inp{min-height:70px;resize:vertical}
 /* KHU VUC */
 .kv-group{margin-bottom:14px}
 .kv-hdr{background:var(--blue-pale);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.kv-name{font-size:13px;font-weight:700;color:var(--blue);flex:1;cursor:pointer;outline:none;border:none;background:transparent;font-family:inherit}
-.kv-name-edit{font-size:13px;font-weight:700;color:var(--blue);flex:1;border:1.5px solid var(--blue);border-radius:6px;padding:4px 8px;outline:none;background:#fff;font-family:inherit}
 .kv-actions{display:flex;gap:6px;flex-shrink:0}
 /* HANG MUC */
 .hm-card{background:#fff;border-radius:var(--r2);border:1.5px solid var(--border);margin-bottom:8px;overflow:hidden;transition:border-color .2s}
-.hm-card.s-tot{border-color:#86efac}
-.hm-card.s-xuoc{border-color:#fde047}
-.hm-card.s-hong{border-color:#fca5a5}
+.hm-card.s-tot{border-color:#86efac}.hm-card.s-xuoc{border-color:#fde047}.hm-card.s-hong{border-color:#fca5a5}
 .hm-hdr{padding:11px 14px;display:flex;align-items:center;gap:8px;cursor:pointer}
 .hm-name{font-size:14px;font-weight:600;flex:1}
 .hm-badge{font-size:11px;font-weight:600;padding:3px 8px;border-radius:10px;flex-shrink:0}
@@ -123,7 +117,6 @@ textarea.inp{min-height:70px;resize:vertical}
 .photo-thumb img{width:100%;height:100%;object-fit:cover}
 .photo-del{position:absolute;top:2px;right:2px;background:rgba(0,0,0,.65);color:#fff;border:none;border-radius:50%;width:20px;height:20px;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .photo-ts{position:absolute;bottom:0;left:0;right:0;background:rgba(0,0,0,.6);color:#fff;font-size:9px;padding:2px 3px;text-align:center}
-.photo-btns{display:flex;gap:6px;margin:6px 0}
 /* PREVIEW */
 .prev-row{display:flex;gap:8px;padding:6px 0;border-bottom:1px solid var(--gray-pale);font-size:13px}
 .prev-lbl{color:var(--gray);width:130px;flex-shrink:0}
@@ -135,7 +128,7 @@ textarea.inp{min-height:70px;resize:vertical}
 .money-wrap{position:relative}
 .money-wrap .inp{padding-right:50px}
 .money-unit{position:absolute;right:12px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--gray2);font-weight:500}
-.money-display{font-size:12px;color:var(--blue);margin-top:3px;font-weight:600}
+.money-display{font-size:12px;color:var(--blue);margin-top:3px;font-weight:600;min-height:16px}
 /* MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;display:flex;align-items:flex-end;justify-content:center;opacity:0;pointer-events:none;transition:.25s}
 .modal-overlay.open{opacity:1;pointer-events:all}
@@ -145,15 +138,18 @@ textarea.inp{min-height:70px;resize:vertical}
 /* TOAST */
 .toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(20px);background:#1a2332;color:#fff;padding:12px 20px;border-radius:10px;font-size:14px;z-index:999;opacity:0;transition:all .3s;pointer-events:none;max-width:90vw;text-align:center}
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.toast.tok{background:var(--green)}
-.toast.terr{background:var(--red)}
+.toast.tok{background:var(--green)}.toast.terr{background:var(--red)}.toast.twarn{background:var(--orange)}
 .spinner{text-align:center;padding:40px;color:var(--gray);font-size:14px}
 input[type=file]{display:none}
-.divider{height:1px;background:var(--gray-pale);margin:12px 0}
 .add-kv-btn{background:var(--blue);color:#fff;border:none;padding:11px;border-radius:var(--r2);font-size:13px;font-weight:600;cursor:pointer;width:100%;margin-top:4px}
 .ban-giao-row{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .ban-giao-row label{font-size:13px;color:var(--gray);font-weight:500;width:130px;flex-shrink:0}
 .ban-giao-row .inp{flex:1;padding:10px 12px}
+/* DUYET CARD */
+.duyet-card{background:#fff;border-radius:var(--r);border:2px solid var(--orange);padding:16px;margin-bottom:12px;box-shadow:var(--shadow)}
+.duyet-card-hdr{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.notify-dot{width:10px;height:10px;border-radius:50%;background:var(--red);flex-shrink:0;animation:pulse 1.5s infinite}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(1.3);opacity:.7}}
 </style>
 </head>
 <body>
@@ -163,7 +159,7 @@ input[type=file]{display:none}
 <div id="modal-kv" class="modal-overlay">
   <div class="modal-box">
     <div class="modal-title" id="modal-kv-title">➕ Thêm khu vực</div>
-    <input id="modal-kv-inp" class="inp" placeholder="VD: Phòng làm việc, Kho..." style="margin-bottom:10px">
+    <input id="modal-kv-inp" class="inp" placeholder="VD: Phòng làm việc..." style="margin-bottom:10px">
     <button class="btn btn-primary" onclick="confirmKV()">Lưu</button>
     <button class="btn btn-gray" style="margin-top:8px" onclick="closeModal('modal-kv')">Huỷ</button>
   </div>
@@ -171,7 +167,7 @@ input[type=file]{display:none}
 <div id="modal-hm" class="modal-overlay">
   <div class="modal-box">
     <div class="modal-title" id="modal-hm-title">➕ Thêm hạng mục</div>
-    <input id="modal-hm-inp" class="inp" placeholder="VD: Đèn âm trần, Kệ TV..." style="margin-bottom:10px">
+    <input id="modal-hm-inp" class="inp" placeholder="VD: Đèn âm trần..." style="margin-bottom:10px">
     <button class="btn btn-primary" onclick="confirmHM()">Lưu</button>
     <button class="btn btn-gray" style="margin-top:8px" onclick="closeModal('modal-hm')">Huỷ</button>
   </div>
@@ -215,10 +211,24 @@ input[type=file]{display:none}
       <div style="font-size:22px;font-weight:700;margin-bottom:16px">Xin chào! 👋</div>
       <div class="stats-row" id="stats-box">
         <div class="stat-box"><div class="stat-num">—</div><div class="stat-lbl">Biên bản</div></div>
+        <div class="stat-box"><div class="stat-num" id="stat-cho-duyet" style="color:#fde047">—</div><div class="stat-lbl">Chờ duyệt</div></div>
         <div class="stat-box"><div class="stat-num">—</div><div class="stat-lbl">Căn hộ</div></div>
       </div>
     </div>
     <div style="height:16px"></div>
+
+    <!-- QL: Chờ duyệt alert -->
+    <div id="ql-cho-duyet-section" class="hidden">
+      <div class="list-item" onclick="goScreen('screen-cho-duyet')" style="border:2px solid var(--orange);background:var(--orange-pale)">
+        <div class="lico lico-r">🔔</div>
+        <div class="list-info">
+          <div class="list-title" style="color:var(--orange)">Biên bản chờ duyệt</div>
+          <div class="list-sub" id="cho-duyet-count-text">Đang tải...</div>
+        </div>
+        <span style="color:var(--orange);font-size:20px">›</span>
+      </div>
+    </div>
+
     <div class="quick-grid">
       <button class="quick-btn qbci" onclick="goCreateBB('CHECKIN')"><span class="qbi">✅</span>Check-in</button>
       <button class="quick-btn qbco" onclick="goCreateBB('CHECKOUT')"><span class="qbi">🔑</span>Check-out</button>
@@ -236,6 +246,15 @@ input[type=file]{display:none}
   </div>
 </div>
 
+<!-- CHỜ DUYỆT (QL) -->
+<div id="screen-cho-duyet" class="hidden">
+  <div class="nav">
+    <button class="nav-back" onclick="goScreen('screen-home')">‹</button>
+    <h1>🔔 Chờ duyệt</h1>
+  </div>
+  <div class="page" id="cho-duyet-list"><div class="spinner">Đang tải...</div></div>
+</div>
+
 <!-- BIÊN BẢN LIST -->
 <div id="screen-bienban" class="hidden">
   <div class="nav">
@@ -248,6 +267,7 @@ input[type=file]{display:none}
       <button class="tab active" onclick="fBB('TatCa',this)">Tất cả</button>
       <button class="tab" onclick="fBB('CHECKIN',this)">Check-in</button>
       <button class="tab" onclick="fBB('CHECKOUT',this)">Check-out</button>
+      <button class="tab" onclick="fBB('CHO_DUYET',this)">Chờ duyệt</button>
     </div>
     <div id="bb-list"><div class="spinner">Đang tải...</div></div>
   </div>
@@ -328,27 +348,18 @@ input[type=file]{display:none}
         <div id="bb-coc-disp" class="money-display"></div>
       </div>
     </div>
-
     <div class="card">
       <div class="card-title">2 · Kiểm kê tình trạng</div>
       <div id="kv-container"><div class="spinner" style="padding:20px">Chọn căn hộ để tải hạng mục...</div></div>
       <button class="add-kv-btn" onclick="openAddKV()">➕ Thêm khu vực</button>
     </div>
-
     <div class="card">
       <div class="card-title">3 · Chỉ số công tơ</div>
       <div class="form-row">
-        <div class="form-group">
-          <label>⚡ Điện (kWh)</label>
-          <input id="bb-dien" class="inp" type="number" placeholder="0">
-        </div>
-        <div class="form-group">
-          <label>💧 Nước (m³)</label>
-          <input id="bb-nuoc" class="inp" type="number" placeholder="0">
-        </div>
+        <div class="form-group"><label>⚡ Điện (kWh)</label><input id="bb-dien" class="inp" type="number" placeholder="0"></div>
+        <div class="form-group"><label>💧 Nước (m³)</label><input id="bb-nuoc" class="inp" type="number" placeholder="0"></div>
       </div>
     </div>
-
     <div class="card">
       <div class="card-title">4 · Vật dụng bàn giao</div>
       <div class="ban-giao-row"><label>🗝 Chìa khóa cơ</label><input id="bg-ck" class="inp" type="number" value="2" min="0"></div>
@@ -356,12 +367,10 @@ input[type=file]{display:none}
       <div class="ban-giao-row"><label>📡 Remote</label><input id="bg-rm" class="inp" type="number" value="1" min="0"></div>
       <div class="ban-giao-row"><label>📝 Khác</label><input id="bg-kh" class="inp" placeholder="Mô tả..."></div>
     </div>
-
     <div class="card">
       <div class="card-title">5 · Ghi chú</div>
       <textarea id="bb-gc" class="inp" placeholder="Ghi chú thêm..."></textarea>
     </div>
-
     <button class="btn btn-primary" onclick="goPreview()">👁 Xem biên bản nháp</button>
     <div style="height:20px"></div>
   </div>
@@ -372,7 +381,7 @@ input[type=file]{display:none}
   <div class="nav">
     <button class="nav-back" onclick="goScreen('screen-create-bb')">‹</button>
     <h1>Xem biên bản</h1>
-    <button class="nav-action" onclick="submitBB()">✅ Hoàn tất</button>
+    <button class="nav-action" id="preview-submit-btn" onclick="submitBB()">📤 Gửi duyệt</button>
   </div>
   <div class="page" id="preview-content"><div class="spinner">Đang tạo...</div></div>
 </div>
@@ -386,17 +395,77 @@ input[type=file]{display:none}
   <div class="page" id="bb-detail-content"><div class="spinner">Đang tải...</div></div>
 </div>
 
-<!-- KẾT QUẢ GỬI EMAIL -->
-<div id="screen-email-done" class="hidden">
+<!-- CHECKOUT -->
+<div id="screen-checkout" class="hidden">
+  <div class="nav">
+    <button class="nav-back" onclick="goScreen('screen-bb-detail')">‹</button>
+    <h1 id="co-title">🔑 Check-out</h1>
+  </div>
+  <div class="page">
+    <div class="card" style="border-left:4px solid var(--orange)">
+      <div class="card-title">Thông tin check-out</div>
+      <div id="co-info"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">So sánh tình trạng (Check-in → Check-out)</div>
+      <div id="co-hang-muc"></div>
+    </div>
+    <div class="card">
+      <div class="card-title">⚡ Điện nước tháng cuối</div>
+      <div class="form-row">
+        <div class="form-group"><label>Điện đầu kỳ (kWh)</label><input id="co-dien-dau" class="inp" type="number" placeholder="0"></div>
+        <div class="form-group"><label>Điện cuối kỳ (kWh)</label><input id="co-dien-cuoi" class="inp" type="number" placeholder="0" oninput="calcCO()"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Nước đầu kỳ (m³)</label><input id="co-nuoc-dau" class="inp" type="number" placeholder="0"></div>
+        <div class="form-group"><label>Nước cuối kỳ (m³)</label><input id="co-nuoc-cuoi" class="inp" type="number" placeholder="0" oninput="calcCO()"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Đơn giá điện (đ/kWh)</label><input id="co-gia-dien" class="inp" type="number" value="3500" oninput="calcCO()"></div>
+        <div class="form-group"><label>Đơn giá nước (đ/m³)</label><input id="co-gia-nuoc" class="inp" type="number" value="15000" oninput="calcCO()"></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-title">💰 Phí còn thiếu</div>
+      <div class="form-group"><label>Phí quản lý</label><div class="money-wrap"><input id="co-phi-ql" class="inp" type="number" placeholder="0" oninput="calcCO();fmtMoney('co-phi-ql','co-phi-ql-d')"><span class="money-unit">VND</span></div><div id="co-phi-ql-d" class="money-display"></div></div>
+      <div class="form-group"><label>Phí gửi xe</label><div class="money-wrap"><input id="co-phi-xe" class="inp" type="number" placeholder="0" oninput="calcCO();fmtMoney('co-phi-xe','co-phi-xe-d')"><span class="money-unit">VND</span></div><div id="co-phi-xe-d" class="money-display"></div></div>
+      <div class="form-group"><label>Phí internet</label><div class="money-wrap"><input id="co-phi-net" class="inp" type="number" placeholder="0" oninput="calcCO();fmtMoney('co-phi-net','co-phi-net-d')"><span class="money-unit">VND</span></div><div id="co-phi-net-d" class="money-display"></div></div>
+      <div class="form-group"><label>Phí khác</label><div class="money-wrap"><input id="co-phi-khac" class="inp" type="number" placeholder="0" oninput="calcCO();fmtMoney('co-phi-khac','co-phi-khac-d')"><span class="money-unit">VND</span></div><div id="co-phi-khac-d" class="money-display"></div></div>
+    </div>
+    <div class="card">
+      <div class="card-title">🗝️ Vật dụng thu lại</div>
+      <div class="ban-giao-row"><label>🗝 Chìa khóa</label><input id="co-ck" class="inp" type="number" value="2" min="0"></div>
+      <div class="ban-giao-row"><label>💳 Thẻ từ/xe</label><input id="co-tt" class="inp" type="number" value="2" min="0"></div>
+      <div class="ban-giao-row"><label>📡 Remote</label><input id="co-rm" class="inp" type="number" value="1" min="0"></div>
+    </div>
+    <div class="card" style="border:2px solid var(--blue)">
+      <div class="card-title">📊 Quyết toán tiền cọc</div>
+      <div class="prev-row"><span class="prev-lbl">Tiền đặt cọc</span><span class="prev-val" id="qt-coc" style="color:var(--green);font-weight:700">—</span></div>
+      <div class="prev-row"><span class="prev-lbl">Tiền điện</span><span class="prev-val" id="qt-dien" style="color:var(--red)">—</span></div>
+      <div class="prev-row"><span class="prev-lbl">Tiền nước</span><span class="prev-val" id="qt-nuoc" style="color:var(--red)">—</span></div>
+      <div class="prev-row"><span class="prev-lbl">Phí còn thiếu</span><span class="prev-val" id="qt-phi" style="color:var(--red)">—</span></div>
+      <div class="prev-row"><span class="prev-lbl">Bồi thường HH</span><span class="prev-val" id="qt-boi" style="color:var(--red)">Chờ QL xác nhận</span></div>
+      <div style="border-top:2px solid var(--blue);margin-top:10px;padding-top:10px">
+        <div class="prev-row"><span class="prev-lbl" style="font-weight:700;color:var(--blue)">Hoàn lại khách</span><span class="prev-val" id="qt-hoan" style="font-size:18px;font-weight:700;color:var(--blue)">—</span></div>
+      </div>
+    </div>
+    <div class="form-group"><label>Ghi chú</label><textarea id="co-gc" class="inp" placeholder="Ghi chú thêm..."></textarea></div>
+    <button class="btn btn-orange" onclick="submitCO()">📤 Gửi báo cáo cho Quản lý</button>
+    <div style="height:20px"></div>
+  </div>
+</div>
+
+<!-- DONE -->
+<div id="screen-done" class="hidden">
   <div class="nav">
     <button class="nav-back" onclick="goScreen('screen-home')">‹</button>
     <h1>Hoàn tất</h1>
   </div>
   <div class="page">
     <div class="card" style="text-align:center;padding:32px">
-      <div style="font-size:60px;margin-bottom:16px">✅</div>
-      <div style="font-size:20px;font-weight:700;color:var(--green);margin-bottom:8px">Biên bản đã lưu!</div>
-      <div id="email-done-msg" style="font-size:14px;color:var(--gray);margin-bottom:24px"></div>
+      <div style="font-size:60px;margin-bottom:16px" id="done-icon">✅</div>
+      <div style="font-size:20px;font-weight:700;margin-bottom:8px" id="done-title">Xong!</div>
+      <div id="done-msg" style="font-size:14px;color:var(--gray);margin-bottom:24px"></div>
       <button class="btn btn-primary" onclick="goScreen('screen-home')">Về trang chủ</button>
     </div>
   </div>
@@ -404,36 +473,42 @@ input[type=file]{display:none}
 
 <script>
 const API='https://hcarevietnam.vn/bangiao/api';
+const VAPID_PUBLIC='BNdwqIqUFBHOiCHjl2jbnJE0uI7_PBwgfZuFsdTZSUddTKbIfaoQH_q4mNAlAZHsbhQ4rIdswmHir7N4WvsjVGY';
 let token=localStorage.getItem('hcbg_token')||'';
 let user=JSON.parse(localStorage.getItem('hcbg_user')||'null');
-let bbType='CHECKIN', allBB=[], allCan=[], kvData={}, _editKV='', _editHMidx=-1;
+let bbType='CHECKIN',allBB=[],allCan=[],kvData={},currentBB=null;
+let _kvModal='',_hmModalKV='',_hmModalIdx=-1;
 const fileInps={};
 
 // UTILS
 function toast(msg,type='',dur=3000){
   const t=document.getElementById('toast');
-  t.textContent=msg; t.className='toast show'+(type?' t'+type:'');
-  clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('show'),dur);
+  t.textContent=msg;t.className='toast show'+(type?' t'+type:'');
+  clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove('show'),dur);
 }
 function goScreen(id){
   document.querySelectorAll('[id^="screen-"]').forEach(s=>s.classList.add('hidden'));
-  document.getElementById(id).classList.remove('hidden'); window.scrollTo(0,0);
-  if(id==='screen-home') loadStats();
-  if(id==='screen-bienban') loadBB();
-  if(id==='screen-canho') loadCan();
+  document.getElementById(id).classList.remove('hidden');window.scrollTo(0,0);
+  if(id==='screen-home'){loadStats();loadChoDuyet();}
+  if(id==='screen-bienban')loadBB();
+  if(id==='screen-canho')loadCan();
+  if(id==='screen-cho-duyet')loadChoDuyetList();
 }
 async function api(path,method='GET',body=null){
   const opts={method,headers:{'Content-Type':'application/json','Authorization':'Bearer '+token}};
-  if(body) opts.body=JSON.stringify(body);
-  const r=await fetch(API+path,opts); return r.json();
+  if(body)opts.body=JSON.stringify(body);
+  const r=await fetch(API+path,opts);return r.json();
 }
 function fmtMoney(inputId,dispId){
-  const v=document.getElementById(inputId).value;
+  const v=document.getElementById(inputId)?.value;
   const n=parseInt(v)||0;
-  document.getElementById(dispId).textContent=n>0?n.toLocaleString('vi-VN')+' đồng':'';
+  const el=document.getElementById(dispId);
+  if(el)el.textContent=n>0?n.toLocaleString('vi-VN')+' đồng':'';
 }
 function fmt(d){if(!d)return'—';return new Date(d).toLocaleDateString('vi-VN');}
-function moneyStr(n){if(!n)return'—';return Number(n).toLocaleString('vi-VN')+' đ';}
+function moneyStr(n){if(!n||n==0)return'—';return Number(n).toLocaleString('vi-VN')+' đ';}
+function esc(s){return s.replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
+function encK(s){return btoa(unescape(encodeURIComponent(s))).replace(/[^a-zA-Z0-9]/g,'').slice(0,20);}
 function openModal(id){document.getElementById(id).classList.add('open');}
 function closeModal(id){document.getElementById(id).classList.remove('open');}
 document.addEventListener('click',e=>{if(e.target.classList.contains('modal-overlay'))e.target.classList.remove('open');});
@@ -453,35 +528,140 @@ async function doLogin(){
     const r=await fetch(API+'/auth/login',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ma_nv:ma,pin})});
     const d=await r.json();
     if(d.thanhCong){
-      token=d.token; user=d.user;
-      localStorage.setItem('hcbg_token',token); localStorage.setItem('hcbg_user',JSON.stringify(user));
+      token=d.token;user=d.user;
+      localStorage.setItem('hcbg_token',token);localStorage.setItem('hcbg_user',JSON.stringify(user));
       document.getElementById('home-user').textContent=user.ten_nv;
       document.getElementById('role-badge').textContent=user.vai_tro==='QuanLy'?'Quản lý':'Nhân viên';
-      await loadAllCan(); goScreen('screen-home'); e.textContent='';
+      await loadAllCan();
+      goScreen('screen-home');
+      e.textContent='';
+      // Đăng ký push notification
+      registerPush();
     }else{e.textContent=d.thongBao||'Sai mã NV hoặc PIN';pin='';upPin();}
   }catch(err){e.textContent='Lỗi kết nối';}
 }
 function doLogout(){
   if(!confirm('Đăng xuất?'))return;
   token='';user=null;pin='';upPin();
-  localStorage.removeItem('hcbg_token');localStorage.removeItem('hcbg_user');goScreen('screen-login');
+  localStorage.removeItem('hcbg_token');localStorage.removeItem('hcbg_user');
+  goScreen('screen-login');
+}
+
+// PUSH NOTIFICATION
+async function registerPush(){
+  if(!('serviceWorker' in navigator)||!('PushManager' in window))return;
+  try{
+    const reg=await navigator.serviceWorker.register('/bangiao/sw.js',{scope:'/bangiao/'});
+    await navigator.serviceWorker.ready;
+    const perm=await Notification.requestPermission();
+    if(perm!=='granted')return;
+    const sub=await reg.pushManager.subscribe({
+      userVisibleOnly:true,
+      applicationServerKey:urlBase64ToUint8Array(VAPID_PUBLIC)
+    });
+    await api('/notify/subscribe','POST',{subscription:sub.toJSON()});
+  }catch(e){console.log('Push reg error:',e);}
+}
+function urlBase64ToUint8Array(b64){
+  const pad='='.repeat((4-b64.length%4)%4);
+  const raw=atob((b64+pad).replace(/-/g,'+').replace(/_/g,'/'));
+  return new Uint8Array([...raw].map(c=>c.charCodeAt(0)));
 }
 
 // STATS
 async function loadStats(){
   try{
-    const r=await api('/thong-ke/tong-quan'); const d=r.data||{};
+    const r=await api('/thong-ke/tong-quan');const d=r.data||{};
     document.getElementById('stats-box').innerHTML=`
       <div class="stat-box"><div class="stat-num">${d.tong_bien_ban||0}</div><div class="stat-lbl">Biên bản</div></div>
+      <div class="stat-box"><div class="stat-num" style="color:#fde047" id="stat-cho-duyet">—</div><div class="stat-lbl">Chờ duyệt</div></div>
       <div class="stat-box"><div class="stat-num">${d.tong_can_ho||0}</div><div class="stat-lbl">Căn hộ</div></div>`;
+    loadChoDuyet();
   }catch(e){}
+}
+
+async function loadChoDuyet(){
+  try{
+    const r=await api('/bien-ban?trang_thai=CHO_DUYET');
+    const list=r.data||[];
+    const n=list.length;
+    const el=document.getElementById('stat-cho-duyet');
+    if(el)el.textContent=n;
+    const qlSec=document.getElementById('ql-cho-duyet-section');
+    const countTxt=document.getElementById('cho-duyet-count-text');
+    if(user?.vai_tro==='QuanLy'&&n>0){
+      if(qlSec)qlSec.classList.remove('hidden');
+      if(countTxt)countTxt.textContent=`${n} biên bản cần duyệt`;
+    }else{
+      if(qlSec)qlSec.classList.add('hidden');
+    }
+  }catch(e){}
+}
+
+async function loadChoDuyetList(){
+  document.getElementById('cho-duyet-list').innerHTML='<div class="spinner">Đang tải...</div>';
+  try{
+    const r=await api('/bien-ban?trang_thai=CHO_DUYET');
+    const list=r.data||[];
+    if(!list.length){document.getElementById('cho-duyet-list').innerHTML='<div class="spinner">✅ Không có biên bản chờ duyệt</div>';return;}
+    document.getElementById('cho-duyet-list').innerHTML=list.map(b=>`
+      <div class="duyet-card" onclick="viewBB(${b.id})">
+        <div class="duyet-card-hdr">
+          <div class="notify-dot"></div>
+          <span class="badge by">⏳ Chờ duyệt</span>
+          <span class="badge ${b.loai==='CHECKIN'?'bg':'bo'}">${b.loai}</span>
+        </div>
+        <div class="prev-row"><span class="prev-lbl">Căn hộ</span><span class="prev-val" style="font-weight:700;color:var(--blue)">${b.ma_can}</span></div>
+        <div class="prev-row"><span class="prev-lbl">Khách thuê</span><span class="prev-val">${b.ten_khach}</span></div>
+        <div class="prev-row"><span class="prev-lbl">NV tạo</span><span class="prev-val">${b.nhan_vien||'—'}</span></div>
+        <div class="prev-row"><span class="prev-lbl">Ngày</span><span class="prev-val">${fmt(b.ngay_thuc_hien)}</span></div>
+        <div style="margin-top:12px;display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <button class="btn btn-green" onclick="event.stopPropagation();duyetBB(${b.id},'${b.ma_can}','${b.ten_khach}','${b.loai}')">✅ Duyệt</button>
+          <button class="btn btn-outline" onclick="event.stopPropagation();viewBB(${b.id})">👁 Xem</button>
+        </div>
+      </div>`).join('');
+  }catch(e){document.getElementById('cho-duyet-list').innerHTML='<div class="spinner">Lỗi tải dữ liệu</div>';}
+}
+
+async function duyetBB(id,maCan,tenKhach,loai){
+  if(!confirm(`Duyệt biên bản ${loai} căn ${maCan} - ${tenKhach}?`))return;
+  toast('⏳ Đang duyệt...');
+  try{
+    // Cập nhật trạng thái
+    const r=await api('/bien-ban/'+id+'/hoan-tat','POST');
+    if(!r.thanhCong){toast('❌ '+r.thongBao,'terr');return;}
+
+    // Lấy thông tin BB để gửi email
+    const bbR=await api('/bien-ban/'+id);
+    const b=bbR.data;
+    let du={};try{du=typeof b.du_lieu_json==='string'?JSON.parse(b.du_lieu_json):(b.du_lieu_json||{});}catch(e){}
+
+    if(du.emailKhach){
+      const ngayFmt=fmt(b.ngay_thuc_hien);
+      const isUpdate=du.isUpdate||false;
+      const tieuDe=isUpdate
+        ?`Update Tình Trạng Check In Căn Hộ ${b.ma_can} Ngày ${ngayFmt}`
+        :`Biên Bản Check In Căn Hộ ${b.ma_can} Ngày ${ngayFmt}`;
+      toast('📧 Đang gửi email cho khách...');
+      await api('/email/gui-bien-ban','POST',{
+        email_khach:du.emailKhach,ten_khach:b.ten_khach,
+        ma_can:b.ma_can,loai:b.loai,ngay:ngayFmt,
+        hang_muc_list:du.khuVuc,
+        tieu_de:tieuDe
+      });
+    }
+
+    toast('✅ Đã duyệt và gửi email!','tok');
+    loadChoDuyetList();
+    loadStats();
+  }catch(e){toast('Lỗi kết nối','terr');}
 }
 
 // CĂN HỘ
 async function loadAllCan(){try{const r=await api('/can-ho');allCan=r.data||[];}catch(e){}}
 async function loadCan(){
   document.getElementById('canho-list').innerHTML='<div class="spinner">Đang tải...</div>';
-  if(!allCan.length)await loadAllCan(); renderCan(allCan);
+  if(!allCan.length)await loadAllCan();renderCan(allCan);
 }
 function fCanHo(){const q=document.getElementById('canho-search').value.toLowerCase();renderCan(allCan.filter(c=>c.ma_can.toLowerCase().includes(q)||c.ten_toa_nha.toLowerCase().includes(q)));}
 function renderCan(list){
@@ -499,27 +679,31 @@ async function loadBB(){
 }
 function fBB(f,el){bbFil=f;document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));el.classList.add('active');renderBB();}
 function renderBB(){
-  const list=bbFil==='TatCa'?allBB:allBB.filter(b=>b.loai===bbFil);
+  let list=allBB;
+  if(bbFil==='CHECKIN')list=allBB.filter(b=>b.loai==='CHECKIN');
+  else if(bbFil==='CHECKOUT')list=allBB.filter(b=>b.loai==='CHECKOUT');
+  else if(bbFil==='CHO_DUYET')list=allBB.filter(b=>b.trang_thai==='CHO_DUYET');
   if(!list.length){document.getElementById('bb-list').innerHTML='<div class="spinner">Chưa có biên bản</div>';return;}
+  const stBadge=(tt)=>tt==='HOANTAT'?'<span class="badge bg">✅ Xong</span>':tt==='CHO_DUYET'?'<span class="badge by">⏳ Chờ duyệt</span>':'<span class="badge bx">📝 Nháp</span>';
   document.getElementById('bb-list').innerHTML=list.map(b=>`
     <div class="list-item" onclick="viewBB(${b.id})">
       <div class="lico ${b.loai==='CHECKIN'?'lico-g':'lico-o'}">${b.loai==='CHECKIN'?'✅':'🔑'}</div>
-      <div class="list-info"><div class="list-title">${b.ma_can} — ${b.ten_khach}</div><div class="list-sub">${fmt(b.ngay_thuc_hien)} · HĐ: ${b.so_hd||'—'}</div></div>
-      <span class="badge ${b.trang_thai==='HOANTAT'?'bg':'bx'}">${b.trang_thai==='HOANTAT'?'Xong':'Nháp'}</span>
+      <div class="list-info"><div class="list-title">${b.ma_can} — ${b.ten_khach}</div><div class="list-sub">${fmt(b.ngay_thuc_hien)} · ${b.so_hd||'—'}</div></div>
+      ${stBadge(b.trang_thai)}
     </div>`).join('');
 }
 
 // HẠNG MỤC DEFAULT
 function getDefault(soPn){
   const r={};
-  const mk=(items)=>items.map(n=>({name:n,status:'TOT',photos:[],gc:''}));
+  const mk=items=>items.map(n=>({name:n,status:'TOT',photos:[],gc:''}));
   r['Phòng khách']=mk(['Sàn','Tường & Trần','Cửa ra vào','Cửa sổ & Kính','Đèn','Máy lạnh + remote','Rèm','Sofa','Bàn trà','TV + remote']);
   r['Bếp']=mk(['Bếp từ / Bếp gas','Hút mùi','Tủ lạnh','Lò vi sóng','Chậu rửa + vòi','Tủ bếp','Mặt đá bếp']);
-  for(let i=1;i<=soPn;i++) r[`Phòng ngủ${soPn>1?' '+i:''}`]=mk(['Giường + nệm','Tủ quần áo','Máy lạnh + remote','Rèm','Bàn & Ghế','Đèn','Tường & Sàn']);
+  for(let i=1;i<=soPn;i++)r[`Phòng ngủ${soPn>1?' '+i:''}`]=mk(['Giường + nệm','Tủ quần áo','Máy lạnh + remote','Rèm','Bàn & Ghế','Đèn','Tường & Sàn']);
   const wc=soPn<=1?1:2;
-  for(let i=1;i<=wc;i++) r[`WC${wc>1?' '+i:''}`]=mk(['Bồn cầu','Lavabo + vòi','Gương','Vòi sen / Máy nước nóng','Quạt hút','Sàn & Tường WC','Ron silicon']);
+  for(let i=1;i<=wc;i++)r[`WC${wc>1?' '+i:''}`]=mk(['Bồn cầu','Lavabo + vòi','Gương','Vòi sen / Máy nước nóng','Quạt hút','Sàn & Tường WC','Ron silicon']);
   r['Logia']=mk(['Máy giặt','Sàn logia','Thoát nước','Lan can']);
-  if(soPn>=2) r['Ban công']=mk(['Sàn ban công','Lan can','Cửa kính ban công']);
+  if(soPn>=2)r['Ban công']=mk(['Sàn ban công','Lan can','Cửa kính ban công']);
   return r;
 }
 
@@ -528,24 +712,28 @@ function goCreateBB(loai){
   bbType=loai;
   document.getElementById('create-title').textContent=loai==='CHECKIN'?'✅ Check-in':'🔑 Check-out';
   document.getElementById('bb-ngay-vao').value=new Date().toISOString().slice(0,10);
+  document.getElementById('preview-submit-btn').textContent='📤 Gửi duyệt';
   kvData={};
   const sel=document.getElementById('bb-can');
   sel.innerHTML='<option value="">— Chọn căn hộ —</option>';
   allCan.forEach(c=>{sel.innerHTML+=`<option value="${c.ma_can}" data-pn="${c.so_pn}">${c.ma_can} — ${c.ten_toa_nha}</option>`;});
   document.getElementById('kv-container').innerHTML='<div class="spinner" style="padding:20px">Chọn căn hộ để tải hạng mục...</div>';
   document.getElementById('bb-coc-disp').textContent='';
+  ['bb-hd','bb-ten','bb-cccd','bb-sdt','bb-email','bb-gc','bb-dien','bb-nuoc','bg-kh'].forEach(id=>{const el=document.getElementById(id);if(el)el.value='';});
+  document.getElementById('bb-qt').value='Việt Nam';
+  document.getElementById('bb-ngay-het').value='';
+  document.getElementById('bb-coc').value='';
   goScreen('screen-create-bb');
 }
+
 function onCanChange(){
   const sel=document.getElementById('bb-can');
   const opt=sel.options[sel.selectedIndex];
   if(!opt?.value)return;
-  kvData=getDefault(parseInt(opt.dataset.pn)||2);
-  renderKV();
+  kvData=getDefault(parseInt(opt.dataset.pn)||2);renderKV();
 }
 
-// RENDER KHU VỰC
-function encK(s){return btoa(unescape(encodeURIComponent(s))).replace(/[^a-zA-Z0-9]/g,'').slice(0,20);}
+// RENDER KV
 function renderKV(){
   document.getElementById('kv-container').innerHTML=Object.entries(kvData).map(([kv,items])=>renderKVGroup(kv,items)).join('');
 }
@@ -553,8 +741,9 @@ function renderKVGroup(kv,items){
   return `<div class="kv-group" id="kvg-${encK(kv)}">
     <div class="kv-hdr">
       <span style="font-size:16px">🏷️</span>
-      <span class="kv-name" onclick="editKVName('${esc(kv)}')">${kv}</span>
+      <span style="font-size:13px;font-weight:700;color:var(--blue);flex:1">${kv}</span>
       <div class="kv-actions">
+        <button class="btn-sm btn-sm-blue" onclick="editKVName('${esc(kv)}')">✏️</button>
         <button class="btn-sm btn-sm-green" onclick="openAddHM('${esc(kv)}')">➕ Mục</button>
         <button class="btn-sm btn-sm-red" onclick="delKV('${esc(kv)}')">✕</button>
       </div>
@@ -566,19 +755,18 @@ function renderHM(kv,item,idx){
   const sc=item.status==='TOT'?'s-tot':item.status==='XUOC'?'s-xuoc':item.status==='HONG'?'s-hong':'';
   const sl=item.status==='TOT'?'✓ Tốt':item.status==='XUOC'?'⚠ Trầy xước':item.status==='HONG'?'✗ Hư hỏng':'— Không có';
   const sbc=item.status==='TOT'?'bg':item.status==='XUOC'?'bo':item.status==='HONG'?'br':'bx';
-  const photoSlots=item.photos.map((p,pi)=>`
-    <div class="photo-thumb">
-      <img src="${p.url}" onerror="this.src=''">
-      <div class="photo-ts">${p.ts||''}</div>
-      <button class="photo-del" onclick="delPhoto('${esc(kv)}',${idx},${pi})">✕</button>
-    </div>`).join('');
+  const photos=item.photos.map((p,pi)=>`<div class="photo-thumb">
+    <img src="${p.url}" onerror="this.src=''">
+    <div class="photo-ts">${p.ts||''}</div>
+    <button class="photo-del" onclick="delPhoto('${esc(kv)}',${idx},${pi})">✕</button>
+  </div>`).join('');
   const addBtn=item.photos.length<5?`<div style="display:flex;gap:6px;margin:6px 0">
-    <button class="btn-sm btn-sm-blue" onclick="trigPhoto('${esc(kv)}',${idx},'camera')">📷 Chụp hình</button>
-    <button class="btn-sm btn-sm-gray" onclick="trigPhoto('${esc(kv)}',${idx},'gallery')">🖼 Tải hình</button>
+    <button class="btn-sm btn-sm-blue" onclick="trigPhoto('${esc(kv)}',${idx},'camera')">📷 Chụp</button>
+    <button class="btn-sm btn-sm-gray" onclick="trigPhoto('${esc(kv)}',${idx},'gallery')">🖼 Tải</button>
   </div>`:'<div style="font-size:12px;color:var(--gray);margin:6px 0">Đã đủ 5 ảnh</div>';
   return `<div class="hm-card ${sc}" id="hmc-${encK(kv+idx)}">
     <div class="hm-hdr" onclick="togHM('${encK(kv+idx)}')">
-      <span class="hm-name" onclick="editHMName(event,'${esc(kv)}',${idx})">${item.name}</span>
+      <span class="hm-name">${item.name}</span>
       <span class="badge ${sbc} hm-badge">${sl}</span>
       <span style="color:var(--border);margin-left:4px">›</span>
     </div>
@@ -589,7 +777,7 @@ function renderHM(kv,item,idx){
         <span class="tt-opt ${item.status==='HONG'?'tt-hong':''}" onclick="setSt('${esc(kv)}',${idx},'HONG')">✗ Hư hỏng</span>
         <span class="tt-opt ${item.status==='KO'?'tt-ko':''}" onclick="setSt('${esc(kv)}',${idx},'KO')">— Không có</span>
       </div>
-      <div class="photo-grid">${photoSlots}</div>
+      <div class="photo-grid">${photos}</div>
       ${addBtn}
       <input class="inp" style="font-size:13px;padding:8px 10px;margin-top:4px" placeholder="Ghi chú hạng mục..."
         value="${item.gc||''}" oninput="kvData['${esc(kv)}'][${idx}].gc=this.value">
@@ -600,44 +788,29 @@ function renderHM(kv,item,idx){
     </div>
   </div>`;
 }
-function esc(s){return s.replace(/\\/g,'\\\\').replace(/'/g,"\\'");}
 function togHM(key){const b=document.getElementById('hmb-'+key);if(b)b.classList.toggle('hidden');}
 function setSt(kv,idx,st){kvData[kv][idx].status=st;refreshHM(kv,idx);}
 function refreshHM(kv,idx){
   const el=document.getElementById('hmc-'+encK(kv+idx));
   const open=!document.getElementById('hmb-'+encK(kv+idx))?.classList.contains('hidden');
-  if(el){
-    const tmp=document.createElement('div');tmp.innerHTML=renderHM(kv,kvData[kv][idx],idx);
-    el.replaceWith(tmp.firstChild);
-    if(open){const nb=document.getElementById('hmb-'+encK(kv+idx));if(nb)nb.classList.remove('hidden');}
-  }
+  if(el){const tmp=document.createElement('div');tmp.innerHTML=renderHM(kv,kvData[kv][idx],idx);el.replaceWith(tmp.firstChild);if(open){const nb=document.getElementById('hmb-'+encK(kv+idx));if(nb)nb.classList.remove('hidden');}}
 }
-
-// KV/HM EDIT
-let _kvModal='',_hmModalKV='',_hmModalIdx=-1;
+// KV/HM edit
 function openAddKV(){_kvModal='new';document.getElementById('modal-kv-title').textContent='➕ Thêm khu vực';document.getElementById('modal-kv-inp').value='';openModal('modal-kv');}
 function editKVName(kv){_kvModal=kv;document.getElementById('modal-kv-title').textContent='✏️ Đổi tên khu vực';document.getElementById('modal-kv-inp').value=kv;openModal('modal-kv');}
 function confirmKV(){
   const v=document.getElementById('modal-kv-inp').value.trim();
-  if(!v){toast('Nhập tên khu vực','err');return;}
-  if(_kvModal==='new'){if(kvData[v]){toast('Khu vực đã tồn tại','err');return;}kvData[v]=[];}
-  else{
-    if(_kvModal!==v){
-      const entries=Object.entries(kvData);
-      const newKvData={};
-      entries.forEach(([k,items])=>newKvData[k===_kvModal?v:k]=items);
-      kvData=newKvData;
-    }
-  }
+  if(!v){toast('Nhập tên khu vực','terr');return;}
+  if(_kvModal==='new'){if(kvData[v]){toast('Đã tồn tại','terr');return;}kvData[v]=[];}
+  else if(_kvModal!==v){const e=Object.entries(kvData);const nk={};e.forEach(([k,it])=>nk[k===_kvModal?v:k]=it);kvData=nk;}
   closeModal('modal-kv');renderKV();
 }
 function delKV(kv){if(!confirm(`Xóa khu vực "${kv}"?`))return;delete kvData[kv];renderKV();}
 function openAddHM(kv){_hmModalKV=kv;_hmModalIdx=-1;document.getElementById('modal-hm-title').textContent='➕ Thêm hạng mục';document.getElementById('modal-hm-inp').value='';openModal('modal-hm');}
-function editHMNameModal(kv,idx){_hmModalKV=kv;_hmModalIdx=idx;document.getElementById('modal-hm-title').textContent='✏️ Đổi tên hạng mục';document.getElementById('modal-hm-inp').value=kvData[kv][idx].name;openModal('modal-hm');}
-function editHMName(e,kv,idx){e.stopPropagation();}
+function editHMNameModal(kv,idx){_hmModalKV=kv;_hmModalIdx=idx;document.getElementById('modal-hm-title').textContent='✏️ Đổi tên';document.getElementById('modal-hm-inp').value=kvData[kv][idx].name;openModal('modal-hm');}
 function confirmHM(){
   const v=document.getElementById('modal-hm-inp').value.trim();
-  if(!v){toast('Nhập tên hạng mục','err');return;}
+  if(!v){toast('Nhập tên hạng mục','terr');return;}
   if(_hmModalIdx===-1)kvData[_hmModalKV].push({name:v,status:'TOT',photos:[],gc:''});
   else kvData[_hmModalKV][_hmModalIdx].name=v;
   closeModal('modal-hm');renderKV();
@@ -647,13 +820,7 @@ function delHM(kv,idx){kvData[kv].splice(idx,1);renderKV();}
 // PHOTOS
 function trigPhoto(kv,idx,mode){
   const key=`${kv}__${idx}__${mode}`;
-  if(!fileInps[key]){
-    const inp=document.createElement('input');
-    inp.type='file';inp.accept='image/*';
-    if(mode==='camera')inp.capture='environment';
-    inp.onchange=e=>handlePhoto(e,kv,idx);
-    fileInps[key]=inp;
-  }
+  if(!fileInps[key]){const inp=document.createElement('input');inp.type='file';inp.accept='image/*';if(mode==='camera')inp.capture='environment';inp.onchange=e=>handlePhoto(e,kv,idx);fileInps[key]=inp;}
   fileInps[key].click();
 }
 async function handlePhoto(e,kv,idx){
@@ -665,11 +832,9 @@ async function handlePhoto(e,kv,idx){
     const fd=new FormData();fd.append('file',file);
     const r=await fetch(API+'/upload/anh',{method:'POST',headers:{'Authorization':'Bearer '+token},body:fd});
     const d=await r.json();
-    if(d.thanhCong){
-      kvData[kv][idx].photos.push({url:'https://hcarevietnam.vn/bangiao'+d.url,ts,filename:d.filename});
-      refreshHM(kv,idx);toast('Đã thêm ảnh','tok');
-    }else toast('Upload thất bại','err');
-  }catch(err){toast('Lỗi upload','err');}
+    if(d.thanhCong){kvData[kv][idx].photos.push({url:'https://hcarevietnam.vn/bangiao'+d.url,ts});refreshHM(kv,idx);toast('Đã thêm ảnh','tok');}
+    else toast('Upload thất bại','terr');
+  }catch(err){toast('Lỗi upload','terr');}
   e.target.value='';
 }
 function delPhoto(kv,idx,pi){kvData[kv][idx].photos.splice(pi,1);refreshHM(kv,idx);}
@@ -683,16 +848,13 @@ function goPreview(){
   const emailK=document.getElementById('bb-email').value.trim();
   const ngayVao=document.getElementById('bb-ngay-vao').value;
   const ngayHet=document.getElementById('bb-ngay-het').value;
-  if(!can||!hd||!ten||!cccd||!ngayVao||!ngayHet){toast('⚠️ Điền đủ thông tin bắt buộc (*)','err');return;}
-  if(!emailK){toast('⚠️ Cần có email khách để gửi biên bản','err');return;}
+  if(!can||!hd||!ten||!cccd||!ngayVao||!ngayHet){toast('⚠️ Điền đủ thông tin bắt buộc (*)','twarn');return;}
+  if(!emailK){toast('⚠️ Cần có email khách','twarn');return;}
   let missing=[];
-  Object.entries(kvData).forEach(([kv,items])=>{
-    items.forEach(item=>{if(item.status!=='KO'&&item.photos.length===0)missing.push(`${kv} › ${item.name}`);});
-  });
-  if(missing.length>0){toast(`⚠️ ${missing.length} hạng mục chưa có ảnh`,'err',4000);return;}
+  Object.entries(kvData).forEach(([kv,items])=>{items.forEach(item=>{if(item.status!=='KO'&&item.photos.length===0)missing.push(item.name);});});
+  if(missing.length>0){toast(`⚠️ ${missing.length} hạng mục chưa có ảnh`,'twarn',4000);return;}
   const canObj=allCan.find(c=>c.ma_can===can);
   const qt=document.getElementById('bb-qt').value;
-  const bilingual=!['việt nam','viet nam'].includes(qt.trim().toLowerCase());
   const coc=parseInt(document.getElementById('bb-coc').value)||0;
 
   let hmHTML=Object.entries(kvData).map(([kv,items])=>`
@@ -709,10 +871,13 @@ function goPreview(){
     </div>`).join('');
 
   document.getElementById('preview-content').innerHTML=`
+    <div style="background:var(--orange-pale);border-radius:var(--r);padding:14px;margin-bottom:12px;font-size:13px;color:var(--orange);display:flex;gap:8px;align-items:flex-start">
+      <span style="font-size:18px">📤</span>
+      <div><strong>Lưu nháp & gửi Quản lý duyệt</strong><br>Email cho khách chỉ được gửi sau khi Quản lý duyệt.</div>
+    </div>
     <div class="card" style="border-left:4px solid var(--blue)">
       <div style="font-size:14px;font-weight:700;color:var(--blue);margin-bottom:12px;text-transform:uppercase">
         ${bbType==='CHECKIN'?'Biên bản nhận bàn giao căn hộ':'Biên bản trả căn hộ'}
-        ${bilingual?'<div style="font-size:11px;font-weight:400;margin-top:2px">Apartment Handover Record</div>':''}
       </div>
       <div class="prev-row"><span class="prev-lbl">Căn hộ</span><span class="prev-val">${can} — ${canObj?.ten_toa_nha||''}</span></div>
       <div class="prev-row"><span class="prev-lbl">Số HĐ</span><span class="prev-val">${hd}</span></div>
@@ -720,14 +885,12 @@ function goPreview(){
       <div class="prev-row"><span class="prev-lbl">CCCD/Passport</span><span class="prev-val">${cccd}</span></div>
       <div class="prev-row"><span class="prev-lbl">Quốc tịch</span><span class="prev-val">${qt}</span></div>
       <div class="prev-row"><span class="prev-lbl">Email khách</span><span class="prev-val">${emailK}</span></div>
-      <div class="prev-row"><span class="prev-lbl">SĐT</span><span class="prev-val">${document.getElementById('bb-sdt').value||'—'}</span></div>
       <div class="prev-row"><span class="prev-lbl">Ngày dọn vào</span><span class="prev-val">${fmt(ngayVao)}</span></div>
       <div class="prev-row"><span class="prev-lbl">Ngày hết HĐ</span><span class="prev-val">${fmt(ngayHet)}</span></div>
       <div class="prev-row"><span class="prev-lbl">Tiền đặt cọc</span><span class="prev-val" style="color:var(--blue);font-weight:700">${moneyStr(coc)}</span></div>
     </div>
     <div class="card">
-      <div class="card-title">Kiểm kê tình trạng${bilingual?' · Condition Checklist':''}</div>
-      ${hmHTML}
+      <div class="card-title">Kiểm kê tình trạng</div>${hmHTML}
     </div>
     <div class="card">
       <div class="card-title">Chỉ số & Bàn giao</div>
@@ -735,24 +898,18 @@ function goPreview(){
       <div class="prev-row"><span class="prev-lbl">Nước (m³)</span><span class="prev-val">${document.getElementById('bb-nuoc').value||'—'}</span></div>
       <div class="prev-row"><span class="prev-lbl">Chìa khóa</span><span class="prev-val">${document.getElementById('bg-ck').value} chiếc</span></div>
       <div class="prev-row"><span class="prev-lbl">Thẻ từ/xe</span><span class="prev-val">${document.getElementById('bg-tt').value} thẻ</span></div>
-      <div class="prev-row"><span class="prev-lbl">Remote</span><span class="prev-val">${document.getElementById('bg-rm').value} cái</span></div>
-      ${document.getElementById('bg-kh').value?`<div class="prev-row"><span class="prev-lbl">Khác</span><span class="prev-val">${document.getElementById('bg-kh').value}</span></div>`:''}
-    </div>
-    ${document.getElementById('bb-gc').value?`<div class="card"><div class="card-title">Ghi chú</div><p style="font-size:14px">${document.getElementById('bb-gc').value}</p></div>`:''}
-    <div style="background:var(--blue-pale);border-radius:var(--r);padding:14px;margin-bottom:12px;font-size:13px;color:var(--blue)">
-      📧 Sau khi hoàn tất, hệ thống sẽ tự động gửi email kèm ảnh đến <strong>${emailK}</strong>
     </div>`;
   goScreen('screen-preview');
 }
 
-// SUBMIT
+// SUBMIT → CHỜ DUYỆT
 async function submitBB(){
   const can=document.getElementById('bb-can').value;
   const hd=document.getElementById('bb-hd').value.trim();
   const ten=document.getElementById('bb-ten').value.trim();
+  const qt=document.getElementById('bb-qt').value;
   const emailK=document.getElementById('bb-email').value.trim();
   const ngayVao=document.getElementById('bb-ngay-vao').value;
-  const qt=document.getElementById('bb-qt').value;
   const duLieu={
     khuVuc:Object.fromEntries(Object.entries(kvData).map(([kv,items])=>[kv,items.map(({name,status,photos,gc})=>({name,status,photos:photos.map(p=>({url:p.url,ts:p.ts})),ghi_chu:gc}))])),
     congTo:{dien:document.getElementById('bb-dien').value,nuoc:document.getElementById('bb-nuoc').value},
@@ -761,6 +918,7 @@ async function submitBB(){
     quocTich:qt,emailKhach:emailK,
     tienCoc:document.getElementById('bb-coc').value,
     ngayHetHD:document.getElementById('bb-ngay-het').value,
+    isUpdate:false,
   };
   try{
     toast('⏳ Đang lưu biên bản...');
@@ -768,67 +926,254 @@ async function submitBB(){
       loai:bbType,ma_can:can,so_hd:hd,ten_khach:ten,
       cccd:document.getElementById('bb-cccd').value,
       sdt:document.getElementById('bb-sdt').value,
-      quoc_tich:qt,ngay_thuc_hien:ngayVao,du_lieu_json:duLieu
+      quoc_tich:qt,ngay_thuc_hien:ngayVao,
+      trang_thai:'CHO_DUYET',
+      du_lieu_json:duLieu
     });
-    if(!r.thanhCong){toast('❌ '+r.thongBao,'err');return;}
+    if(!r.thanhCong){toast('❌ '+r.thongBao,'terr');return;}
 
-    // Gửi email
-    toast('📧 Đang gửi email cho khách...');
-    const emailR=await api('/email/gui-bien-ban','POST',{
-      email_khach:emailK,ten_khach:ten,ma_can:can,
-      loai:bbType,ngay:new Date(ngayVao).toLocaleDateString('vi-VN'),
-      hang_muc_list:duLieu.khuVuc
+    // Push notification cho QL
+    toast('🔔 Đang thông báo Quản lý...');
+    await api('/notify/push-ql','POST',{
+      title:'🔔 Biên bản mới cần duyệt',
+      body:`${bbType==='CHECKIN'?'Check-in':'Check-out'} căn ${can} — ${ten}`
     });
 
-    document.getElementById('email-done-msg').textContent=emailR.thanhCong
-      ?`✅ Đã gửi email thành công đến ${emailK}`
-      :`⚠️ Lưu biên bản thành công nhưng gửi email thất bại: ${emailR.thongBao}`;
-    goScreen('screen-email-done');
-  }catch(e){toast('Lỗi kết nối','err');}
+    document.getElementById('done-icon').textContent='📤';
+    document.getElementById('done-title').textContent='Đã gửi Quản lý duyệt!';
+    document.getElementById('done-msg').textContent='Biên bản đã lưu với trạng thái CHỜ DUYỆT. Email sẽ được gửi cho khách sau khi Quản lý duyệt.';
+    goScreen('screen-done');
+  }catch(e){toast('Lỗi kết nối','terr');}
 }
 
 // VIEW BB
 async function viewBB(id){
   goScreen('screen-bb-detail');
+  document.getElementById('bb-detail-content').innerHTML='<div class="spinner">Đang tải...</div>';
   const r=await api('/bien-ban/'+id);
   const b=r.data;if(!b){document.getElementById('bb-detail-content').innerHTML='<div class="spinner">Không tìm thấy</div>';return;}
+  currentBB=b;
   let du={};try{du=typeof b.du_lieu_json==='string'?JSON.parse(b.du_lieu_json):(b.du_lieu_json||{});}catch(e){}
+  const isCI=b.loai==='CHECKIN';
+  const isCHO=b.trang_thai==='CHO_DUYET';
+  const isQL=user?.vai_tro==='QuanLy';
+
+  const stBadge=isCHO?'<span class="badge by">⏳ Chờ duyệt</span>':b.trang_thai==='HOANTAT'?'<span class="badge bg">✅ Hoàn tất</span>':'<span class="badge bx">📝 Nháp</span>';
+
   document.getElementById('bb-detail-content').innerHTML=`
-    <div class="card">
-      <div style="display:flex;gap:8px;margin-bottom:12px">
-        <span class="badge ${b.loai==='CHECKIN'?'bg':'bo'}">${b.loai}</span>
-        <span class="badge bx">${b.trang_thai}</span>
+    <div class="card" style="border-left:4px solid ${isCI?'var(--green)':'var(--orange)'}">
+      <div style="display:flex;gap:8px;margin-bottom:12px;align-items:center;flex-wrap:wrap">
+        <span class="badge ${isCI?'bg':'bo'}">${isCI?'CHECK-IN':'CHECK-OUT'}</span>
+        ${stBadge}
+        <span style="flex:1"></span>
+        <span style="font-size:12px;color:var(--gray)">${fmt(b.ngay_thuc_hien)}</span>
       </div>
-      <div class="prev-row"><span class="prev-lbl">Căn hộ</span><span class="prev-val">${b.ma_can}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Căn hộ</span><span class="prev-val" style="font-weight:700;color:var(--blue)">${b.ma_can}</span></div>
       <div class="prev-row"><span class="prev-lbl">Khách thuê</span><span class="prev-val">${b.ten_khach}</span></div>
-      <div class="prev-row"><span class="prev-lbl">CCCD/PP</span><span class="prev-val">${b.cccd||'—'}</span></div>
+      <div class="prev-row"><span class="prev-lbl">CCCD/Passport</span><span class="prev-val">${b.cccd||'—'}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Quốc tịch</span><span class="prev-val">${du.quocTich||b.quoc_tich||'—'}</span></div>
       <div class="prev-row"><span class="prev-lbl">Email</span><span class="prev-val">${du.emailKhach||'—'}</span></div>
-      <div class="prev-row"><span class="prev-lbl">Tiền cọc</span><span class="prev-val" style="color:var(--blue);font-weight:700">${moneyStr(du.tienCoc)}</span></div>
-      <div class="prev-row"><span class="prev-lbl">Ngày thực hiện</span><span class="prev-val">${fmt(b.ngay_thuc_hien)}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Số HĐ</span><span class="prev-val">${b.so_hd||'—'}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Ngày hết HĐ</span><span class="prev-val">${fmt(du.ngayHetHD)}</span></div>
+      <div class="prev-row"><span class="prev-lbl">Tiền đặt cọc</span><span class="prev-val" style="color:var(--green);font-weight:700">${moneyStr(du.tienCoc)}</span></div>
+      <div class="prev-row"><span class="prev-lbl">NV thực hiện</span><span class="prev-val">${b.nhan_vien||'—'}</span></div>
     </div>
-    ${du.khuVuc?`<div class="card"><div class="card-title">Kiểm kê tình trạng</div>
+
+    ${du.khuVuc?`<div class="card">
+      <div class="card-title">Kiểm kê tình trạng</div>
       ${Object.entries(du.khuVuc).map(([kv,items])=>`
-        <div style="margin-bottom:10px">
-          <div style="font-size:12px;font-weight:700;color:var(--blue);margin-bottom:5px;padding:5px 8px;background:var(--blue-pale);border-radius:6px">${kv}</div>
+        <div style="margin-bottom:12px">
+          <div style="font-size:12px;font-weight:700;color:var(--blue);padding:6px 10px;background:var(--blue-pale);border-radius:6px;margin-bottom:6px">${kv}</div>
           ${items.map(item=>`<div class="prev-hm">
             <div style="font-weight:600;font-size:14px;margin-bottom:4px">${item.name}</div>
-            <span class="badge ${item.status==='TOT'?'bg':item.status==='HONG'?'br':'bo'}">${item.status==='TOT'?'Tốt':item.status==='XUOC'?'Trầy xước':item.status==='HONG'?'Hư hỏng':'Không có'}</span>
-            ${item.photos?.length?`<div class="prev-photos">${item.photos.map(p=>`<div><img src="${p.url}" onerror="this.style.display='none'"><div style="font-size:10px;color:var(--gray2);text-align:center">${p.ts||''}</div></div>`).join('')}</div>`:''}
+            <span class="badge ${item.status==='TOT'?'bg':item.status==='HONG'?'br':item.status==='XUOC'?'bo':'bx'}">
+              ${item.status==='TOT'?'✓ Tốt':item.status==='XUOC'?'⚠ Trầy xước':item.status==='HONG'?'✗ Hư hỏng':'— Không có'}
+            </span>
+            ${item.ghi_chu?`<span style="font-size:12px;color:var(--gray);margin-left:6px">${item.ghi_chu}</span>`:''}
+            ${item.photos?.length?`<div class="prev-photos">
+              ${item.photos.map(p=>`<div style="text-align:center">
+                <img src="${p.url}" style="width:70px;height:70px;object-fit:cover;border-radius:5px;border:1px solid #e5e7eb" onerror="this.style.display='none'">
+                <div style="font-size:10px;color:var(--gray2)">${p.ts||''}</div>
+              </div>`).join('')}
+            </div>`:''}
           </div>`).join('')}
         </div>`).join('')}
     </div>`:''}
-    ${du.congTo?`<div class="card"><div class="card-title">Công tơ & Bàn giao</div>
+
+    ${du.congTo?`<div class="card">
+      <div class="card-title">Công tơ & Bàn giao</div>
       <div class="prev-row"><span class="prev-lbl">Điện</span><span class="prev-val">${du.congTo.dien||'—'} kWh</span></div>
       <div class="prev-row"><span class="prev-lbl">Nước</span><span class="prev-val">${du.congTo.nuoc||'—'} m³</span></div>
-    </div>`:''}`;
+      <div class="prev-row"><span class="prev-lbl">Chìa khóa</span><span class="prev-val">${du.vatDung?.chiaKhoa||'—'} chiếc</span></div>
+    </div>`:''}
+
+    <div style="display:grid;gap:10px;margin-top:4px">
+      ${isCHO&&isQL?`<button class="btn btn-green" onclick="duyetBB(${b.id},'${b.ma_can}','${b.ten_khach}','${b.loai}')">✅ Duyệt biên bản</button>`:''}
+      ${isCI&&b.trang_thai==='HOANTAT'?`
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <button class="btn btn-outline" onclick="editBB(${b.id})">✏️ Cập nhật</button>
+          <button class="btn btn-red" onclick="startCheckout(${b.id})">🔑 Check-out</button>
+        </div>`:''}
+    </div>
+    <div style="height:16px"></div>
+  `;
+}
+
+function editBB(id){
+  toast('Tính năng cập nhật đang phát triển','twarn');
+}
+
+// CHECKOUT
+async function startCheckout(checkinId){
+  const b=currentBB;if(!b)return;
+  let du={};try{du=typeof b.du_lieu_json==='string'?JSON.parse(b.du_lieu_json):(b.du_lieu_json||{});}catch(e){}
+  window._coCheckinId=checkinId;window._coCheckinDu=du;window._coCheckinB=b;
+  kvData={};
+  if(du.khuVuc){Object.entries(du.khuVuc).forEach(([kv,items])=>{kvData[kv]=items.map(item=>({...item,photos_ci:item.photos,photos:[],status_ci:item.status,status:'TOT',gc:''}));});}
+  document.getElementById('co-title').textContent=`🔑 Check-out — ${b.ma_can}`;
+  document.getElementById('co-info').innerHTML=`
+    <div class="prev-row"><span class="prev-lbl">Căn hộ</span><span class="prev-val" style="font-weight:700;color:var(--blue)">${b.ma_can}</span></div>
+    <div class="prev-row"><span class="prev-lbl">Khách thuê</span><span class="prev-val">${b.ten_khach}</span></div>
+    <div class="prev-row"><span class="prev-lbl">Tiền cọc</span><span class="prev-val" style="color:var(--green);font-weight:700">${moneyStr(du.tienCoc)}</span></div>
+    <div class="prev-row"><span class="prev-lbl">Check-in lúc</span><span class="prev-val">${fmt(b.ngay_thuc_hien)}</span></div>`;
+  document.getElementById('co-dien-dau').value=du.congTo?.dien||'';
+  document.getElementById('co-nuoc-dau').value=du.congTo?.nuoc||'';
+  document.getElementById('co-ck').value=du.vatDung?.chiaKhoa||2;
+  document.getElementById('co-tt').value=du.vatDung?.theTu||2;
+  document.getElementById('co-rm').value=du.vatDung?.remote||1;
+  document.getElementById('qt-coc').textContent=moneyStr(du.tienCoc);
+  renderCOHangMuc();calcCO();
+  goScreen('screen-checkout');
+}
+function renderCOHangMuc(){
+  const c=document.getElementById('co-hang-muc');
+  if(!Object.keys(kvData).length){c.innerHTML='<div class="spinner">Không có dữ liệu</div>';return;}
+  c.innerHTML=Object.entries(kvData).map(([kv,items])=>`
+    <div style="margin-bottom:14px">
+      <div style="font-size:12px;font-weight:700;color:var(--blue);padding:6px 10px;background:var(--blue-pale);border-radius:6px;margin-bottom:6px">${kv}</div>
+      ${items.map((item,idx)=>renderCOItem(kv,item,idx)).join('')}
+    </div>`).join('');
+}
+function renderCOItem(kv,item,idx){
+  const ciLabel=item.status_ci==='TOT'?'✓ Tốt':item.status_ci==='XUOC'?'⚠ Trầy':item.status_ci==='HONG'?'✗ Hỏng':'—';
+  const ciBadge=item.status_ci==='TOT'?'bg':item.status_ci==='HONG'?'br':item.status_ci==='XUOC'?'bo':'bx';
+  const coLabel=item.status==='TOT'?'✓ Tốt':item.status==='XUOC'?'⚠ Trầy':item.status==='HONG'?'✗ Hỏng':'—';
+  const coBadge=item.status==='TOT'?'bg':item.status==='HONG'?'br':item.status==='XUOC'?'bo':'bx';
+  const ciPhotos=item.photos_ci?.map(p=>`<img src="${p.url}" style="width:50px;height:50px;object-fit:cover;border-radius:4px;border:1px solid #e5e7eb" title="${p.ts||''}" onerror="this.style.display='none'">`).join('')||'<span style="font-size:11px;color:var(--gray2)">Không có</span>';
+  const coPhotos=item.photos.map((p,pi)=>`<div style="position:relative">
+    <img src="${p.url}" style="width:50px;height:50px;object-fit:cover;border-radius:4px;border:1px solid #e5e7eb">
+    <button onclick="delCOPhoto('${esc(kv)}',${idx},${pi})" style="position:absolute;top:-4px;right:-4px;background:var(--red);color:#fff;border:none;border-radius:50%;width:16px;height:16px;font-size:9px;cursor:pointer">✕</button>
+  </div>`).join('');
+  return `<div style="background:#fff;border:1.5px solid var(--border);border-radius:8px;margin-bottom:8px;overflow:hidden" id="coi-${encK(kv+idx)}">
+    <div style="padding:9px 12px;font-size:13px;font-weight:600;background:var(--gray-pale)">${item.name}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--border)">
+      <div style="padding:10px;border-right:1px solid var(--border)">
+        <div style="font-size:10px;font-weight:700;color:var(--gray);margin-bottom:5px">CHECK-IN</div>
+        <span class="badge ${ciBadge}" style="margin-bottom:5px;display:block;width:fit-content">${ciLabel}</span>
+        <div style="display:flex;gap:3px;flex-wrap:wrap">${ciPhotos}</div>
+      </div>
+      <div style="padding:10px">
+        <div style="font-size:10px;font-weight:700;color:var(--orange);margin-bottom:5px">CHECK-OUT</div>
+        <div style="display:flex;gap:4px;flex-wrap:wrap;margin-bottom:6px">
+          <span class="tt-opt ${item.status==='TOT'?'tt-tot':''}" style="font-size:11px;padding:4px 8px" onclick="setCOSt('${esc(kv)}',${idx},'TOT')">✓</span>
+          <span class="tt-opt ${item.status==='XUOC'?'tt-xuoc':''}" style="font-size:11px;padding:4px 8px" onclick="setCOSt('${esc(kv)}',${idx},'XUOC')">⚠</span>
+          <span class="tt-opt ${item.status==='HONG'?'tt-hong':''}" style="font-size:11px;padding:4px 8px" onclick="setCOSt('${esc(kv)}',${idx},'HONG')">✗</span>
+        </div>
+        <div style="display:flex;gap:3px;flex-wrap:wrap;margin-bottom:4px">${coPhotos}</div>
+        ${item.photos.length<5?`<div style="display:flex;gap:4px">
+          <button class="btn-sm btn-sm-blue" style="font-size:10px;padding:4px 7px" onclick="trigCOPhoto('${esc(kv)}',${idx},'camera')">📷</button>
+          <button class="btn-sm btn-sm-gray" style="font-size:10px;padding:4px 7px" onclick="trigCOPhoto('${esc(kv)}',${idx},'gallery')">🖼</button>
+        </div>`:''}
+      </div>
+    </div>
+  </div>`;
+}
+function setCOSt(kv,idx,st){kvData[kv][idx].status=st;refreshCOItem(kv,idx);}
+function refreshCOItem(kv,idx){const el=document.getElementById('coi-'+encK(kv+idx));if(el){const tmp=document.createElement('div');tmp.innerHTML=renderCOItem(kv,kvData[kv][idx],idx);el.replaceWith(tmp.firstChild);}}
+function trigCOPhoto(kv,idx,mode){
+  const key=`co_${kv}__${idx}__${mode}`;
+  if(!fileInps[key]){const inp=document.createElement('input');inp.type='file';inp.accept='image/*';if(mode==='camera')inp.capture='environment';inp.onchange=e=>handleCOPhoto(e,kv,idx);fileInps[key]=inp;}
+  fileInps[key].click();
+}
+async function handleCOPhoto(e,kv,idx){
+  const file=e.target.files[0];if(!file)return;
+  toast('⏳ Upload ảnh...');
+  try{
+    const now=new Date();const ts=`${now.getDate()}/${now.getMonth()+1}/${now.getFullYear()} ${now.getHours()}:${String(now.getMinutes()).padStart(2,'0')}`;
+    const fd=new FormData();fd.append('file',file);
+    const r=await fetch(API+'/upload/anh',{method:'POST',headers:{'Authorization':'Bearer '+token},body:fd});
+    const d=await r.json();
+    if(d.thanhCong){kvData[kv][idx].photos.push({url:'https://hcarevietnam.vn/bangiao'+d.url,ts});refreshCOItem(kv,idx);toast('Đã thêm ảnh','tok');}
+    else toast('Upload thất bại','terr');
+  }catch(err){toast('Lỗi upload','terr');}
+  e.target.value='';
+}
+function delCOPhoto(kv,idx,pi){kvData[kv][idx].photos.splice(pi,1);refreshCOItem(kv,idx);}
+function calcCO(){
+  const dd=parseFloat(document.getElementById('co-dien-dau')?.value)||0;
+  const dc=parseFloat(document.getElementById('co-dien-cuoi')?.value)||0;
+  const nd=parseFloat(document.getElementById('co-nuoc-dau')?.value)||0;
+  const nc=parseFloat(document.getElementById('co-nuoc-cuoi')?.value)||0;
+  const gd=parseFloat(document.getElementById('co-gia-dien')?.value)||3500;
+  const gn=parseFloat(document.getElementById('co-gia-nuoc')?.value)||15000;
+  const pql=parseFloat(document.getElementById('co-phi-ql')?.value)||0;
+  const pxe=parseFloat(document.getElementById('co-phi-xe')?.value)||0;
+  const pnet=parseFloat(document.getElementById('co-phi-net')?.value)||0;
+  const pk=parseFloat(document.getElementById('co-phi-khac')?.value)||0;
+  const coc=parseFloat(window._coCheckinDu?.tienCoc)||0;
+  const td=(dc-dd)*gd,tn=(nc-nd)*gn,tp=pql+pxe+pnet+pk,hoan=coc-td-tn-tp;
+  const el=id=>document.getElementById(id);
+  if(el('qt-dien'))el('qt-dien').textContent=td>0?`- ${moneyStr(td)}`:'—';
+  if(el('qt-nuoc'))el('qt-nuoc').textContent=tn>0?`- ${moneyStr(tn)}`:'—';
+  if(el('qt-phi'))el('qt-phi').textContent=tp>0?`- ${moneyStr(tp)}`:'—';
+  if(el('qt-hoan')){el('qt-hoan').textContent=moneyStr(hoan);el('qt-hoan').style.color=hoan>=0?'var(--green)':'var(--red)';}
+}
+async function submitCO(){
+  const b=window._coCheckinB;if(!b){toast('Lỗi','terr');return;}
+  const du=window._coCheckinDu||{};
+  const dd=parseFloat(document.getElementById('co-dien-dau').value)||0,dc=parseFloat(document.getElementById('co-dien-cuoi').value)||0;
+  const nd=parseFloat(document.getElementById('co-nuoc-dau').value)||0,nc=parseFloat(document.getElementById('co-nuoc-cuoi').value)||0;
+  const gd=parseFloat(document.getElementById('co-gia-dien').value)||3500,gn=parseFloat(document.getElementById('co-gia-nuoc').value)||15000;
+  const td=(dc-dd)*gd,tn=(nc-nd)*gn;
+  const pql=parseFloat(document.getElementById('co-phi-ql').value)||0;
+  const pxe=parseFloat(document.getElementById('co-phi-xe').value)||0;
+  const pnet=parseFloat(document.getElementById('co-phi-net').value)||0;
+  const pk=parseFloat(document.getElementById('co-phi-khac').value)||0;
+  const tp=pql+pxe+pnet+pk,coc=parseFloat(du.tienCoc)||0,hoan=coc-td-tn-tp;
+  const coDu={
+    checkin_id:window._coCheckinId,
+    khuVuc:Object.fromEntries(Object.entries(kvData).map(([kv,items])=>[kv,items.map(({name,status,status_ci,photos,photos_ci,gc})=>({name,status_ci,status,photos_ci,photos,ghi_chu:gc}))])),
+    congTo:{dd,dc,nd,nc,gd,gn,td,tn},phi:{pql,pxe,pnet,pk,tp},
+    vatDung:{chiaKhoa:document.getElementById('co-ck').value,theTu:document.getElementById('co-tt').value,remote:document.getElementById('co-rm').value},
+    quyetToan:{coc,td,tn,tp,hoan},ghiChu:document.getElementById('co-gc').value,
+    tienCoc:du.tienCoc,emailKhach:du.emailKhach,quocTich:du.quocTich,
+  };
+  toast('⏳ Đang lưu check-out...');
+  try{
+    const r=await api('/bien-ban','POST',{
+      loai:'CHECKOUT',ma_can:b.ma_can,so_hd:b.so_hd,ten_khach:b.ten_khach,
+      cccd:b.cccd,sdt:b.sdt,quoc_tich:b.quoc_tich,trang_thai:'CHO_DUYET',
+      ngay_thuc_hien:new Date().toISOString().slice(0,10),du_lieu_json:coDu
+    });
+    if(!r.thanhCong){toast('❌ '+r.thongBao,'terr');return;}
+    await api('/notify/push-ql','POST',{title:'🔔 Check-out cần duyệt',body:`Check-out căn ${b.ma_can} — ${b.ten_khach}`});
+    document.getElementById('done-icon').textContent='📤';
+    document.getElementById('done-title').textContent='Đã gửi Quản lý!';
+    document.getElementById('done-msg').textContent=`Báo cáo check-out gửi thành công. Hoàn cọc dự kiến: ${moneyStr(hoan)}. Chờ QL xác nhận bồi thường.`;
+    goScreen('screen-done');
+  }catch(e){toast('Lỗi kết nối','terr');}
 }
 
 // INIT
 window.onload=async function(){
+  // Register SW
+  if('serviceWorker' in navigator){
+    navigator.serviceWorker.register('/bangiao/sw.js',{scope:'/bangiao/'}).catch(()=>{});
+  }
   if(token&&user){
     document.getElementById('home-user').textContent=user.ten_nv;
     document.getElementById('role-badge').textContent=user.vai_tro==='QuanLy'?'Quản lý':'Nhân viên';
-    await loadAllCan(); goScreen('screen-home');
+    await loadAllCan();goScreen('screen-home');
   }else goScreen('screen-login');
 };
 </script>
