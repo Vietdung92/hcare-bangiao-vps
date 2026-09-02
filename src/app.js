@@ -28,6 +28,7 @@ app.use('/api/can-ho', require('./routes/canHo'));
 app.use('/api/bien-ban', require('./routes/bienBan'));
 app.use('/api/hop-dong', require('./routes/hopDong'));
 app.use('/api/upload', require('./routes/upload'));
+app.use('/api/email', require('./routes/email'));
 app.use('/api/thong-ke', require('./routes/thongKe'));
 
 // Error handling middleware
