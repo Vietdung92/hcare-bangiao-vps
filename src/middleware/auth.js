@@ -57,3 +57,12 @@ function requireQuanLy(req, res, next) {
 
 module.exports = { verifyToken, requireQuanLy };
 	
+
+const requireQL = (req, res, next) => {
+  if (req.user?.vai_tro !== 'QuanLy') {
+    return res.status(403).json({ thanhCong: false, thongBao: 'Chỉ Quản lý mới có quyền thực hiện' });
+  }
+  next();
+};
+
+module.exports.requireQL = requireQL;
