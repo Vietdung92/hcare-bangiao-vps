@@ -994,47 +994,47 @@ async function doiPin(){const cu=document.getElementById('dp-cu').value.trim(),m
 
 // ===== XOA BIEN BAN (chi QL) =====
 async function xoaBB(id,maCan,tenKhach,loai){
-  if(user?.vai_tro!=='QuanLy'){toast('Chi Quan ly moi xoa duoc','terr');return;}
-  if(!confirm('XOA bien ban '+loai+'\nCan: '+maCan+'\nKhach: '+tenKhach+'\n\nBien ban se duoc luu tru, co the phuc hoi.'))return;
-  const lyDo=prompt('Ly do xoa (khong bat buoc):')||'';
-  if(!confirm('Xac nhan lan cuoi: XOA bien ban nay?'))return;
-  toast('Dang xoa...');
+  if(user?.vai_tro!=='QuanLy'){toast('Chỉ Quản lý mới xóa được','terr');return;}
+  if(!confirm('XÓA biên bản '+loai+'\nCan: '+maCan+'\nKhach: '+tenKhach+'\n\nBiên bản sẽ được lưu trữ, có thể phục hồi.'))return;
+  const lyDo=prompt('Lý do xóa (không bắt buộc):')||'';
+  if(!confirm('Xac nhan lan cuoi: XÓA biên bản nay?'))return;
+  toast('Đang xóa...');
   try{
     const r=await api('/bien-ban/'+id,'DELETE',{ly_do:lyDo});
-    if(r.thanhCong){toast('Da xoa bien ban','tok');allBB=allBB.filter(b=>b.id!=id);goScreen('screen-bienban');}
-    else toast(r.thongBao||'Xoa that bai','terr');
-  }catch(e){toast('Loi ket noi','terr');}
+    if(r.thanhCong){toast('Đã xóa biên bản','tok');allBB=allBB.filter(b=>b.id!=id);goScreen('screen-bienban');}
+    else toast(r.thongBao||'Xóa thất bại','terr');
+  }catch(e){toast('Lỗi kết nối','terr');}
 }
 
 async function loadDaXoa(){
   const el=document.getElementById('da-xoa-list');
   if(!el)return;
-  el.innerHTML='<div class="spinner">Dang tai...</div>';
+  el.innerHTML='<div class="spinner">Đang tải...</div>';
   try{
     const r=await api('/bien-ban/da-xoa/list');
     const list=r.data||[];
-    if(!list.length){el.innerHTML='<div class="spinner">Khong co bien ban da xoa</div>';return;}
+    if(!list.length){el.innerHTML='<div class="spinner">Không có biên bản đã xóa</div>';return;}
     el.innerHTML=list.map(b=>'<div class="card" style="border-left:4px solid var(--gray2)">'
       +'<div style="display:flex;gap:8px;margin-bottom:8px;align-items:center">'
       +'<span class="badge '+(b.loai==='CHECKIN'?'bg':'bo')+'">'+b.loai+'</span>'
       +'<span style="flex:1"></span>'
       +'<span style="font-size:11px;color:var(--gray)">'+(b.ngay_xoa||'').slice(0,16)+'</span></div>'
-      +'<div class="prev-row"><span class="prev-lbl">Can ho</span><span class="prev-val" style="font-weight:700;color:var(--blue)">'+b.ma_can+'</span></div>'
-      +'<div class="prev-row"><span class="prev-lbl">Khach thue</span><span class="prev-val">'+b.ten_khach+'</span></div>'
-      +'<div class="prev-row"><span class="prev-lbl">Xoa boi</span><span class="prev-val">'+(b.xoa_boi||'-')+'</span></div>'
-      +(b.ly_do?'<div class="prev-row"><span class="prev-lbl">Ly do</span><span class="prev-val">'+b.ly_do+'</span></div>':'')
-      +'<button class="btn btn-outline" style="margin-top:10px" onclick="phucHoiBB('+b.id+")\">&#8635; Phuc hoi</button>"
+      +'<div class="prev-row"><span class="prev-lbl">Căn hộ&nbsp;</span><span class="prev-val" style="font-weight:700;color:var(--blue)">'+b.ma_can+'</span></div>'
+      +'<div class="prev-row"><span class="prev-lbl">Khách thuê&nbsp;</span><span class="prev-val">'+b.ten_khach+'</span></div>'
+      +'<div class="prev-row"><span class="prev-lbl">Xóa bởi&nbsp;</span><span class="prev-val">'+(b.xoa_boi||'-')+'</span></div>'
+      +(b.ly_do?'<div class="prev-row"><span class="prev-lbl">Lý do&nbsp;</span><span class="prev-val">'+b.ly_do+'</span></div>':'')
+      +'<button class="btn btn-outline" style="margin-top:10px" onclick="phucHoiBB('+b.id+")\">&#8635; Phục hồi</button>"
       +'</div>').join('');
-  }catch(e){el.innerHTML='<div class="spinner">Loi tai du lieu</div>';}
+  }catch(e){el.innerHTML='<div class="spinner">Lỗi tải dữ liệu</div>';}
 }
 
 async function phucHoiBB(id){
-  if(!confirm('Phuc hoi bien ban nay ve danh sach?'))return;
+  if(!confirm('Phục hồi biên bản này về danh sách?'))return;
   try{
     const r=await api('/bien-ban/da-xoa/'+id+'/phuc-hoi','POST');
-    toast(r.thanhCong?'Da phuc hoi':r.thongBao,r.thanhCong?'tok':'terr');
+    toast(r.thanhCong?'Đã phục hồi':r.thongBao,r.thanhCong?'tok':'terr');
     if(r.thanhCong)loadDaXoa();
-  }catch(e){toast('Loi ket noi','terr');}
+  }catch(e){toast('Lỗi kết nối','terr');}
 }
 
 // INIT
