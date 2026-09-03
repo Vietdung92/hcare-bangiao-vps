@@ -636,11 +636,21 @@ async function submitBB(){
   const duLieu={khuVuc:Object.fromEntries(Object.entries(kvData).map(([kv,items])=>[kv,items.map(({name,sl,status,photos,gc})=>({name,sl,status,photos:photos.map(p=>({url:p.url,ts:p.ts})),ghi_chu:gc}))])),congTo:{dien:document.getElementById('bb-dien').value,nuoc:document.getElementById('bb-nuoc').value},vatDung:{chiaKhoa:document.getElementById('bg-ck').value,theTu:document.getElementById('bg-tt').value,remote:document.getElementById('bg-rm').value,khac:document.getElementById('bg-kh').value},ghiChu:document.getElementById('bb-gc').value,quocTich:qt,emailKhach:emailK,tienCoc:document.getElementById('bb-coc').value,ngayHetHD:document.getElementById('bb-ngay-het').value,isUpdate:false};
   toast('⏳ Đang lưu...');
   try{
-    const r=await api('/bien-ban','POST',{loai:bbType,ma_can:can,so_hd:hd,ten_khach:ten,cccd:document.getElementById('bb-cccd').value,sdt:document.getElementById('bb-sdt').value,quoc_tich:qt,ngay_thuc_hien:ngayVao,du_lieu_json:duLieu});
+    let r;
+    const isUpdate=window._editBBIsUpdate&&window._editBBId;
+    if(isUpdate){
+      // Cập nhật biên bản cũ
+      duLieu.isUpdate=true;
+      r=await api(`/bien-ban/${window._editBBId}`,'PUT',{ten_khach:ten,cccd:document.getElementById('bb-cccd').value,sdt:document.getElementById('bb-sdt').value,so_hd:hd,du_lieu_json:duLieu});
+      window._editBBIsUpdate=false;window._editBBId=null;
+    }else{
+      r=await api('/bien-ban','POST',{loai:bbType,ma_can:can,so_hd:hd,ten_khach:ten,cccd:document.getElementById('bb-cccd').value,sdt:document.getElementById('bb-sdt').value,quoc_tich:qt,ngay_thuc_hien:ngayVao,du_lieu_json:duLieu});
+    }
     if(!r.thanhCong){toast('❌ '+r.thongBao,'terr');return;}
-    await api('/notify/push-ql','POST',{title:'🔔 Biên bản mới cần duyệt',body:`${bbType==='CHECKIN'?'Check-in':'Check-out'} căn ${can} — ${ten}`}).catch(()=>{});
-    document.getElementById('done-icon').textContent='📤';document.getElementById('done-title').textContent='Đã gửi Quản lý!';
-    document.getElementById('done-msg').textContent='Biên bản đã lưu với trạng thái CHỜ DUYỆT.\nEmail sẽ gửi cho khách sau khi Quản lý duyệt và bạn hoàn tất.';
+    await api('/notify/push-ql','POST',{title:isUpdate?'🔄 Biên bản đã cập nhật':'🔔 Biên bản mới cần duyệt',body:`${bbType==='CHECKIN'?'Check-in':'Check-out'} căn ${can} — ${ten}`}).catch(()=>{});
+    document.getElementById('done-icon').textContent=isUpdate?'🔄':'📤';
+    document.getElementById('done-title').textContent=isUpdate?'Đã cập nhật!':'Đã gửi Quản lý!';
+    document.getElementById('done-msg').textContent=isUpdate?`Biên bản đã cập nhật và gửi QL duyệt lại.`:'Biên bản đã lưu với trạng thái CHỜ DUYỆT.\nEmail sẽ gửi cho khách sau khi Quản lý duyệt và bạn hoàn tất.';
     goScreen('screen-done');
   }catch(e){toast('Lỗi kết nối','terr');}
 }
@@ -660,11 +670,24 @@ async function viewBB(id,backScreen='screen-bienban'){
   }).join(''):'';
   const canSua=tt==='CAN_SUA'&&b.ghi_chu_ql?`<div class="can-sua-banner">⚠️ <strong>Quản lý yêu cầu chỉnh sửa:</strong><br>${b.ghi_chu_ql}</div>`:'';
   const actions=()=>{
-    if(tt==='CHO_DUYET'&&isQL)return`<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><button class="btn btn-green" onclick="duyetBB(${b.id})">✅ Duyệt</button><button class="btn btn-red" onclick="openYCS(${b.id})">🔄 Yêu cầu sửa</button></div>`;
-    if(tt==='CAN_SUA')return`<button class="btn btn-orange" style="margin-top:10px" onclick="editResubmit(${b.id})">✏️ Chỉnh sửa & Gửi lại</button>`;
-    if(tt==='NV_DUYET'&&!isQL)return`<div style="background:var(--green-pale);border-radius:var(--r2);padding:12px;margin-top:10px;font-size:13px;color:var(--green)">✅ QL đã duyệt! Cho khách xem biên bản này rồi bấm Hoàn Tất.</div><button class="btn btn-green" style="margin-top:8px" onclick="hoanTatBB(${b.id})">🏁 Hoàn Tất & Gửi Email</button>`;
-    if(tt==='HOANTAT'&&isCI)return`<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">${isQL?`<button class="btn btn-outline" onclick="toast('Liên hệ admin để chỉnh sửa','twarn')">✏️ QL Chỉnh sửa</button>`:''}<button class="btn btn-red" onclick="startCheckout(${b.id})">🔑 Check-out</button></div>`;
-    return '';
+    let btns='';
+    // QL duyệt
+    if(tt==='CHO_DUYET'&&isQL) btns+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><button class="btn btn-green" onclick="duyetBB(${b.id})">✅ Duyệt</button><button class="btn btn-red" onclick="openYCS(${b.id})">🔄 Yêu cầu sửa</button></div>`;
+    // NV cần sửa
+    if(tt==='CAN_SUA') btns+=`<button class="btn btn-orange" style="margin-top:10px" onclick="goCapNhat(${b.id})">✏️ Chỉnh sửa & Gửi lại</button>`;
+    // QL duyệt rồi NV hoàn tất
+    if(tt==='NV_DUYET'&&!isQL) btns+=`<div style="background:var(--green-pale);border-radius:var(--r2);padding:12px;margin-top:10px;font-size:13px;color:var(--green)">✅ QL đã duyệt! Cho khách xem rồi bấm Hoàn Tất.</div><button class="btn btn-green" style="margin-top:8px" onclick="hoanTatBB(${b.id})">🏁 Hoàn Tất & Gửi Email</button>`;
+    // Nháp - hoàn tất luôn (test)
+    if((tt==='NHAP'||tt==='nháp')&&isCI) btns+=`<button class="btn btn-green" style="margin-top:10px" onclick="hoanTatBB(${b.id})">🏁 Hoàn Tất & Gửi Email</button>`;
+    // Check-in đã hoàn tất: nút Cập nhật + Check-out
+    if(tt==='HOANTAT'&&isCI){
+      btns+=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px">
+        <button class="btn btn-outline" onclick="goCapNhat(${b.id})">✏️ Cập nhật</button>
+        <button class="btn btn-red" onclick="startCheckout(${b.id})">🔑 Check-out</button>
+      </div>`;
+      if(isQL) btns+=`<button class="btn btn-gray" style="margin-top:8px" onclick="toast('Quản lý chỉnh sửa trực tiếp','twarn')">🔧 QL Chỉnh sửa</button>`;
+    }
+    return btns;
   };
   document.getElementById('bb-detail-content').innerHTML=`${canSua}
     <div class="card" style="border-left:4px solid ${isCI?'var(--green)':'var(--orange)'}">
@@ -705,7 +728,48 @@ async function hoanTatBB(id){
   }catch(e){toast('Lỗi kết nối','terr');}
 }
 
-function editResubmit(id){toast('Tính năng chỉnh sửa biên bản đang phát triển','twarn');}
+async function goCapNhat(id){
+  const r=await api('/bien-ban/'+id);const b=r.data;
+  if(!b){toast('Không tìm thấy biên bản','terr');return;}
+  let du={};try{du=typeof b.du_lieu_json==='string'?JSON.parse(b.du_lieu_json):(b.du_lieu_json||{});}catch(e){}
+  // Load dữ liệu cũ vào form
+  bbType=b.loai;
+  document.getElementById('create-title').textContent=`✏️ Cập nhật ${b.loai==='CHECKIN'?'Check-in':'Check-out'}`;
+  const sel=document.getElementById('bb-can');
+  sel.innerHTML='<option value="">— Chọn căn hộ —</option>';
+  allCan.forEach(c=>{sel.innerHTML+=`<option value="${c.ma_can}" data-pn="${c.so_pn}"${c.ma_can===b.ma_can?' selected':''} >${c.ma_can} — ${c.ten_toa_nha}</option>`;});
+  document.getElementById('bb-hd').value=b.so_hd||'';
+  document.getElementById('bb-ten').value=b.ten_khach||'';
+  document.getElementById('bb-cccd').value=b.cccd||'';
+  document.getElementById('bb-qt').value=du.quocTich||b.quoc_tich||'Việt Nam';
+  document.getElementById('bb-sdt').value=b.sdt||'';
+  document.getElementById('bb-email').value=du.emailKhach||'';
+  document.getElementById('bb-ngay-vao').value=b.ngay_thuc_hien?.slice(0,10)||'';
+  document.getElementById('bb-ngay-het').value=du.ngayHetHD?.slice(0,10)||'';
+  document.getElementById('bb-coc').value=du.tienCoc||'';
+  document.getElementById('bb-dien').value=du.congTo?.dien||'';
+  document.getElementById('bb-nuoc').value=du.congTo?.nuoc||'';
+  document.getElementById('bg-ck').value=du.vatDung?.chiaKhoa||2;
+  document.getElementById('bg-tt').value=du.vatDung?.theTu||2;
+  document.getElementById('bg-rm').value=du.vatDung?.remote||1;
+  document.getElementById('bg-kh').value=du.vatDung?.khac||'';
+  document.getElementById('bb-gc').value=du.ghiChu||'';
+  fmtMoney('bb-coc','bb-coc-d');
+  // Load hạng mục cũ
+  kvData={};
+  if(du.khuVuc){
+    Object.entries(du.khuVuc).forEach(([kv,items])=>{
+      kvData[kv]=items.map(item=>({name:item.name,sl:item.sl||1,status:item.status,photos:item.photos||[],gc:item.ghi_chu||''}));
+    });
+  }
+  renderKV();
+  // Lưu id để update thay vì tạo mới
+  window._editBBId=id;
+  window._editBBIsUpdate=true;
+  document.getElementById('create-title').textContent=`✏️ Cập nhật biên bản`;
+  goScreen('screen-create-bb');
+  toast('Đang chỉnh sửa biên bản — bấm Gửi duyệt để lưu lại','twarn',4000);
+}
 
 // CHECKOUT
 async function startCheckout(checkinId){
