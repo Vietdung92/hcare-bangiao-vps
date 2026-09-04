@@ -4,6 +4,14 @@ const { getDB } = require('../config/database');
 const { verifyToken } = require('../middleware/auth');
 
 const router = express.Router();
+const { taoPDF } = require('../services/pdfBienBan');
+
+const BASE_URL = process.env.APP_URL || 'https://bangiao.hcarevietnam.vn';
+const absUrl = (u) => {
+  if (!u) return '';
+  if (u.startsWith('http') || u.startsWith('data:')) return u;
+  return BASE_URL + (u.startsWith('/') ? u : '/' + u);
+};
 
 const transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -29,14 +37,14 @@ function extractSig(dataUri, cid) {
   };
 }
 
-function buildHTML(b, du, hasSig) {
+function buildHTML(b, du, hasSig, sigUrl) {
   let hm = '';
   if (du.khuVuc) {
     for (const [kv, items] of Object.entries(du.khuVuc)) {
       hm += '<tr><td colspan="3" style="background:#EBF2FA;color:#1B4F8A;font-weight:700;padding:8px 10px;font-size:13px">' + kv + '</td></tr>';
       (items || []).forEach(it => {
         const imgs = (it.photos || []).map(p =>
-          '<img src="' + p.url + '" width="88" style="width:88px;height:88px;object-fit:cover;border-radius:4px;border:1px solid #ddd;margin:2px">'
+          '<img src="' + absUrl(p.url) + '" width="88" style="width:88px;height:88px;object-fit:cover;border-radius:4px;border:1px solid #ddd;margin:2px">'
         ).join('');
         hm += '<tr>'
           + '<td style="padding:8px 10px;border-bottom:1px solid #eee;font-size:13px">' + (it.name || '') + '</td>'
@@ -47,10 +55,10 @@ function buildHTML(b, du, hasSig) {
     }
   }
 
-  const sigBlock = hasSig
+  const sigBlock = (hasSig || sigUrl)
     ? '<div style="margin-top:24px;border-top:2px solid #CBD5E1;padding-top:16px">'
       + '<div style="font-size:12px;font-weight:700;color:#64748B;text-transform:uppercase;margin-bottom:8px">Ch\u1eef k\u00fd kh\u00e1ch thu\u00ea</div>'
-      + '<img src="cid:chuky" style="max-width:260px;height:auto;border:1px solid #e5e7eb;border-radius:6px;background:#fff;padding:6px">'
+      + '<img src="' + (sigUrl || 'cid:chuky') + '" style="max-width:260px;height:auto;border:1px solid #e5e7eb;border-radius:6px;background:#fff;padding:6px">'
       + '<div style="font-size:12px;color:#64748B;margin-top:6px">' + (b.ten_khach || '') + (du.ngayKy ? ' \u2014 ' + dmy(du.ngayKy) : '') + '</div>'
       + '</div>'
     : '';
@@ -105,8 +113,19 @@ router.post('/gui-bien-ban', verifyToken, async (req, res) => {
     const to = email_khach || du.emailKhach;
     if (!to) return res.status(400).json({ thanhCong: false, thongBao: 'Bien ban khong co email khach' });
 
-    const sig = extractSig(du.chuKy, 'chuky');
-    const attachments = sig ? [sig] : [];
+    const sigIsUrl = du.chuKy && !du.chuKy.startsWith('data:');
+    const sig = sigIsUrl ? null : extractSig(du.chuKy, 'chuky');
+
+  // Tao PDF bien ban dinh kem
+  let pdfResult = null;
+  try {
+    pdfResult = await taoPDF(b, du);
+    console.log('[EMAIL] PDF OK:', pdfResult.filename, (pdfResult.buffer.length/1024).toFixed(1)+'KB');
+  } catch (pdfErr) {
+    console.error('[EMAIL] Loi tao PDF:', pdfErr.message);
+  }
+
+    const attachments = [...(sig ? [sig] : []), ...(pdfResult ? [{ filename: pdfResult.filename, content: pdfResult.buffer, contentType: 'application/pdf' }] : [])];
 
     const ngay = dmy(b.ngay_thuc_hien);
     const loaiTxt = b.loai === 'CHECKIN' ? 'Check In' : 'Check Out';
@@ -119,10 +138,17 @@ router.post('/gui-bien-ban', verifyToken, async (req, res) => {
       to,
       bcc: process.env.EMAIL_USER,
       subject,
-      html: buildHTML(b, du, !!sig),
+      html: buildHTML(b, du, !!sig, sigIsUrl ? absUrl(du.chuKy) : null),
       attachments
     });
 
+  // Luu PDF hash vao DB
+  if (pdfResult) {
+    db.run('UPDATE bien_ban SET pdf_hash=?, pdf_file=?, ngay_gui_email=CURRENT_TIMESTAMP WHERE id=?',
+      [pdfResult.hash, pdfResult.filename, bien_ban_id],
+      (e) => { if(e) console.error('[EMAIL] Luu PDF DB:', e.message); }
+    );
+  }
     res.json({ thanhCong: true, thongBao: 'Da gui email cho khach', email: to, coChuKy: !!sig });
   } catch (err) {
     console.error('Email error:', err.message);

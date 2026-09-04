@@ -14,8 +14,8 @@ module.exports = {
       DATABASE_PATH: './database/hcare-bangiao.db',
       EMAIL_USER: 'hcarevietnam.info@gmail.com',
       EMAIL_PASS: 'liqauzxsohcfpuzh',
-      VAPID_PUBLIC: 'BE66CTP24q64DRpqZ9UVSmGghZRT5SDiAuohWJtBasp7XcgYzWXgdu7TwBMCzgV3670cyHi4BTzCffnEXNFRFPQ',
-      VAPID_PRIVATE: 'x5G5LAbsV3b1yholGEf_LT8vkArvn0Hdd0YxYk3UHT8',
+      VAPID_PUBLIC: 'BPOmT-VFwqvoTaL0yTytAMhtxIknPo350xR5FLpKOFv9jQaxssouD441XlKhW2DXjqFA33UyPasM4jJOD_Wysqw',
+      VAPID_PRIVATE: 'uYAoEDv-OtY1ai5_jTtOCmvFRI68XeI0WVMNsNDMXw0',
       VAPID_EMAIL: 'mailto:hcarevietnam.info@gmail.com'
     },
     error_file: '/root/hcare-bangiao/backend/logs/pm2-error.log',
