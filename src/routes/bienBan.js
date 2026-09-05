@@ -95,7 +95,12 @@ router.put('/:id', verifyToken, async (req, res) => {
 router.post('/:id/duyet', verifyToken, requireQL, async (req, res) => {
   try {
     const db = await getDB();
-    await db.run(`UPDATE bien_ban SET trang_thai='NV_DUYET', ghi_chu_ql=NULL WHERE id=?`, [req.params.id]);
+    const { chu_ky_ql } = req.body || {};
+    if (chu_ky_ql) {
+      await db.run("UPDATE bien_ban SET trang_thai='NV_DUYET', ghi_chu_ql=NULL, chu_ky_ql=?, ngay_ky_ql=CURRENT_TIMESTAMP, ten_ql=? WHERE id=?", [chu_ky_ql, req.user.ten_nv || req.user.ma_nv, req.params.id]);
+    } else {
+      await db.run("UPDATE bien_ban SET trang_thai='NV_DUYET', ghi_chu_ql=NULL WHERE id=?", [req.params.id]);
+    }
     res.json({ thanhCong: true, thongBao: 'Đã duyệt! Nhân viên có thể cho khách xem và hoàn tất.' });
   } catch (err) {
     res.status(500).json({ thanhCong: false, thongBao: 'Lỗi server' });
@@ -116,19 +121,48 @@ router.post('/:id/yeu-cau-sua', verifyToken, requireQL, async (req, res) => {
 });
 
 // POST NV hoàn tất → HOANTAT (sau khi QL duyệt)
+
+// ===== HOAN TAT (rewritten) =====
 router.post('/:id/hoan-tat', verifyToken, async (req, res) => {
+  const { chu_ky_khach, chu_ky_nv } = req.body || {};
+  if (!chu_ky_khach) return res.status(400).json({ thanhCong: false, thongBao: 'Cần chữ ký khách thuê' });
+  if (!chu_ky_nv) return res.status(400).json({ thanhCong: false, thongBao: 'Cần chữ ký nhân viên' });
   try {
     const db = await getDB();
-    const bb = await db.get('SELECT * FROM bien_ban WHERE id = ?', [req.params.id]);
-    if (!bb) return res.status(404).json({ thanhCong: false, thongBao: 'Không tìm thấy' });
-    if (bb.trang_thai !== 'NV_DUYET' && bb.trang_thai !== 'NHAP')
-      return res.status(400).json({ thanhCong: false, thongBao: 'Biên bản chưa được Quản lý duyệt' });
-    await db.run(`UPDATE bien_ban SET trang_thai='HOANTAT' WHERE id=?`, [req.params.id]);
-    res.json({ thanhCong: true, thongBao: 'Hoàn tất biên bản thành công', data: bb });
+    const bb = await db.get('SELECT * FROM bien_ban WHERE id=?', [req.params.id]);
+    if (!bb) return res.status(404).json({ thanhCong: false, thongBao: 'Không tìm thấy biên bản' });
+    await db.run(
+      "UPDATE bien_ban SET chu_ky_ql=?, chu_ky_nv=?, ten_nv_ky=?, ngay_ky_ql=CURRENT_TIMESTAMP, trang_thai='HOANTAT' WHERE id=?",
+      [chu_ky_khach, chu_ky_nv, req.user.ten_nv || req.user.ho_ten || req.user.ma_nv, req.params.id]
+    );
+    // Gui email noi bo
+    const http = require('http');
+    const port = parseInt(process.env.PORT || 3004);
+    const emailOK = await new Promise(resolve => {
+      const data = JSON.stringify({ bien_ban_id: parseInt(req.params.id) });
+      const opts = {
+        hostname: 'localhost', port,
+        path: '/api/email/gui-bien-ban', method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(data), 'Authorization': req.headers.authorization }
+      };
+      const r = http.request(opts, resp => {
+        let b = '';
+        resp.on('data', d => b += d);
+        resp.on('end', () => { try { resolve(JSON.parse(b)); } catch { resolve({ thanhCong: false }); } });
+      });
+      r.on('error', e => { console.error('[HOANTAT] Email loi:', e.message); resolve({ thanhCong: false }); });
+      r.write(data); r.end();
+    });
+    const msg = emailOK.thanhCong
+      ? 'Hoàn tất! Email đã gửi cho khách thuê.'
+      : 'Hoàn tất! Gửi email chưa thành công — vui lòng gửi lại từ chi tiết biên bản.';
+    res.json({ thanhCong: true, guiEmailOK: emailOK.thanhCong, thongBao: msg });
   } catch (err) {
-    res.status(500).json({ thanhCong: false, thongBao: 'Lỗi server' });
+    console.error('[HOANTAT] Loi:', err.message);
+    res.status(500).json({ thanhCong: false, thongBao: 'Lỗi hệ thống: ' + err.message });
   }
 });
+
 
 // POST QL chỉnh sửa biên bản đã hoàn tất
 router.post('/:id/ql-chinh-sua', verifyToken, requireQL, async (req, res) => {
